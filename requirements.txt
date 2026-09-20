@@ -9,3 +9,5 @@ pytest
 matplotlib
 requests
 python-dateutil
+
+python-dotenv

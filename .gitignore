@@ -7,3 +7,6 @@ data/processed/*
 !data/processed/.gitkeep
 .env
 node_modules/
+
+.env
+data/raw/railradar/*
