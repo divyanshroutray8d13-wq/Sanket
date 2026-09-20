@@ -15,7 +15,8 @@ MAX_REQUESTS = 46
 
 
 def load_trains():
-    return [ln.strip() for ln in TRAIN_LIST.read_text().splitlines() if ln.strip()]
+    return [ln.strip().zfill(5)
+            for ln in TRAIN_LIST.read_text().splitlines() if ln.strip()]
 
 
 def main():

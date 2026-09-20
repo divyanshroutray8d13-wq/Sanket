@@ -10,3 +10,11 @@ Date - person - decision - reason.
 Results: 46 corridor trains, 1078 route steps, 584 unique directional sections, and the busiest section carries 11 trains (BRC>ST).
 Warning: do not open/resave the schedule CSV in Excel because changing its values/types can break routing. Direction matters: A>B and B>A remain separate sections. Existing pytest baseline still passes: 28 passed.
 
+2026-09-20 - Divyansh-collector running. 46 Delhi-Mumbai trains.
+  RailRadar route array returns ~300 stops per train, ~300 with actualArrival.
+  Far more observations per request than estimated - not quota constrained on training data.
+  Free tier: 1000/month, 10/min burst. sleep(7) between calls.
+  Quota after 3 nights: ~150 used.
+  Station board endpoint returns all inbound trains in one call - live dashboard affordable.
+  Api requests api configured and collecting live data
+  
