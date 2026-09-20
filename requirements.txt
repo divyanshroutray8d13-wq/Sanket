@@ -1,0 +1,11 @@
+﻿pandas
+numpy
+lightgbm
+scikit-learn
+shap
+fastapi
+uvicorn[standard]
+pytest
+matplotlib
+requests
+python-dateutil
