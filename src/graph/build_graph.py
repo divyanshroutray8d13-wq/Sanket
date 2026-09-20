@@ -1,9 +1,44 @@
-"""Build the railway network graph from the data.gov.in timetable."""
 
 from numpy.ma import absolute
 import pandas as pd
 
+from pathlib import Path
 
+COLUMN_MAP = {
+    "Train No": "train_no",
+    "Train Name": "train_name",
+    "SEQ": "stop_seq",
+    "Station Code": "station_code",
+    "Arrival time": "arrival",
+    "Departure Time": "departure",
+    "Distance": "distance_km",
+}
+
+
+def load_schedule(path):
+    df = pd.read_csv(path, dtype=str)
+    df = df.rename(columns=COLUMN_MAP)
+    df = df[list(COLUMN_MAP.values())]
+
+    df["stop_seq"] = pd.to_numeric(df["stop_seq"], errors="coerce")
+    df["distance_km"] = pd.to_numeric(df["distance_km"], errors="coerce")
+
+    bad = df["stop_seq"].isna() | df["distance_km"].isna()
+    if bad.any():
+        print(f"load_schedule: dropped {bad.sum()} malformed rows")
+    df = df[~bad].copy()
+    df["stop_seq"] = df["stop_seq"].astype(int)
+
+    df = df.sort_values(["train_no", "stop_seq"]).reset_index(drop=True)
+
+    first = df.groupby("train_no")["stop_seq"].transform("min")
+    last = df.groupby("train_no")["stop_seq"].transform("max")
+    df.loc[(df["stop_seq"] == first) & (df["arrival"] == "00:00:00"), "arrival"] = None
+    df.loc[(df["stop_seq"] == last) & (df["departure"] == "00:00:00"), "departure"] = None
+
+    df = df.groupby("train_no").filter(lambda g: len(g) >= 2)
+    return df
+   
 def hhmm_to_minutes(t):
     """Convert "HH:MM:SS" to minutes since midnight. None if missing."""
     if pd.isna(t) or t == "":
