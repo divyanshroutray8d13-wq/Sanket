@@ -64,15 +64,15 @@ flowchart LR
 
 | Component | Location | Status |
 |---|---|---|
-| Network graph from the timetable | `src/graph/` | ✅ working, 28 tests |
-| RailRadar collector (quota-safe, run-day aware) | `src/collect/` | ✅ running nightly |
-| Parser with data-quality rules | `src/collect/parse.py` | ✅ working, 27 tests |
-| Network features (train ahead, headway, precedence) | `src/features/build_features.py` | ✅ working, 23 tests |
-| Scheduled-traffic feature | `src/features/schedule.py` | 🔧 in progress |
-| Model training | `src/model/` | 🔧 in progress |
-| Evaluation and ablation | `src/eval/` | 🔧 in progress |
-| API | `src/api/` | 🔧 in progress |
-| Dashboard | `frontend/` | 🔧 in progress |
+| Network graph from the timetable | `src/graph/` |  working, 28 tests |
+| RailRadar collector (quota-safe, run-day aware) | `src/collect/` |  running nightly |
+| Parser with data-quality rules | `src/collect/parse.py` |  working, 27 tests |
+| Network features (train ahead, headway, precedence) | `src/features/build_features.py` |  working, 23 tests |
+| Scheduled-traffic feature | `src/features/schedule.py` |  in progress |
+| Model training | `src/model/` |  in progress |
+| Evaluation and ablation | `src/eval/` | in progress |
+| API | `src/api/` |  in progress |
+| Dashboard | `frontend/` |  in progress |
 
 ---
 
@@ -224,19 +224,6 @@ We would rather state these plainly than have them discovered:
   designed around the data they would provide.
 - **Short history.** Our running data covers days, not months, so seasonal
   effects such as monsoon and fog are not yet represented.
-
----
-
-## Team
-
-| Member | Area |
-|---|---|
-| Rivy | Model, features, data pipeline (lead) |
-| Aaru | Evaluation: splits, baselines, corridors |
-| Aryu | Results, metrics, submission |
-| Aahan | Dashboard |
-| VV | API |
-| Neel | Figures, documentation, testing |
 
 ---
 
