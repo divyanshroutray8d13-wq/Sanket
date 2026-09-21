@@ -24,8 +24,17 @@ export default function Navbar() {
   return (
     <header>
       <nav className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-10 gap-y-3 px-6 py-5">
-        <NavLink to="/train/12951" className="tight text-[17px] font-semibold" aria-label="SANKET home">
-          SANKET
+        <NavLink
+          to="/train/12951"
+          className="tight flex items-center gap-2 text-[17px] font-semibold"
+          aria-label="SANKET home"
+        >
+          <img
+            src="/sanket-logo.webp"
+            alt="SANKET logo"
+            className="h-20 w-20 object-contain"
+          />
+          <span>SANKET</span>
         </NavLink>
 
         <ul className="order-3 flex gap-6 sm:order-none">
