@@ -1,0 +1,105 @@
+{
+  "train_no": "12909",
+  "train_name": "Bandra Nizamuddin Garib Rath",
+  "run_date": "2026-09-21",
+  "as_of": "2026-09-21T17:40:00+05:30",
+  "current": {
+    "station_code": "BDTS",
+    "station_name": "Bandra Terminus",
+    "delay_min": 0
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 3,
+      "scheduled": "20:40",
+      "baseline_eta": "20:40",
+      "eta_median": "20:43",
+      "eta_low": "20:38",
+      "eta_high": "20:52",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        }
+      ]
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Junction",
+      "sequence": 4,
+      "scheduled": "22:20",
+      "baseline_eta": "22:20",
+      "eta_median": "22:29",
+      "eta_low": "22:19",
+      "eta_high": "22:43",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        }
+      ]
+    },
+    {
+      "code": "RTM",
+      "name": "Ratlam Junction",
+      "sequence": 5,
+      "scheduled": "01:40",
+      "baseline_eta": "01:40",
+      "eta_median": "01:52",
+      "eta_low": "01:41",
+      "eta_high": "02:12",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 3
+        }
+      ]
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Junction",
+      "sequence": 6,
+      "scheduled": "04:50",
+      "baseline_eta": "04:50",
+      "eta_median": "05:06",
+      "eta_low": "04:52",
+      "eta_high": "05:31",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 3
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 4
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "train_no": "12925",
+  "train_name": "Paschim Express",
+  "run_date": "2026-09-21",
+  "as_of": "2026-09-21T17:40:00+05:30",
+  "current": {
+    "station_code": "VAPI",
+    "station_name": "Vapi",
+    "delay_min": 32
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 9,
+      "scheduled": "19:05",
+      "baseline_eta": "19:30",
+      "eta_median": "19:41",
+      "eta_low": "19:31",
+      "eta_high": "19:58",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 32
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
+      ]
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Junction",
+      "sequence": 12,
+      "scheduled": "21:10",
+      "baseline_eta": "21:32",
+      "eta_median": "21:52",
+      "eta_low": "21:36",
+      "eta_high": "22:18",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 32
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 6
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
+      ]
+    },
+    {
+      "code": "RTM",
+      "name": "Ratlam Junction",
+      "sequence": 18,
+      "scheduled": "01:35",
+      "baseline_eta": "01:52",
+      "eta_median": "02:21",
+      "eta_low": "01:58",
+      "eta_high": "02:52",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 32
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 6
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 4
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
+      ]
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Junction",
+      "sequence": 23,
+      "scheduled": "05:50",
+      "baseline_eta": "06:02",
+      "eta_median": "06:38",
+      "eta_low": "06:12",
+      "eta_high": "07:15",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 32
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 6
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 6
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
+      ]
+    }
+  ]
+}
