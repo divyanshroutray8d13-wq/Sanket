@@ -2,7 +2,7 @@ import pandas as pd
 
 COLS = ["train_no", "train_category", "run_date", "step_seq",
         "from_station", "to_station", "booked_srt_min", "actual_srt_min",
-        "minutes_lost", "length_km", "dep_delay_min"]
+            "minutes_lost", "length_km", "dep_delay_min", "dep_time", "arr_time"]
 
 REJECT = {"DIVERTED", "PARTIALLY_CANCELLED"}
 
@@ -43,7 +43,8 @@ def route_to_observations(payload):
          append_row =[d["trainNumber"], d["train"]["category"], d["startDate"], 0,
                       A["stationCode"], B["stationCode"],
                       round(booked), round(actual), round(actual - booked),
-                      length, A.get("delayDeparture") or 0]
+                      length, A.get("delayDeparture") or 0,
+                      A["actualDeparture"], B["actualArrival"]]
          rows.append(append_row)
     if not rows:
         return empty
