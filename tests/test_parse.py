@@ -1,73 +1,3 @@
-"""
-Tests for src/collect/parse.py
-
-Turns a RailRadar /v1/trains/{number}/live payload into one row per SECTION
-that the train actually completed — the real-world equivalent of what your
-simulator produces.
-
-Run:   pytest tests/test_parse.py -v
-
-==============================================================================
-WHY THIS FILE IS THE MOST IMPORTANT PARSER YOU WILL WRITE
-==============================================================================
-
-Every row it emits is a real observation: a real train, on a real section,
-on a real day, with the real minutes it lost. This is your training data and
-your evidence. If this parser is subtly wrong, everything downstream is wrong
-and nothing will tell you.
-
-==============================================================================
-WHAT YOU IMPLEMENT
-==============================================================================
-
-route_to_observations(payload: dict) -> pd.DataFrame
-
-    Input: the full decoded JSON of one API response (the whole envelope,
-    including the "success" and "data" keys).
-
-    Output: one row per CONSECUTIVE PAIR of route stops where BOTH ends have
-    real observed times. Columns, in this exact order:
-
-        train_no        str     from data.trainNumber
-        train_category  str     from data.train.category  (e.g. "Superfast")
-        run_date        str     from data.startDate       ("YYYY-MM-DD")
-        step_seq        int     0-based, contiguous over the rows you keep
-        from_station    str
-        to_station      str
-        booked_srt_min  int     schedArr(B)   - schedDep(A)
-        actual_srt_min  int     actualArr(B)  - actualDep(A)
-        minutes_lost    int     actual_srt_min - booked_srt_min
-        length_km       float   distance(B)   - distance(A)
-        dep_delay_min   int     delayDeparture at A (how late it entered)
-
-    SKIP a pair when any of these is true:
-        - actualDeparture at A is null      (train had not left yet)
-        - actualArrival   at B is null      (train had not arrived yet)
-        - scheduledDeparture at A is null   (origin has no scheduled arrival,
-                                             but it does have a departure —
-                                             this guard is for odd payloads)
-        - scheduledArrival  at B is null
-        - the computed booked_srt_min <= 0 or > 720
-        - length_km <= 0
-
-    ALSO SKIP THE WHOLE TRAIN (return an empty DataFrame with the right
-    columns) when:
-        - payload["success"] is not True
-        - data.exceptions contains any entry with type "DIVERTED" or
-          "PARTIALLY_CANCELLED"    <- a diverted train did not run the
-                                      sections its route claims, so every
-                                      row would be a lie
-
-    NOTES
-    - Timestamps are ISO 8601 with a +05:30 offset. pd.to_datetime parses
-      them directly; subtract and use .total_seconds() / 60.
-    - Do NOT use delayArrival/delayDeparture to compute minutes_lost. Those
-      are cumulative delay against the whole schedule, not time lost on this
-      section. The difference is the entire point of the project.
-    - Gaps are fine: if stop 5 has no actual time but stops 6 and 7 do, you
-      keep 6->7 and renumber step_seq contiguously.
-"""
-
 import json
 import pandas as pd
 import pytest
@@ -76,11 +6,10 @@ from src.collect.parse import route_to_observations
 
 COLS = ["train_no", "train_category", "run_date", "step_seq",
         "from_station", "to_station", "booked_srt_min", "actual_srt_min",
-        "minutes_lost", "length_km", "dep_delay_min"]
+        "minutes_lost", "length_km", "dep_delay_min", "dep_time", "arr_time"]
 
 
 def stop(seq, code, sa, sd, aa, ad, dist, da=None, dd=None):
-    """Build one route entry the way RailRadar returns it."""
     return {
         "sequence": seq, "stationCode": code, "stationName": code,
         "isHalt": True,
@@ -115,20 +44,6 @@ def payload(route, success=True, exceptions=None, category="Superfast"):
 
 @pytest.fixture
 def clean_run():
-    """
-    Three completed sections, taken from the shape of the real Malwa payload.
-
-      INDB  dep sched 23:55  actual 00:07      dist 0
-      UJN   arr sched 00:55  actual 01:07      dist 55
-            dep sched 01:00  actual 01:12
-      MKSM  arr sched 02:10  actual 02:35      dist 96
-            dep sched 02:12  actual 02:37
-      BCH   arr sched 03:00  actual 03:20      dist 140
-
-    Section 1  INDB->UJN : booked 60, actual 60, lost  0, 55 km
-    Section 2  UJN ->MKSM: booked 70, actual 83, lost 13, 41 km
-    Section 3  MKSM->BCH : booked 48, actual 43, lost -5, 44 km   (made up time)
-    """
     return payload([
         stop(1, "INDB", None,
              "2026-06-22T23:55:00+05:30", None,
@@ -171,52 +86,32 @@ def test_metadata_carried_through(clean_run):
 # ---------------------------------------------------------------- arithmetic
 
 def test_booked_srt_uses_departure_not_arrival(clean_run):
-    """
-    UJN->MKSM booked must be schedArr(MKSM) 02:10 minus schedDep(UJN) 01:00
-    = 70 minutes. Arrival-to-arrival gives 75 and bakes in dwell time.
-    """
+
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 1].booked_srt_min.iloc[0] == 70
 
 
 def test_actual_srt(clean_run):
-    """UJN->MKSM actual: 02:35 minus 01:12 = 83 minutes."""
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 1].actual_srt_min.iloc[0] == 83
 
 
 def test_minutes_lost_is_the_label(clean_run):
-    """83 - 70 = 13. This single number is what the model learns."""
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 1].minutes_lost.iloc[0] == 13
 
 
 def test_minutes_lost_can_be_negative(clean_run):
-    """
-    MKSM->BCH: booked 48, actual 43. The train made up 5 minutes.
-    Do NOT clip this to zero — recovery is real and the model must see it.
-    """
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 2].minutes_lost.iloc[0] == -5
 
 
 def test_minutes_lost_is_not_cumulative_delay(clean_run):
-    """
-    delayArrival at MKSM is 25 (cumulative against schedule) but only 13 of
-    those minutes were lost on UJN->MKSM. If you see 25 here you used the
-    delay field instead of computing the section time, and the whole premise
-    of the project is gone.
-    """
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 1].minutes_lost.iloc[0] != 25
 
 
 def test_crosses_midnight(clean_run):
-    """
-    INDB departs 23:55 on the 22nd and reaches UJN 00:55 on the 23rd.
-    That is 60 minutes. The ISO dates carry the day, so this only breaks
-    if you parse times without their date.
-    """
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 0].booked_srt_min.iloc[0] == 60
     assert df[df.step_seq == 0].actual_srt_min.iloc[0] == 60
@@ -228,7 +123,6 @@ def test_length_is_incremental(clean_run):
 
 
 def test_dep_delay_captured(clean_run):
-    """How late the train ENTERED the section — a model feature."""
     df = route_to_observations(clean_run)
     assert df[df.step_seq == 1].dep_delay_min.iloc[0] == 12
 
@@ -243,7 +137,6 @@ def test_integer_dtypes(clean_run):
 # ---------------------------------------------------------------- skipping
 
 def test_skips_upcoming_stops():
-    """Train has only reached stop 2. Only one section is observed."""
     df = route_to_observations(payload([
         stop(1, "AAA", None, "2026-06-22T06:00:00+05:30", None,
              "2026-06-22T06:05:00+05:30", 0, None, 5),
@@ -257,10 +150,6 @@ def test_skips_upcoming_stops():
 
 
 def test_gap_in_middle_renumbers_contiguously():
-    """
-    Stop 2 was never reported. 1->2 and 2->3 are both unusable, but 3->4
-    is fine and must come out as step_seq 0.
-    """
     df = route_to_observations(payload([
         stop(1, "AAA", None, "2026-06-22T06:00:00+05:30", None,
              "2026-06-22T06:04:00+05:30", 0),
@@ -278,7 +167,6 @@ def test_gap_in_middle_renumbers_contiguously():
 
 
 def test_drops_absurd_booked_srt():
-    """13 hours booked on one section is bad data."""
     df = route_to_observations(payload([
         stop(1, "AAA", None, "2026-06-22T06:00:00+05:30", None,
              "2026-06-22T06:00:00+05:30", 0),
@@ -309,10 +197,6 @@ def test_rejects_failed_payload(clean_run):
 
 
 def test_rejects_diverted_train(clean_run):
-    """
-    A diverted train did not travel the sections its route lists. Every row
-    would be fiction. Drop the whole run.
-    """
     div = json.loads(json.dumps(clean_run))
     div["data"]["exceptions"] = [{"type": "DIVERTED", "message": "..."}]
     assert len(route_to_observations(div)) == 0
@@ -338,12 +222,6 @@ def test_empty_route_returns_empty_frame():
 
 
 def test_rejects_run_with_no_tracking(clean_run):
-    """
-    Every halt has actual times but no delay data at all. That is the
-    signature of a run RailRadar did not track: 'actual' is just the
-    schedule copied across. Treating it as a punctual train would teach the
-    model that nothing is ever late.
-    """
     dead = json.loads(json.dumps(clean_run))
     for s in dead["data"]["route"]:
         s["delayArrival"] = None
@@ -352,10 +230,6 @@ def test_rejects_run_with_no_tracking(clean_run):
 
 
 def test_ignores_non_halt_stations(clean_run):
-    """
-    Passing points carry interpolated times, not observations. A non-halt
-    stop inserted between two halts must not create extra sections.
-    """
     with_pass = json.loads(json.dumps(clean_run))
     r = with_pass["data"]["route"]
     passing = dict(r[1]); passing["stationCode"] = "PASS"; passing["isHalt"] = False
@@ -366,11 +240,6 @@ def test_ignores_non_halt_stations(clean_run):
 
 
 def test_ignores_projected_upcoming_halts(clean_run):
-    """
-    RailRadar fills actualArrival on halts the train has NOT reached yet,
-    with a projection (schedule + current delay). Status says 'upcoming'.
-    Those are forecasts, not observations, and must never become labels.
-    """
     proj = json.loads(json.dumps(clean_run))
     last = proj["data"]["route"][-1]
     last["status"] = "upcoming"
@@ -378,12 +247,15 @@ def test_ignores_projected_upcoming_halts(clean_run):
 
 
 def test_ignores_departed_halt_without_delay(clean_run):
-    """
-    A 'departed' halt with an actual time but no delay value is the schedule
-    copied across, not a measurement. Seen in real data on 22653.
-    """
     cp = json.loads(json.dumps(clean_run))
     cp["data"]["route"][1]["delayArrival"] = None
     cp["data"]["route"][1]["delayDeparture"] = None
     df = route_to_observations(cp)
     assert "UJN" not in set(df.from_station) | set(df.to_station)
+
+
+def test_carries_actual_timestamps(clean_run):
+    df = route_to_observations(clean_run)
+    row = df[df.step_seq == 1].iloc[0]
+    assert row.dep_time == "2026-06-23T01:12:00+05:30"
+    assert row.arr_time == "2026-06-23T02:35:00+05:30"
