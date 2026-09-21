@@ -26,3 +26,5 @@ train rolls throught without stopping railradar  doesnt observe the trains there
 with the Delhi-Mumbai corridor (top: 32 shared, bottom: 17 shared). Excludes current
 corridor trains, 10 never-tracked trains, and 0-prefix specials. Name-based SPECIAL
 filter not yet applied - routes.csv has no train_name column, pending trains.csv access.
+
+2026-09-21-Divyansh-specials dropped — untracked on their own run days; six weekly trains kept, fetched on run days only
