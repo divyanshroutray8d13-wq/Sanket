@@ -10,3 +10,6 @@ node_modules/
 
 .env
 data/raw/railradar/*
+!data/processed/observations.csv
+!data/processed/corridor_trains.txt
+!data/processed/corridor_*_trains.txt
