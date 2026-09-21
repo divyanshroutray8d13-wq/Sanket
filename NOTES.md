@@ -21,3 +21,8 @@ Warning: do not open/resave the schedule CSV in Excel because changing its value
 2026-09-21-Divyansh-parser made ,26 tests passes. 3 data traps identified-trains still running when  fetched them, halts the train hadn't reached yet are marked upcoming — but still carry an actualArrival TwT
 Some halts are marked departed and have an actualArrival, but delayArrival and delayDeparture are None
 train rolls throught without stopping railradar  doesnt observe the trains there hence no data was formed over there
+
+2026-09-21 - Aaradhya - built corridor_overlap_trains.txt: 30 trains sharing >=17 sections
+with the Delhi-Mumbai corridor (top: 32 shared, bottom: 17 shared). Excludes current
+corridor trains, 10 never-tracked trains, and 0-prefix specials. Name-based SPECIAL
+filter not yet applied - routes.csv has no train_name column, pending trains.csv access.
