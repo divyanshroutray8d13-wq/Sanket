@@ -1,0 +1,97 @@
+{
+  "train_no": "12951",
+  "train_name": "Mumbai Rajdhani",
+  "run_date": "2026-09-21",
+  "as_of": "2026-09-21T17:40:00+05:30",
+  "current": {
+    "station_code": "BVI",
+    "station_name": "Borivali",
+    "delay_min": 14
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 3,
+      "scheduled": "19:43",
+      "baseline_eta": "19:55",
+      "eta_median": "20:01",
+      "eta_low": "19:52",
+      "eta_high": "20:14",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "carried over from earlier", "minutes": 14 },
+        { "cause": "platform occupied at ST", "minutes": 4 }
+      ]
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Junction",
+      "sequence": 4,
+      "scheduled": "21:06",
+      "baseline_eta": "21:16",
+      "eta_median": "21:31",
+      "eta_low": "21:18",
+      "eta_high": "21:52",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "carried over from earlier", "minutes": 14 },
+        { "cause": "speed restriction ST-BRC", "minutes": 7 },
+        { "cause": "platform occupied at ST", "minutes": 4 }
+      ]
+    },
+    {
+      "code": "RTM",
+      "name": "Ratlam Junction",
+      "sequence": 5,
+      "scheduled": "00:15",
+      "baseline_eta": "00:22",
+      "eta_median": "00:46",
+      "eta_low": "00:28",
+      "eta_high": "01:12",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "carried over from earlier", "minutes": 14 },
+        { "cause": "speed restriction ST-BRC", "minutes": 7 },
+        { "cause": "held for precedence", "minutes": 6 },
+        { "cause": "platform occupied at ST", "minutes": 4 }
+      ]
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Junction",
+      "sequence": 6,
+      "scheduled": "03:18",
+      "baseline_eta": "03:22",
+      "eta_median": "03:52",
+      "eta_low": "03:30",
+      "eta_high": "04:25",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "carried over from earlier", "minutes": 14 },
+        { "cause": "speed restriction ST-BRC", "minutes": 7 },
+        { "cause": "held for precedence", "minutes": 6 },
+        { "cause": "platform occupied at ST", "minutes": 4 },
+        { "cause": "inherited from train ahead", "minutes": 3 }
+      ]
+    },
+    {
+      "code": "NDLS",
+      "name": "New Delhi",
+      "sequence": 7,
+      "scheduled": "08:32",
+      "baseline_eta": "08:32",
+      "eta_median": "09:10",
+      "eta_low": "08:40",
+      "eta_high": "09:55",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "carried over from earlier", "minutes": 14 },
+        { "cause": "held for precedence", "minutes": 10 },
+        { "cause": "speed restriction ST-BRC", "minutes": 7 },
+        { "cause": "platform occupied at ST", "minutes": 4 },
+        { "cause": "inherited from train ahead", "minutes": 3 }
+      ]
+    }
+  ]
+}

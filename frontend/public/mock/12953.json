@@ -1,0 +1,146 @@
+{
+  "train_no": "12953",
+  "train_name": "August Kranti Rajdhani",
+  "run_date": "2026-09-21",
+  "as_of": "2026-09-21T17:40:00+05:30",
+  "current": {
+    "station_code": "MMCT",
+    "station_name": "Mumbai Central",
+    "delay_min": 6
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 3,
+      "scheduled": "20:03",
+      "baseline_eta": "20:07",
+      "eta_median": "20:12",
+      "eta_low": "20:05",
+      "eta_high": "20:24",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 6
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        }
+      ]
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Junction",
+      "sequence": 4,
+      "scheduled": "21:37",
+      "baseline_eta": "21:40",
+      "eta_median": "21:52",
+      "eta_low": "21:41",
+      "eta_high": "22:10",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 6
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        }
+      ]
+    },
+    {
+      "code": "RTM",
+      "name": "Ratlam Junction",
+      "sequence": 5,
+      "scheduled": "00:55",
+      "baseline_eta": "00:57",
+      "eta_median": "01:18",
+      "eta_low": "01:02",
+      "eta_high": "01:44",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 6
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 8
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 3
+        }
+      ]
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Junction",
+      "sequence": 7,
+      "scheduled": "04:05",
+      "baseline_eta": "04:05",
+      "eta_median": "04:31",
+      "eta_low": "04:12",
+      "eta_high": "05:02",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 6
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 8
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 6
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        }
+      ]
+    },
+    {
+      "code": "HNZM",
+      "name": "Hazrat Nizamuddin",
+      "sequence": 11,
+      "scheduled": "10:55",
+      "baseline_eta": "10:55",
+      "eta_median": "11:24",
+      "eta_low": "11:02",
+      "eta_high": "12:01",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "carried over from earlier",
+          "minutes": 6
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 12
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 5
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 6
+        }
+      ]
+    }
+  ]
+}
