@@ -32,7 +32,15 @@ export default function TrainPage() {
     ? params.get('station')
     : data.stations[0]?.code
   const selected = data.stations.find((s) => s.code === selectedCode)
-  const select = (code) => setParams({ station: code }, { replace: true })
+  const select = (code) => {
+    setParams({ station: code }, { replace: true })
+    // On narrow screens the "why late" panel sits below the list, so bring it into view
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      requestAnimationFrame(() =>
+        document.getElementById('why-late')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+      )
+    }
+  }
 
   return (
     <>
@@ -41,7 +49,7 @@ export default function TrainPage() {
         <TrainHeader data={data} />
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
           <JourneyPanel data={data} selected={selectedCode} onSelect={select} />
-          <div className="lg:sticky lg:top-10">
+          <div id="why-late" className="scroll-mt-4 lg:sticky lg:top-10">
             <WhyLatePanel station={selected} />
           </div>
         </div>

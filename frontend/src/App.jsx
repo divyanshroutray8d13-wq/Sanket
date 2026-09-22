@@ -7,6 +7,7 @@ import TrainPage from './pages/TrainPage'
 import StationPage from './pages/StationPage'
 import CorridorsPage from './pages/CorridorsPage'
 import AboutPage from './pages/AboutPage'
+import ResultsPage from './pages/ResultsPage'
 
 // Hash routing only in the single-file preview build
 const Router = import.meta.env.VITE_HASH_ROUTER ? HashRouter : BrowserRouter
@@ -25,6 +26,7 @@ export default function App() {
               <Route path="/station" element={<Navigate to="/station/ST" replace />} />
               <Route path="/station/:code" element={<StationPage />} />
               <Route path="/corridors" element={<CorridorsPage />} />
+              <Route path="/results" element={<ResultsPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="*" element={<Navigate to="/train/12951" replace />} />
             </Routes>

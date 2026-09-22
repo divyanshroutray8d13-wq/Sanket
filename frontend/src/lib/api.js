@@ -48,3 +48,19 @@ export async function fetchStationBoard(code, trainNos) {
   const isLive = trains.every((t) => t.is_live !== false)
   return { code, asOf, isMock, isLive, arrivals }
 }
+
+// Results page: the real ablation result if it exists, otherwise the labelled sample.
+// Both files are written by `python -m src.eval.export_results`.
+export async function fetchResults() {
+  if (import.meta.env.VITE_INLINE_MOCK) {
+    const data = window.__SANKET_RESULTS__
+    if (!data) throw new Error('No results embedded in this preview')
+    return data
+  }
+  for (const file of ['/results.json', '/results.sample.json']) {
+    const res = await fetch(file)
+    const type = res.headers.get('content-type') ?? ''
+    if (res.ok && type.includes('json')) return res.json()
+  }
+  throw new Error('No results file found')
+}
