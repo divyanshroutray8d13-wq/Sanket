@@ -36,7 +36,7 @@ from src.graph.build_graph import (  # noqa: E402
 
 DATA_PATH = ROOT / "data" / "raw" / "trains.csv"
 OUT_DIR = ROOT / "data" / "processed"
-MAX_TRAINS = 20
+MAX_TRAINS = 15
 
 CORRIDORS = {
     "howrah": {
