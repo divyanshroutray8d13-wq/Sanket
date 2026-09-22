@@ -78,12 +78,13 @@ def add_schedule_density(obs, departures, window_min=30):
     tod = st.dt.hour * 60 + st.dt.minute
     wd = st.dt.dayofweek
     use_days = "days" in departures.columns
+    covered = set(departures["station"])
 
     for c in SCHED:
         o[c] = np.nan
 
     for i in o.index:
-        if pd.isna(o.at[i, "direction"]):
+        if pd.isna(o.at[i, "direction"]) or o.at[i, "from_station"] not in covered:
             continue
         mask = ((departures["station"] == o.at[i, "from_station"])
                 & (departures["direction"] == o.at[i, "direction"])

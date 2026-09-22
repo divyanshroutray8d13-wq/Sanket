@@ -13,7 +13,6 @@ KM = {"AAA": 0.0, "BBB": 50.0, "CCC": 120.0}
 # ---------------------------------------------------------------- synthetic data
 
 def synthetic_obs(n=360, seed=1):
-
     rng = np.random.default_rng(seed)
     days = ["2026-09-17", "2026-09-18", "2026-09-19"]
     rows = []
@@ -195,7 +194,6 @@ def test_reproducible(obs, masks):
 
 
 def test_model_beats_zero_on_learnable_data(obs, masks):
-
     tr, te = masks
     out = run_experiment(obs, KM, tr, te, include_network=False)
     mae_model = (out.p50 - out.y_true).abs().mean()
