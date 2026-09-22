@@ -49,8 +49,12 @@ export default function StationRow({ s, scale, index, selected, last, onSelect }
           </span>
 
           <span className="flex items-center justify-between gap-3 md:block md:text-right">
-            <span className="tnum tight block whitespace-nowrap text-[19px] font-medium">
-              {s.eta_low}–{s.eta_high}
+            <span className="block">
+              <span className="tnum tight block whitespace-nowrap text-[19px] font-medium">
+                {s.eta_low}–{s.eta_high}
+              </span>
+              {/* On phones the comparison sits under the window; on wider screens it goes below the chip */}
+              <span className="tnum mt-0.5 block text-[12.5px] text-ink-3 md:hidden">apps show {s.baseline_eta}</span>
             </span>
             <span className="md:mt-2 md:block">
               <DelayChip minutes={late.mid} selected={selected} />

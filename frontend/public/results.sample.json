@@ -1,0 +1,85 @@
+{
+  "generated_at": "2026-09-22T11:05:22+00:00",
+  "is_sample": true,
+  "test_dates": [
+    "2026-09-19"
+  ],
+  "n_sections": 277,
+  "n_train_runs": 14,
+  "experiments": [
+    {
+      "experiment": "model_network",
+      "label": "SANKET, with network features",
+      "role": "model",
+      "mae": 4.11,
+      "coverage": 0.935,
+      "mean_width": 18.0,
+      "bias": 0.19
+    },
+    {
+      "experiment": "model_base",
+      "label": "SANKET, no network features",
+      "role": "model",
+      "mae": 6.01,
+      "coverage": 0.816,
+      "mean_width": 20.0,
+      "bias": -0.03
+    },
+    {
+      "experiment": "baseline_zero",
+      "label": "Baseline: keeps current delay",
+      "role": "baseline",
+      "mae": 9.54,
+      "coverage": 0.787,
+      "mean_width": 28.0,
+      "bias": 2.93
+    },
+    {
+      "experiment": "baseline_section",
+      "label": "Baseline: section average",
+      "role": "baseline",
+      "mae": 10.06,
+      "coverage": 0.661,
+      "mean_width": 24.0,
+      "bias": 0.43
+    }
+  ],
+  "comparisons": [
+    {
+      "question": "Do network features help?",
+      "a": "model_network",
+      "b": "model_base",
+      "a_label": "SANKET, with network features",
+      "b_label": "SANKET, no network features",
+      "gain": 1.91,
+      "lo": 1.4,
+      "hi": 2.77,
+      "share_a_better": 1.0,
+      "verdict": "clearly better than"
+    },
+    {
+      "question": "model_network vs the best baseline",
+      "a": "model_network",
+      "b": "baseline_zero",
+      "a_label": "SANKET, with network features",
+      "b_label": "Baseline: keeps current delay",
+      "gain": 5.43,
+      "lo": 3.64,
+      "hi": 7.77,
+      "share_a_better": 1.0,
+      "verdict": "clearly better than"
+    },
+    {
+      "question": "model_base vs the best baseline",
+      "a": "model_base",
+      "b": "baseline_zero",
+      "a_label": "SANKET, no network features",
+      "b_label": "Baseline: keeps current delay",
+      "gain": 3.52,
+      "lo": 1.93,
+      "hi": 5.55,
+      "share_a_better": 1.0,
+      "verdict": "clearly better than"
+    }
+  ]
+}

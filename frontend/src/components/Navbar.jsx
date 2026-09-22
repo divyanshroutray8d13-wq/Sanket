@@ -5,6 +5,7 @@ const LINKS = [
   { to: '/train/12951', label: 'Train', match: '/train' },
   { to: '/station/ST', label: 'Stations', match: '/station' },
   { to: '/corridors', label: 'Corridors', match: '/corridors' },
+  { to: '/results', label: 'Results', match: '/results' },
   { to: '/about', label: 'About', match: '/about' },
 ]
 
