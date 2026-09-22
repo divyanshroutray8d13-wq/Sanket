@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+from src.features.schedule import SCHED, add_schedule_density
 BASE = ["booked_srt_min", "length_km", "dep_delay_min", "step_seq",
         "hour", "dow", "is_premium"]
 NET = ["headway_prev_min", "prev_train_delay", "prev_train_premium",
@@ -64,11 +64,15 @@ def add_network_features(obs, window_min=30, max_headway_min=180):
     return o
 
 
-def build_features(obs, km, include_network=True):
+def build_features(obs, km, include_network=True, departures=None):
     o = add_direction(add_time_features(obs), km)
+    cols = list(BASE)
     if include_network:
         o = add_network_features(o)
-    cols = BASE + (NET if include_network else [])
+        cols += NET
+        if departures is not None:
+            o = add_schedule_density(o, departures)
+            cols += SCHED
     X = o[cols].astype(float).reset_index(drop=True)
     y = obs["minutes_lost"].astype(float).reset_index(drop=True)
     return X, y
