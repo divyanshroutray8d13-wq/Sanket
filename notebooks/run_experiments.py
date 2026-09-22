@@ -1,14 +1,4 @@
-"""
-Train and evaluate the models on real observations.
 
-Writes one prediction file per experiment to data/processed/predictions/,
-in the format Aaru and Aryu's evaluation code reads, and prints a quick
-sanity summary. The full ablation table and charts are Aryu's job.
-
-Run from the repo root:
-    python -m notebooks.run_experiments
-    python -m notebooks.run_experiments 2026-09-19 2026-09-20   # choose test dates
-"""
 import sys
 from pathlib import Path
 
