@@ -80,7 +80,7 @@ export default function StationPage() {
 
   return (
     <>
-      <StaleBanner asOf={data.asOf} />
+      <StaleBanner asOf={data.asOf} isMock={data.isMock} isLive={data.isLive} />
       <Shell>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>

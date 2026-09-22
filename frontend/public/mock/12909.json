@@ -3,6 +3,8 @@
   "train_name": "Bandra Nizamuddin Garib Rath",
   "run_date": "2026-09-21",
   "as_of": "2026-09-21T17:40:00+05:30",
+  "is_mock": true,
+  "is_live": false,
   "current": {
     "station_code": "BDTS",
     "station_name": "Bandra Terminus",

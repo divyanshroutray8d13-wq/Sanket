@@ -3,6 +3,8 @@
   "train_name": "Mumbai Rajdhani",
   "run_date": "2026-09-21",
   "as_of": "2026-09-21T17:40:00+05:30",
+  "is_mock": true,
+  "is_live": false,
   "current": {
     "station_code": "BVI",
     "station_name": "Borivali",
@@ -20,8 +22,14 @@
       "eta_high": "20:14",
       "confidence": 0.8,
       "attribution": [
-        { "cause": "carried over from earlier", "minutes": 14 },
-        { "cause": "platform occupied at ST", "minutes": 4 }
+        {
+          "cause": "carried over from earlier",
+          "minutes": 14
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
       ]
     },
     {
@@ -35,9 +43,18 @@
       "eta_high": "21:52",
       "confidence": 0.8,
       "attribution": [
-        { "cause": "carried over from earlier", "minutes": 14 },
-        { "cause": "speed restriction ST-BRC", "minutes": 7 },
-        { "cause": "platform occupied at ST", "minutes": 4 }
+        {
+          "cause": "carried over from earlier",
+          "minutes": 14
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 7
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
       ]
     },
     {
@@ -51,10 +68,22 @@
       "eta_high": "01:12",
       "confidence": 0.8,
       "attribution": [
-        { "cause": "carried over from earlier", "minutes": 14 },
-        { "cause": "speed restriction ST-BRC", "minutes": 7 },
-        { "cause": "held for precedence", "minutes": 6 },
-        { "cause": "platform occupied at ST", "minutes": 4 }
+        {
+          "cause": "carried over from earlier",
+          "minutes": 14
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 7
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 6
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        }
       ]
     },
     {
@@ -68,11 +97,30 @@
       "eta_high": "04:25",
       "confidence": 0.8,
       "attribution": [
-        { "cause": "carried over from earlier", "minutes": 14 },
-        { "cause": "speed restriction ST-BRC", "minutes": 7 },
-        { "cause": "held for precedence", "minutes": 6 },
-        { "cause": "platform occupied at ST", "minutes": 4 },
-        { "cause": "inherited from train ahead", "minutes": 3 }
+        {
+          "cause": "carried over from earlier",
+          "minutes": 14
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 7
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 10
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 3
+        },
+        {
+          "cause": "made up time on RTM-KOTA",
+          "minutes": -4
+        }
       ]
     },
     {
@@ -86,11 +134,30 @@
       "eta_high": "09:55",
       "confidence": 0.8,
       "attribution": [
-        { "cause": "carried over from earlier", "minutes": 14 },
-        { "cause": "held for precedence", "minutes": 10 },
-        { "cause": "speed restriction ST-BRC", "minutes": 7 },
-        { "cause": "platform occupied at ST", "minutes": 4 },
-        { "cause": "inherited from train ahead", "minutes": 3 }
+        {
+          "cause": "carried over from earlier",
+          "minutes": 14
+        },
+        {
+          "cause": "held for precedence",
+          "minutes": 15
+        },
+        {
+          "cause": "speed restriction ST-BRC",
+          "minutes": 7
+        },
+        {
+          "cause": "platform occupied at ST",
+          "minutes": 4
+        },
+        {
+          "cause": "inherited from train ahead",
+          "minutes": 3
+        },
+        {
+          "cause": "made up time on KOTA-NDLS",
+          "minutes": -5
+        }
       ]
     }
   ]
