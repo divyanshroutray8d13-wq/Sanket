@@ -30,24 +30,26 @@ def predict_quantiles(models, X):
 
 def run_experiment(obs, km, train_mask, test_mask, include_network,
                    departures=None, seed=0):
-    obs=obs.reset_index(drop=True)
-    train_mask = train_mask.to_numpy()
-    test_mask = test_mask.to_numpy()
+    obs = obs.reset_index(drop=True)
+    train_mask = np.asarray(train_mask, dtype=bool)
+    test_mask = np.asarray(test_mask, dtype=bool)
     if np.any(train_mask & test_mask):
         raise ValueError("Some rows are in both train and test sets")
-    fit_X, fit_y = build_features(obs[train_mask], km, include_network=include_network,
-                                departures=departures)
-    trained_models = fit_quantiles(fit_X, fit_y, seed=seed)
-    test_X, _ = build_features(obs[test_mask], km, include_network=include_network, departures=departures)
-    predictions = predict_quantiles(trained_models, test_X)
+
+    X, y = build_features(obs, km, include_network=include_network,
+                          departures=departures)
+    trained_models = fit_quantiles(X[train_mask], y[train_mask], seed=seed)
+    predictions = predict_quantiles(trained_models, X[test_mask])
+
     take_cols = ["train_no", "run_date", "step_seq", "from_station", "to_station"]
-    test_rows = obs[test_mask].reset_index(drop=True)[take_cols]
-    return pd.concat([test_rows, predictions], axis=1).assign(y_true=obs[test_mask].reset_index(drop=True)["minutes_lost"]) 
+    test_rows = obs.loc[test_mask, take_cols].reset_index(drop=True)
+    test_rows["y_true"] = y[test_mask].to_numpy()
+    return pd.concat([test_rows, predictions], axis=1)[PRED_COLS]
 
 
 def write_predictions(df, out_dir, name):
+    out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{name}.csv"
     df[PRED_COLS].to_csv(out_path, index=False)
     return out_path
-   
