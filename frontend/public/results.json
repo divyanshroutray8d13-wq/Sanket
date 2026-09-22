@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-09-22T16:02:22+00:00",
+  "is_sample": false,
+  "test_dates": [
+    "2026-09-21"
+  ],
+  "n_sections": 842,
+  "n_train_runs": 31,
+  "experiments": [
+    {
+      "experiment": "model_base",
+      "label": "SANKET, no network features",
+      "role": "model",
+      "mae": 6.05,
+      "coverage": 0.654,
+      "mean_width": 15.3,
+      "bias": 0.24
+    },
+    {
+      "experiment": "model_base_cal",
+      "label": "model_base_cal",
+      "role": "model",
+      "mae": 6.05,
+      "coverage": 0.789,
+      "mean_width": 19.2,
+      "bias": 0.24
+    },
+    {
+      "experiment": "model_network",
+      "label": "SANKET, with network features",
+      "role": "model",
+      "mae": 6.11,
+      "coverage": 0.652,
+      "mean_width": 15.1,
+      "bias": 0.53
+    },
+    {
+      "experiment": "model_network_cal",
+      "label": "model_network_cal",
+      "role": "model",
+      "mae": 6.11,
+      "coverage": 0.774,
+      "mean_width": 18.5,
+      "bias": 0.53
+    },
+    {
+      "experiment": "model_network_sched",
+      "label": "model_network_sched",
+      "role": "model",
+      "mae": 6.12,
+      "coverage": 0.66,
+      "mean_width": 15.3,
+      "bias": 0.59
+    },
+    {
+      "experiment": "model_network_sched_cal",
+      "label": "model_network_sched_cal",
+      "role": "model",
+      "mae": 6.12,
+      "coverage": 0.779,
+      "mean_width": 18.9,
+      "bias": 0.59
+    },
+    {
+      "experiment": "baseline_section",
+      "label": "Baseline: section average",
+      "role": "baseline",
+      "mae": 7.12,
+      "coverage": 0.694,
+      "mean_width": 15.2,
+      "bias": 1.52
+    },
+    {
+      "experiment": "baseline_zero",
+      "label": "Baseline: keeps current delay",
+      "role": "baseline",
+      "mae": 8.37,
+      "coverage": 0.828,
+      "mean_width": 27.0,
+      "bias": 3.44
+    }
+  ],
+  "comparisons": [
+    {
+      "question": "Do network features help?",
+      "a": "model_network",
+      "b": "model_base",
+      "a_label": "SANKET, with network features",
+      "b_label": "SANKET, no network features",
+      "gain": -0.05,
+      "lo": -0.14,
+      "hi": 0.03,
+      "share_a_better": 0.122,
+      "verdict": "not distinguishable from"
+    },
+    {
+      "question": "model_network vs the best baseline",
+      "a": "model_network",
+      "b": "baseline_section",
+      "a_label": "SANKET, with network features",
+      "b_label": "Baseline: section average",
+      "gain": 1.01,
+      "lo": 0.55,
+      "hi": 1.47,
+      "share_a_better": 1.0,
+      "verdict": "clearly better than"
+    },
+    {
+      "question": "model_base vs the best baseline",
+      "a": "model_base",
+      "b": "baseline_section",
+      "a_label": "SANKET, no network features",
+      "b_label": "Baseline: section average",
+      "gain": 1.07,
+      "lo": 0.6,
+      "hi": 1.53,
+      "share_a_better": 1.0,
+      "verdict": "clearly better than"
+    }
+  ]
+}
