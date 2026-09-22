@@ -176,3 +176,10 @@ def test_build_without_departures_unchanged():
 def test_build_base_only_ignores_departures(deps):
     X, _ = build_features(_obs(), KM, include_network=False, departures=deps)
     assert list(X.columns) == BASE
+
+
+def test_station_without_schedule_is_nan_not_zero(deps):
+    o = pd.DataFrame([obs_row("99999", "CCC", "BBB",
+                              "2026-09-18T10:05:00+05:30", 5)])
+    r = density(o, deps).iloc[0]
+    assert np.isnan(r.sched_before_30) and np.isnan(r.sched_after_30)
