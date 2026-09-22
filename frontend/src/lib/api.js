@@ -64,3 +64,15 @@ export async function fetchResults() {
   }
   throw new Error('No results file found')
 }
+
+// Route map: station coordinates and each train's full path.
+// Written by `python notebooks/build_map_data.py`. The map is optional:
+// if this fails, the train page still works without it.
+let mapData
+export function fetchMapData() {
+  if (import.meta.env.VITE_INLINE_MOCK) return Promise.resolve(window.__SANKET_GEO__ ?? null)
+  mapData ??= fetch('/geo/map.json')
+    .then((res) => (res.ok && (res.headers.get('content-type') ?? '').includes('json') ? res.json() : null))
+    .catch(() => null)
+  return mapData
+}
