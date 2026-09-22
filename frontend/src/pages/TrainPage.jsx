@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useParams, useSearchParams } from 'react-router-dom'
-import { fetchTrain } from '../lib/api'
+import { fetchMapData, fetchTrain } from '../lib/api'
 import TrainHeader from '../components/TrainHeader'
 import JourneyPanel from '../components/JourneyPanel'
+import RouteMap from '../components/RouteMap'
 import WhyLatePanel from '../components/WhyLatePanel'
 import ApiNote from '../components/ApiNote'
 import StaleBanner from '../components/StaleBanner'
@@ -12,6 +13,12 @@ export default function TrainPage() {
   const { trainNo } = useParams()
   const [params, setParams] = useSearchParams()
   const [state, setState] = useState({ status: 'loading' })
+  const [geo, setGeo] = useState(null)
+
+  // The map is extra: load it alongside, never block the forecast on it
+  useEffect(() => {
+    fetchMapData().then(setGeo)
+  }, [])
 
   const load = useCallback(() => {
     setState({ status: 'loading' })
@@ -47,7 +54,12 @@ export default function TrainPage() {
       <StaleBanner asOf={data.as_of} isMock={data.is_mock} isLive={data.is_live} />
       <Shell>
         <TrainHeader data={data} />
-        <div className="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
+        {geo && (
+          <div className="mt-10">
+            <RouteMap data={data} geo={geo} selected={selectedCode} onSelect={select} />
+          </div>
+        )}
+        <div className={`${geo ? 'mt-6' : 'mt-12'} grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]`}>
           <JourneyPanel data={data} selected={selectedCode} onSelect={select} />
           <div id="why-late" className="scroll-mt-4 lg:sticky lg:top-10">
             <WhyLatePanel station={selected} />

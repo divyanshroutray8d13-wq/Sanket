@@ -67,3 +67,41 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
     linear-gradient(var(--rail), var(--rail)) calc(50% + 3.5px) 0 / 1.5px 100% no-repeat,
     repeating-linear-gradient(to bottom, transparent 0 6px, var(--sleeper) 6px 9.5px) center / 17px 100% no-repeat;
 }
+
+/* Route map (Leaflet). Warm the base map so it sits on the cream page. */
+.sanket-map, .sanket-map.leaflet-container { background: var(--paper); font-family: var(--font-sans); isolation: isolate; }
+.sanket-map .leaflet-tile-pane { filter: sepia(0.4) saturate(0.55) brightness(1.04) contrast(0.9); }
+.sanket-map .leaflet-control-attribution { background: color-mix(in srgb, var(--card) 80%, transparent); color: var(--ink-3); font-size: 10.5px; }
+.sanket-map .leaflet-control-attribution a { color: var(--ink-2); }
+.sanket-map .leaflet-bar { border: 1px solid var(--line); box-shadow: none; border-radius: 10px; overflow: hidden; }
+.sanket-map .leaflet-bar a { color: var(--ink); background: var(--card); border-color: var(--line); }
+.sanket-map .leaflet-bar a:hover { background: var(--paper); }
+
+/* Station names: plain text with a paper halo, no box */
+.leaflet-tooltip.map-label {
+  background: none; border: 0; box-shadow: none; padding: 0;
+  color: var(--ink-2); font-size: 12px; font-weight: 500;
+  text-shadow: 0 0 2px var(--card), 0 0 4px var(--card), 0 0 6px var(--card);
+}
+.leaflet-tooltip.map-label::before { display: none; }
+.leaflet-tooltip.map-label.is-selected { color: var(--ink); font-weight: 600; }
+
+/* Hover notes */
+.leaflet-tooltip.map-tip, .map-pop .leaflet-popup-content-wrapper {
+  background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 10px;
+  box-shadow: 0 4px 16px rgb(46 43 39 / 0.12); font-size: 13px;
+}
+.map-pop .leaflet-popup-content { margin: 8px 11px; line-height: 1.45; }
+.map-pop .leaflet-popup-tip { background: var(--card); box-shadow: none; }
+
+/* The train: moss badge with a slow pulse, so "where it is now" reads at a glance */
+.train-pin span {
+  position: relative; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9999px;
+  background: var(--accent); color: var(--card); box-shadow: 0 0 0 4px var(--card);
+}
+.train-pin span::after {
+  content: ""; position: absolute; inset: -4px; border-radius: inherit; border: 2px solid var(--accent);
+  animation: train-pulse 2.2s ease-out infinite;
+}
+@keyframes train-pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(1.9); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .train-pin span::after { animation: none; } }

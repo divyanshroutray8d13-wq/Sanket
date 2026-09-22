@@ -10,6 +10,7 @@ const html = readFileSync('dist/index.html', 'utf8')
 // Real results win over the sample, same as on the live site
 const resultsFile = ['public/results.json', 'public/results.sample.json'].find((f) => existsSync(f))
 const results = resultsFile ? readFileSync(resultsFile, 'utf8') : 'null'
-const tag = `<script>window.__SANKET_MOCK__=${JSON.stringify(mocks)};window.__SANKET_RESULTS__=${results}</script>`
+const geo = existsSync('public/geo/map.json') ? readFileSync('public/geo/map.json', 'utf8').trim() : 'null'
+const tag = `<script>window.__SANKET_MOCK__=${JSON.stringify(mocks)};window.__SANKET_RESULTS__=${results};window.__SANKET_GEO__=${geo}</script>`
 writeFileSync('dist/index.html', html.replace('<head>', `<head>${tag}`))
 console.log('Inlined mocks:', Object.keys(mocks).join(', '))

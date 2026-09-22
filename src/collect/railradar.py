@@ -28,3 +28,14 @@ def fetch_live(train_no, date=None):
         raise RuntimeError("rate limited - stop and check quota")
     r.raise_for_status()
     return r.json()
+def fetch_station_board(code):
+    r = requests.get(
+        f"{BASE}/stations/{code}/trains",
+        headers={"Authorization": f"Bearer {_key()}"},
+        params={"includeIntermediate": "true"},
+        timeout=30,
+    )
+    if r.status_code == 429:
+        raise RuntimeError("rate limited - stop and check quota")
+    r.raise_for_status()
+    return r.json()
