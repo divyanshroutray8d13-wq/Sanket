@@ -60,3 +60,5 @@ Not yet tested against RailRadar: check 2-3 picks before the first collection ru
 Same script builds the third corridor: python notebooks/build_named_corridor.py chennai. Corridor 1 keeps its original script and file names. Tests: tests/test_named_corridor.py, 8 passed.
 main
 main
+
+2026-09-22 - Aryaman Singh - added src/eval/compare.py: paired bootstrap (5000 resamples) of the MAE gap between experiments, resampling whole train runs rather than single sections, since sections of one train share its delays. Answers: do network features help (model_network vs model_base), and does each model beat the best baseline. Says "not distinguishable" when the 95% range crosses zero. Key point: the test day's sections come from only ~15 train runs, so more collection nights narrow the ranges more than anything else. Tests: tests/test_eval_compare.py, 8 passed.
