@@ -9,16 +9,49 @@ from src.collect import quota
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT_DIR = ROOT / "data" / "raw" / "railradar"
-TRAIN_LIST = ROOT / "data" / "processed" / "corridor_trains.txt"
+LISTS_DIR = ROOT / "data" / "processed"
 RUN_DAYS = OUT_DIR / "_run_days.json"
 WEEKDAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
 
-MAX_REQUESTS = 46
+MAX_REQUESTS = 100
 
 
-def load_trains():
-    return [ln.strip().zfill(5)
-            for ln in TRAIN_LIST.read_text().splitlines() if ln.strip()]
+def list_path(corridor):
+    name = "corridor_trains.txt" if corridor == "main" else f"corridor_{corridor}_trains.txt"
+    return LISTS_DIR / name
+
+
+def available_corridors():
+    names = ["main"] if list_path("main").exists() else []
+    for f in sorted(LISTS_DIR.glob("corridor_*_trains.txt")):
+        names.append(f.name[len("corridor_"):-len("_trains.txt")])
+    return names
+
+
+def load_trains(corridor):
+    corridors = available_corridors() if corridor == "all" else [corridor]
+    trains = []
+    for c in corridors:
+        path = list_path(c)
+        if not path.exists():
+            raise SystemExit(f"no train list for corridor '{c}' ({path.name}). "
+                             f"Available: {', '.join(available_corridors())}, all")
+        for ln in path.read_text().splitlines():
+            t = ln.strip().zfill(5)
+            if ln.strip() and t not in trains:
+                trains.append(t)
+    return trains
+
+
+def parse_args(argv):
+    corridor, run_date = "main", None
+    for a in argv:
+        try:
+            date.fromisoformat(a)
+            run_date = a
+        except ValueError:
+            corridor = a
+    return corridor, run_date or str(date.today() - timedelta(days=1))
 
 
 def load_run_days():
@@ -41,13 +74,14 @@ def save_run_days(cache):
 
 
 def main():
-    run_date = sys.argv[1] if len(sys.argv) > 1 else str(date.today() - timedelta(days=1))
+    corridor, run_date = parse_args(sys.argv[1:])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    trains = load_trains()
+    trains = load_trains(corridor)
     run_days = load_run_days()
     weekday = WEEKDAYS[date.fromisoformat(run_date).weekday()]
-    print(f"{len(trains)} trains, date {run_date} ({weekday}), run days known for {len(run_days)}")
+    print(f"corridor '{corridor}': {len(trains)} trains, date {run_date} ({weekday}), "
+          f"run days known for {sum(t in run_days for t in trains)}")
 
     def runs_on_date(t):
         return t not in run_days or weekday in run_days[t]
