@@ -5,6 +5,7 @@ import pandas as pd
 from lightgbm import LGBMRegressor
 
 from src.features.build_features import build_features
+from src.features.history import HIST, add_section_history
 
 QUANTILES = (0.1, 0.5, 0.9)
 PRED_COLS = ["train_no", "run_date", "step_seq", "from_station",
@@ -29,7 +30,7 @@ def predict_quantiles(models, X):
 
 
 def run_experiment(obs, km, train_mask, test_mask, include_network,
-                   departures=None, seed=0):
+                   departures=None, seed=0, include_history=False):
     obs = obs.reset_index(drop=True)
     train_mask = np.asarray(train_mask, dtype=bool)
     test_mask = np.asarray(test_mask, dtype=bool)
@@ -38,6 +39,10 @@ def run_experiment(obs, km, train_mask, test_mask, include_network,
 
     X, y = build_features(obs, km, include_network=include_network,
                           departures=departures)
+    if include_history:
+        h = add_section_history(obs, train_mask)
+        for col in HIST:
+            X[col] = h[col].to_numpy()
     trained_models = fit_quantiles(X[train_mask], y[train_mask], seed=seed)
     predictions = predict_quantiles(trained_models, X[test_mask])
 

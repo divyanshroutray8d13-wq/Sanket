@@ -5,7 +5,7 @@ import pandas as pd
 
 from src.features.build_features import build_features
 from src.model.train import PRED_COLS, fit_quantiles, predict_quantiles
-
+from src.features.history import HIST, add_section_history
 
 def conformal_margin(y, p10, p90, target=0.8):
 
@@ -34,9 +34,14 @@ def calibration_split(obs, train_mask):
     cal = train_mask & (obs["run_date"] == dates[-1]).to_numpy()  # latest training day
     return train_mask & ~cal, cal                                 # (proper, cal)
 
-
+def with_history(X, obs, fit_mask):
+    X = X.copy()
+    h = add_section_history(obs, fit_mask)
+    for col in HIST:
+        X[col] = h[col].to_numpy()
+    return X
 def run_calibrated_experiment(obs, km, train_mask, test_mask, include_network,
-                              departures=None, seed=0, target=0.8):
+                              departures=None, seed=0, target=0.8,include_history=False):
     obs = obs.reset_index(drop=True)
     train_mask = np.asarray(train_mask, dtype=bool)
     test_mask = np.asarray(test_mask, dtype=bool)
@@ -44,9 +49,12 @@ def run_calibrated_experiment(obs, km, train_mask, test_mask, include_network,
         raise ValueError("Some rows are in both train and test sets")
     proper, cal = calibration_split(obs, train_mask)
     X, y = build_features(obs, km, include_network=include_network, departures=departures)
-    cal_models = fit_quantiles(X[proper], y[proper], seed=seed)
-    cal_preds = predict_quantiles(cal_models, X[cal])
+    X_cal = with_history(X, obs, proper) if include_history else X
+    cal_models = fit_quantiles(X_cal[proper], y[proper], seed=seed)
+    cal_preds = predict_quantiles(cal_models, X_cal[cal])
     margin = conformal_margin(y[cal], cal_preds["p10"], cal_preds["p90"], target)
+    if include_history:
+        X = with_history(X, obs, train_mask)
     models = fit_quantiles(X[train_mask], y[train_mask], seed=seed)
     preds = widen(predict_quantiles(models, X[test_mask]), margin)
 

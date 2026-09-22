@@ -39,6 +39,7 @@ print()
 experiments = {
     "model_base": dict(include_network=False),
     "model_network": dict(include_network=True),
+     "model_base_hist": dict(include_network=False, include_history=True)
 }
 
 boards = load_boards(BOARD_DIR) if BOARD_DIR.exists() else {}
