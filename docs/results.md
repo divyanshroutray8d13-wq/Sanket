@@ -8,6 +8,7 @@ FILLING THIS IN (delete this whole comment block before submission)
      python -m src.eval.metrics
      python -m src.eval.plots
      python -m src.eval.compare
+     python -m src.eval.export_results
 2. Replace every ___ with the number from those outputs.
 3. In "What it means", keep ONE of the two versions (A or B) and delete the other.
 4. Round minutes to one decimal, percentages to whole numbers.
@@ -112,6 +113,9 @@ From the repo root, with the real prediction files in `data/processed/prediction
 python -m src.eval.metrics
 python -m src.eval.plots
 python -m src.eval.compare
+python -m src.eval.export_results
 ```
 
-Scoring code: `src/eval/metrics.py`, `src/eval/plots.py`, `src/eval/compare.py`. Test split and baselines: `src/eval/split.py`, `src/eval/baselines.py`.
+The last command writes `frontend/public/results.json`, which the dashboard's Results page shows.
+
+Scoring code: `src/eval/metrics.py`, `src/eval/plots.py`, `src/eval/compare.py`, `src/eval/export_results.py`. Test split and baselines: `src/eval/split.py`, `src/eval/baselines.py`.
