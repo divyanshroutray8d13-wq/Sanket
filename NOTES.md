@@ -22,6 +22,7 @@ Warning: do not open/resave the schedule CSV in Excel because changing its value
 Some halts are marked departed and have an actualArrival, but delayArrival and delayDeparture are None
 train rolls throught without stopping railradar  doesnt observe the trains there hence no data was formed over there
 
+aryu/metrics
 2026-09-21 - Aryaman Singh - built the React dashboard in frontend/ (merged via PR #1). Four pages: /train/:trainNo (arrival window per station, "why late" cause breakdown, current-system time on the same row), /station/:code (every corridor train due at a station, sorted by likely arrival), /corridors, /about. Runs on mock data in frontend/public/mock/ (12951, 12953, 12925, 12909); all fetching goes through frontend/src/lib/api.js, so switching to the real API means setting VITE_API_URL only.
 Design: cream parchment backdrop with an original compass rose and rhumb lines (pure SVG, no image files), white cards, one moss accent for the most likely arrival and the selected station, and a railway track with the train marker down the forecast card. Theme pinned to light so it looks the same on any judge's laptop.
 Open items for whoever continues it: our mock may not match VV's frozen mock_12951.json (is_live, is_mock fields) - compare before building further; negative causes (time recovered) are not handled yet; no "sample data" tag yet.
@@ -37,3 +38,16 @@ Run: python -m src.eval.make_fake_predictions, then python -m src.eval.metrics d
 2026-09-22 - Aryaman Singh - built the Delhi-Howrah corridor (corridor 2) with notebooks/build_named_corridor.py howrah. Filtered trains touching at least one Delhi-end code (NDLS, DLI, NZM, ANVT) and at least one Howrah-end code (HWH, SDAH, KOAA). Found ___ and ___ in the data. Kept five-digit train numbers only, ranked premium > express > other > special, alternated directions, capped at 20 to fit the quota (20 trains x 5 nights = 100 requests). Wrote corridor_howrah_trains.txt, corridor_howrah_routes.csv, corridor_howrah_sections.csv, and corridor_howrah_candidates.csv (all candidates, for swapping in replacements).
 Results: ___ candidate trains (___ skipped for not being five digits), 20 selected (___ Delhi to Howrah, ___ Howrah to Delhi; ___ premium, ___ express), ___ route steps, ___ unique directional sections, busiest section carries ___ trains (___).
 Same script builds the third corridor: python notebooks/build_named_corridor.py chennai. Corridor 1 keeps its original script and file names, since the collector and observations depend on them. Tests: tests/test_named_corridor.py, 7 passed.
+
+2026-09-21 - Aaradhya - built corridor_overlap_trains.txt: 30 trains sharing >=17 sections
+with the Delhi-Mumbai corridor (top: 32 shared, bottom: 17 shared). Excludes current
+corridor trains, 10 never-tracked trains, and 0-prefix specials. Name-based SPECIAL
+filter not yet applied - routes.csv has no train_name column, pending trains.csv access.
+
+2026-09-21-Divyansh-specials dropped — untracked on their own run days; six weekly trains kept, fetched on run days only
+
+2026-09-22 - Aryaman Singh - built the Delhi-Howrah corridor (corridor 2) with notebooks/build_named_corridor.py howrah. Filtered trains touching at least one Delhi-end code (NDLS, DLI, NZM, ANVT) and at least one Howrah-end code (HWH, SDAH, KOAA); all seven codes were found in the data. Kept five-digit train numbers only, dropped 0xxxx specials (untracked on their run days, per Divyansh), ranked premium > express > other > special by train name, alternated directions, capped at 20 to fit the quota (20 trains x 5 nights = 100 requests). Wrote corridor_howrah_trains.txt, corridor_howrah_routes.csv, corridor_howrah_sections.csv, and corridor_howrah_candidates.csv (all candidates, for swapping in replacements).
+Results: 30 candidate trains, 0 skipped, 20 selected (10 Delhi to Howrah, 10 Howrah to Delhi; 5 premium, 7 express, 8 other), 348 route steps, 266 unique directional sections, busiest section carries 5 trains (ALD>CNB).
+Not yet tested against RailRadar: check 2-3 picks before the first collection run, and swap any weekly or untracked train for the next candidate. The collector needs the corridor name option (Aaru's run_collector.py change) before Howrah can be collected.
+Same script builds the third corridor: python notebooks/build_named_corridor.py chennai. Corridor 1 keeps its original script and file names. Tests: tests/test_named_corridor.py, 8 passed.
+main
