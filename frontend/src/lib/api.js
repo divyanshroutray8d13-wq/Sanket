@@ -7,7 +7,7 @@ export async function fetchTrain(trainNo) {
   if (import.meta.env.VITE_INLINE_MOCK) {
     const data = window.__SANKET_MOCK__?.[trainNo]
     if (!data) throw new NotFoundError(trainNo)
-    return data
+    return asSample(data)
   }
 
   const url = API_URL ? `${API_URL}/eta/${trainNo}` : `/mock/${trainNo}.json`
@@ -17,8 +17,12 @@ export async function fetchTrain(trainNo) {
   const type = res.headers.get('content-type') ?? ''
   // Vite dev server returns index.html for missing files
   if (!type.includes('json')) throw new NotFoundError(trainNo)
-  return res.json()
+  const data = await res.json()
+  return API_URL ? data : asSample(data)
 }
+
+// Anything read from the mock files is sample data, even if a file forgets to say so.
+const asSample = (data) => ({ ...data, is_mock: data.is_mock ?? true, is_live: data.is_live ?? false })
 
 export class NotFoundError extends Error {
   constructor(trainNo) {
@@ -40,5 +44,7 @@ export async function fetchStationBoard(code, trainNos) {
     return s ? [{ train: t, stop: s }] : []
   })
   const asOf = trains.map((t) => t.as_of).sort().at(-1)
-  return { code, asOf, arrivals }
+  const isMock = trains.some((t) => t.is_mock)
+  const isLive = trains.every((t) => t.is_live !== false)
+  return { code, asOf, isMock, isLive, arrivals }
 }

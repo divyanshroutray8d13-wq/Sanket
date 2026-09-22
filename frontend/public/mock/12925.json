@@ -3,6 +3,8 @@
   "train_name": "Paschim Express",
   "run_date": "2026-09-21",
   "as_of": "2026-09-21T17:40:00+05:30",
+  "is_mock": true,
+  "is_live": false,
   "current": {
     "station_code": "VAPI",
     "station_name": "Vapi",

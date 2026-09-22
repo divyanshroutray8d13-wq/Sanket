@@ -13,7 +13,12 @@ export default function TrainHeader({ data }) {
       className="grid gap-x-12 gap-y-6 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end"
     >
       <div>
-        <p className="tnum text-[13px] text-ink-3">Train {data.train_no}</p>
+        <p className="flex items-center gap-2 text-[13px] text-ink-3">
+          <span className="tnum">Train {data.train_no}</span>
+          {data.is_mock && (
+            <span className="rounded-full bg-bar-muted px-2 py-0.5 text-[11.5px] font-medium text-ink-2">Sample data</span>
+          )}
+        </p>
         <h1 className="tighter mt-1 text-[40px] font-medium leading-[1.05] sm:text-[46px]">{data.train_name}</h1>
         {last && (
           <p className="mt-2 text-[15px] text-ink-2">Forecast runs to {last.name}, due {last.scheduled}</p>

@@ -36,7 +36,7 @@ export default function TrainPage() {
 
   return (
     <>
-      <StaleBanner asOf={data.as_of} />
+      <StaleBanner asOf={data.as_of} isMock={data.is_mock} isLive={data.is_live} />
       <Shell>
         <TrainHeader data={data} />
         <div className="mt-12 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
