@@ -48,10 +48,16 @@ NICE_NAMES = {
     "baseline_section": "Baseline: section average",
     "model_base": "SANKET, no network features",
     "model_network": "SANKET, with network features",
+    "model_network_sched": "SANKET, network + timetable",
+    "model_base_hist": "SANKET, plus section history",
 }
+# Experiments ending in _cal have calibrated windows: the same p50, widened p10-p90.
+CALIBRATED = "_cal"
 
 
 def nice_name(experiment: str) -> str:
+    if experiment.endswith(CALIBRATED):
+        return f"{nice_name(experiment[: -len(CALIBRATED)])} (tuned window)"
     return NICE_NAMES.get(experiment, experiment)
 
 
@@ -92,6 +98,31 @@ def _legend(fig, table: pd.DataFrame) -> None:
                frameon=False, fontsize=10, labelcolor=TEXT_2, handlelength=1, handleheight=1)
 
 
+def one_row_per_idea(table: pd.DataFrame) -> pd.DataFrame:
+    """Drop the untuned twin of each experiment.
+
+    Tuning only widens the window, so both have the same average error and the
+    error chart would show every bar twice. The coverage chart keeps both,
+    because there the tuning is the whole point.
+    """
+    names = set(table["experiment"])
+    keep = [e for e in table["experiment"] if f"{e}{CALIBRATED}" not in names]
+    out = table[table["experiment"].isin(keep)].copy()
+    out["experiment"] = [
+        e[: -len(CALIBRATED)] if e.endswith(CALIBRATED) and e[: -len(CALIBRATED)] in names else e
+        for e in out["experiment"]
+    ]
+    return out.reset_index(drop=True)
+
+
+def _layout(table: pd.DataFrame, plot_inches: float = 6.2):
+    """Give the names as much room as the longest one needs, so nothing is cut off."""
+    longest = max(len(nice_name(e)) for e in table["experiment"])
+    names = min(0.085 * longest + 0.3, 4.6)
+    width = names + plot_inches
+    return (width, 1.6 + 0.6 * len(table)), names / width
+
+
 def _bars(table: pd.DataFrame, value: str, figsize):
     # Best row first in the table -> top of the chart
     t = table.iloc[::-1].reset_index(drop=True)
@@ -105,17 +136,20 @@ def _bars(table: pd.DataFrame, value: str, figsize):
 
 def plot_ablation_mae(table: pd.DataFrame, out: Path, fake: bool = False) -> Path:
     n = int(table["n"].iloc[0])
-    fig, ax, t = _bars(table, "mae", figsize=(9, 1.6 + 0.6 * len(table)))
+    table = one_row_per_idea(table)
+    figsize, left = _layout(table)
+    fig, ax, t = _bars(table, "mae", figsize=figsize)
     top = t["mae"].max()
     for i, v in enumerate(t["mae"]):
         ax.text(v + top * 0.015, i, f"{v:.1f} min", va="center", fontsize=11, color=TEXT)
     ax.set_xlim(0, top * 1.18)
-    ax.set_xlabel("average error of the predicted minutes lost per section (lower is better)",
+    ax.set_xlabel("average error of the predicted minutes lost per section (lower is better)\n"
+                  "tuning the window changes how often it is right, not this number",
                   color=TEXT_2, fontsize=10)
     _legend(fig, table)
     _titles(fig, "How far off each forecast is",
             f"Mean absolute error on the same {n} test sections", fake)
-    fig.subplots_adjust(left=0.30, right=0.97, top=0.76, bottom=0.18)
+    fig.subplots_adjust(left=left, right=0.97, top=0.76, bottom=0.18)
     fig.savefig(out, facecolor=SURFACE)
     plt.close(fig)
     return out
@@ -123,7 +157,8 @@ def plot_ablation_mae(table: pd.DataFrame, out: Path, fake: bool = False) -> Pat
 
 def plot_coverage(table: pd.DataFrame, out: Path, fake: bool = False) -> Path:
     n = int(table["n"].iloc[0])
-    fig, ax, t = _bars(table, "coverage", figsize=(9, 1.6 + 0.6 * len(table)))
+    figsize, left = _layout(table)
+    fig, ax, t = _bars(table, "coverage", figsize=figsize)
     ax.axvline(COVERAGE_TARGET, color=TEXT, linewidth=1.5)
     ax.text(COVERAGE_TARGET, len(t) - 0.35, "target 80%", ha="center", va="bottom",
             fontsize=10, color=TEXT)
@@ -138,7 +173,7 @@ def plot_coverage(table: pd.DataFrame, out: Path, fake: bool = False) -> Path:
     _legend(fig, table)
     _titles(fig, "How often the window catches the real delay",
             f"{n} test sections. Read it together with window width.", fake)
-    fig.subplots_adjust(left=0.30, right=0.97, top=0.72, bottom=0.18)
+    fig.subplots_adjust(left=left, right=0.97, top=0.72, bottom=0.18)
     fig.savefig(out, facecolor=SURFACE)
     plt.close(fig)
     return out

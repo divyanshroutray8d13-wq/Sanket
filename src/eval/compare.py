@@ -81,12 +81,29 @@ def default_pairs(names: list[str], table: pd.DataFrame) -> list[tuple[str, str,
     """The comparisons the results write-up needs, when those experiments exist."""
     baselines = [e for e in table["experiment"] if e.startswith("baseline")]  # table is sorted by MAE
     best_baseline = baselines[0] if baselines else None
+
+    # Calibration only widens the window, so where both exist we compare the tuned ones:
+    # that is the version we would ship.
+    def best(model: str) -> str | None:
+        for candidate in (f"{model}_cal", model):
+            if candidate in names:
+                return candidate
+        return None
+
+    questions = [
+        ("Do network features help?", "model_network", "model_base"),
+        ("Does the timetable help on top of that?", "model_network_sched", "model_network"),
+        ("Does the section's past help?", "model_base_hist", "model_base"),
+    ]
     pairs = []
-    if {"model_network", "model_base"} <= set(names):
-        pairs.append(("Do network features help?", "model_network", "model_base"))
+    for question, a, b in questions:
+        a, b = best(a), best(b)
+        if a and b:
+            pairs.append((question, a, b))
     for model in ("model_network", "model_base"):
-        if model in names and best_baseline:
-            pairs.append((f"{model} vs the best baseline", model, best_baseline))
+        chosen = best(model)
+        if chosen and best_baseline:
+            pairs.append((f"{chosen} vs the best baseline", chosen, best_baseline))
     if not pairs and len(table) >= 2:  # unknown names: best vs runner-up
         pairs.append(("Best vs runner-up", table["experiment"][0], table["experiment"][1]))
     return pairs
