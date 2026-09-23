@@ -72,3 +72,25 @@ def test_confidence_label_boundaries(confidence, expected_label, tmp_path, monke
     client = TestClient(app)
     response = client.get("/eta/12951?profile=app")
     assert response.json()["stations"][0]["confidence_label"] == expected_label
+@pytest.mark.parametrize("bad_train_no", [
+    "abc", "1234", "123456", "12a51", "..%5Csecret"
+])
+def test_invalid_train_no_returns_400(bad_train_no, client):
+    response = client.get(f"/eta/{bad_train_no}")
+    assert response.status_code == 400
+
+
+def test_cors_allows_dashboard_origin(client):
+    response = client.get(
+        "/eta/12951",
+        headers={"Origin": "http://localhost:5173"},
+    )
+    assert response.headers.get("access-control-allow-origin") == "http://localhost:5173"
+
+
+def test_cors_blocks_other_origin(client):
+    response = client.get(
+        "/eta/12951",
+        headers={"Origin": "http://evil.com"},
+    )
+    assert "access-control-allow-origin" not in response.headers

@@ -1,12 +1,22 @@
 import json
 import os
+import re
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="SANKET API")
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_methods=["GET"],
+    allow_headers=["*"],
+)
+
 VALID_PROFILES = {"control", "app", "board"}
+TRAIN_NO = re.compile(r"^\d{5}$")
 
 
 def get_live_dir() -> Path:
@@ -60,6 +70,9 @@ def health():
 
 @app.get("/eta/{train_no}")
 def get_eta(train_no: str, profile: str = "control"):
+    if not TRAIN_NO.match(train_no):
+        raise HTTPException(status_code=400, detail="train_no must be exactly 5 digits")
+
     if profile not in VALID_PROFILES:
         raise HTTPException(status_code=400, detail=f"Unknown profile '{profile}'")
 

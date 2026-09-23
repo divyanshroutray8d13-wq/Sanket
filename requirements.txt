@@ -9,5 +9,5 @@ pytest
 matplotlib
 requests
 python-dateutil
-
+httpx2
 python-dotenv
