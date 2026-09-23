@@ -12,6 +12,16 @@ def client(tmp_path, monkeypatch):
     live_dir = tmp_path / "live"
     live_dir.mkdir()
     shutil.copy("data/live/12951.json", live_dir / "12951.json")
+
+    corridors_data = [
+        {
+            "name": "delhi-mumbai",
+            "trains": ["12951", "12952"],
+            "sections": ["NDLS-KOTA", "KOTA-RTM", "RTM-BRC", "BRC-ST"],
+        }
+    ]
+    (live_dir / "corridors.json").write_text(json.dumps(corridors_data))
+
     monkeypatch.setenv("SANKET_LIVE_DIR", str(live_dir))
     return TestClient(app)
 
@@ -72,3 +82,65 @@ def test_confidence_label_boundaries(confidence, expected_label, tmp_path, monke
     client = TestClient(app)
     response = client.get("/eta/12951?profile=app")
     assert response.json()["stations"][0]["confidence_label"] == expected_label
+@pytest.mark.parametrize("bad_train_no", [
+    "abc", "1234", "123456", "12a51", "..%5Csecret"
+])
+def test_invalid_train_no_returns_400(bad_train_no, client):
+    response = client.get(f"/eta/{bad_train_no}")
+    assert response.status_code == 400
+
+
+def test_cors_allows_dashboard_origin(client):
+    response = client.get(
+        "/eta/12951",
+        headers={"Origin": "http://localhost:5173"},
+    )
+    assert response.headers.get("access-control-allow-origin") == "http://localhost:5173"
+
+
+def test_cors_blocks_other_origin(client):
+    response = client.get(
+        "/eta/12951",
+        headers={"Origin": "http://evil.com"},
+    )
+    assert "access-control-allow-origin" not in response.headers
+def test_station_finds_train_at_known_station(client):
+    response = client.get("/station/ST")
+    assert response.status_code == 200
+    data = response.json()
+    assert any(t["train_no"] == "12951" for t in data)
+
+
+def test_station_empty_for_unknown_station(client):
+    response = client.get("/station/ZZZZZ")
+    assert response.status_code == 200
+    assert response.json() == []
+
+
+def test_station_invalid_code_returns_400(client):
+    response = client.get("/station/abc123")
+    assert response.status_code == 400
+
+
+def test_corridors_file_ignored_by_station_search(client, tmp_path):
+    # corridors.json sitting in the same folder shouldn't break /station
+    response = client.get("/station/ST")
+    assert response.status_code == 200
+def test_corridors_returns_file_contents(client):
+    response = client.get("/corridors")
+    assert response.status_code == 200
+    data = response.json()
+    assert isinstance(data, list)
+    assert data[0]["name"] == "delhi-mumbai"
+    assert "12951" in data[0]["trains"]
+
+
+def test_corridors_missing_file_returns_404(tmp_path, monkeypatch):
+    live_dir = tmp_path / "live"
+    live_dir.mkdir()
+    # no corridors.json created here on purpose
+    monkeypatch.setenv("SANKET_LIVE_DIR", str(live_dir))
+    client = TestClient(app)
+
+    response = client.get("/corridors")
+    assert response.status_code == 404
