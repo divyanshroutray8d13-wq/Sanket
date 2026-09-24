@@ -1,0 +1,202 @@
+{
+  "train_no": "22918",
+  "train_name": "Bandra Terminus SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 28,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Tapri at 19:01. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "TPZ",
+    "station_name": "Tapri",
+    "delay_min": 2
+  },
+  "stations": [
+    {
+      "code": "MOZ",
+      "name": "Muzaffarnagar",
+      "sequence": 1,
+      "scheduled": "19:35",
+      "baseline_eta": "19:37",
+      "eta_median": "19:40",
+      "eta_low": "19:33",
+      "eta_high": "19:51",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 6
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "19:36",
+      "actual_delay_min": 1
+    },
+    {
+      "code": "MTC",
+      "name": "Meerut City",
+      "sequence": 2,
+      "scheduled": "20:15",
+      "baseline_eta": "20:17",
+      "eta_median": "20:23",
+      "eta_low": "20:15",
+      "eta_high": "20:40",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 6
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:22",
+      "actual_delay_min": 7
+    },
+    {
+      "code": "GZB",
+      "name": "Ghaziabad",
+      "sequence": 3,
+      "scheduled": "21:18",
+      "baseline_eta": "21:20",
+      "eta_median": "21:29",
+      "eta_low": "21:19",
+      "eta_high": "21:52",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 7
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 7
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "21:11",
+      "actual_delay_min": -6
+    },
+    {
+      "code": "NZM",
+      "name": "Hazrat Nizamuddin Jn",
+      "sequence": 4,
+      "scheduled": "22:00",
+      "baseline_eta": "22:02",
+      "eta_median": "22:09",
+      "eta_low": "21:56",
+      "eta_high": "22:37",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 8
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "22:18",
+      "actual_delay_min": 18
+    },
+    {
+      "code": "MTJ",
+      "name": "Mathura Jn",
+      "sequence": 5,
+      "scheduled": "23:55",
+      "baseline_eta": "23:57",
+      "eta_median": "00:11",
+      "eta_low": "23:55",
+      "eta_high": "00:56",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 7
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "00:07",
+      "actual_delay_min": 13
+    }
+  ]
+}

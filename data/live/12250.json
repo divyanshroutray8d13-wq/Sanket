@@ -1,0 +1,108 @@
+{
+  "train_no": "12250",
+  "train_name": "Swarn Nagari Express",
+  "corridor": "delhi-howrah",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 28,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Ramdevra at 19:02. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "RDRA",
+    "station_name": "Ramdevra",
+    "delay_min": 41
+  },
+  "stations": [
+    {
+      "code": "MWT",
+      "name": "Marwar Lohawat",
+      "sequence": 1,
+      "scheduled": "19:41",
+      "baseline_eta": "20:22",
+      "eta_median": "20:25",
+      "eta_low": "20:10",
+      "eta_high": "20:49",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 41
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 14
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -13
+        }
+      ],
+      "actual": "20:12",
+      "actual_delay_min": 32
+    },
+    {
+      "code": "OSN",
+      "name": "Osiyan",
+      "sequence": 2,
+      "scheduled": "20:14",
+      "baseline_eta": "20:55",
+      "eta_median": "20:57",
+      "eta_low": "20:41",
+      "eta_high": "21:28",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 41
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 15
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -14
+        }
+      ],
+      "actual": "20:50",
+      "actual_delay_min": 36
+    },
+    {
+      "code": "JU",
+      "name": "Jodhpur Jn",
+      "sequence": 3,
+      "scheduled": "21:50",
+      "baseline_eta": "22:31",
+      "eta_median": "22:08",
+      "eta_low": "21:53",
+      "eta_high": "22:55",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 41
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -24
+        }
+      ],
+      "actual": "22:11",
+      "actual_delay_min": 22
+    }
+  ]
+}

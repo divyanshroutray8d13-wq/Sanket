@@ -1,0 +1,333 @@
+{
+  "train_no": "19038",
+  "train_name": "Avadh Express",
+  "corridor": "delhi-mumbai-partial",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 16,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Khalilabad at 19:13. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "KLD",
+    "station_name": "Khalilabad",
+    "delay_min": 52
+  },
+  "stations": [
+    {
+      "code": "BST",
+      "name": "Basti",
+      "sequence": 1,
+      "scheduled": "18:45",
+      "baseline_eta": "19:37",
+      "eta_median": "19:53",
+      "eta_low": "19:33",
+      "eta_high": "20:00",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 22
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "19:41",
+      "actual_delay_min": 56
+    },
+    {
+      "code": "GAUR",
+      "name": "Gaur",
+      "sequence": 2,
+      "scheduled": "19:08",
+      "baseline_eta": "20:00",
+      "eta_median": "20:16",
+      "eta_low": "19:56",
+      "eta_high": "20:29",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 22
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:05",
+      "actual_delay_min": 57
+    },
+    {
+      "code": "BV",
+      "name": "Babhnan",
+      "sequence": 3,
+      "scheduled": "19:20",
+      "baseline_eta": "20:12",
+      "eta_median": "20:29",
+      "eta_low": "20:07",
+      "eta_high": "20:43",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 22
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 1
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:18",
+      "actual_delay_min": 58
+    },
+    {
+      "code": "SNC",
+      "name": "S Narayan Chhapia",
+      "sequence": 4,
+      "scheduled": "19:34",
+      "baseline_eta": "20:26",
+      "eta_median": "20:43",
+      "eta_low": "20:18",
+      "eta_high": "21:02",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 22
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:36",
+      "actual_delay_min": 62
+    },
+    {
+      "code": "MSW",
+      "name": "Maskanwa",
+      "sequence": 5,
+      "scheduled": "19:44",
+      "baseline_eta": "20:36",
+      "eta_median": "20:53",
+      "eta_low": "20:27",
+      "eta_high": "21:13",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 22
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "21:05",
+      "actual_delay_min": 82
+    },
+    {
+      "code": "MUR",
+      "name": "Mankapur Jn",
+      "sequence": 6,
+      "scheduled": "20:02",
+      "baseline_eta": "20:54",
+      "eta_median": "21:00",
+      "eta_low": "20:42",
+      "eta_high": "21:30",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 15
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "21:27",
+      "actual_delay_min": 86
+    },
+    {
+      "code": "GD",
+      "name": "Gonda Jn",
+      "sequence": 7,
+      "scheduled": "20:50",
+      "baseline_eta": "21:42",
+      "eta_median": "21:34",
+      "eta_low": "21:16",
+      "eta_high": "22:05",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -11
+        }
+      ],
+      "actual": "22:03",
+      "actual_delay_min": 73
+    },
+    {
+      "code": "CLJ",
+      "name": "Colonelganj",
+      "sequence": 8,
+      "scheduled": "21:21",
+      "baseline_eta": "22:13",
+      "eta_median": "22:05",
+      "eta_low": "21:44",
+      "eta_high": "22:40",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -11
+        }
+      ],
+      "actual": "22:35",
+      "actual_delay_min": 74
+    },
+    {
+      "code": "JLD",
+      "name": "Jarwal Road",
+      "sequence": 9,
+      "scheduled": "21:39",
+      "baseline_eta": "22:31",
+      "eta_median": "22:20",
+      "eta_low": "22:01",
+      "eta_high": "22:59",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -12
+        }
+      ],
+      "actual": "22:54",
+      "actual_delay_min": 75
+    },
+    {
+      "code": "BUW",
+      "name": "Burhwal Jn",
+      "sequence": 10,
+      "scheduled": "21:59",
+      "baseline_eta": "22:51",
+      "eta_median": "22:38",
+      "eta_low": "22:20",
+      "eta_high": "23:19",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 52
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -14
+        }
+      ],
+      "actual": "23:11",
+      "actual_delay_min": 72
+    }
+  ]
+}

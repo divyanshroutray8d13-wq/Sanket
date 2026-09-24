@@ -1,101 +1,101 @@
 {
-  "generated_at": "2026-09-23T07:17:19+00:00",
+  "generated_at": "2026-09-24T20:01:34+00:00",
   "is_sample": false,
   "test_dates": [
-    "2026-09-21"
+    "2026-09-24"
   ],
-  "n_sections": 842,
-  "n_train_runs": 31,
+  "n_sections": 274,
+  "n_train_runs": 25,
   "experiments": [
-    {
-      "experiment": "model_base",
-      "label": "SANKET, no network features",
-      "role": "model",
-      "mae": 6.05,
-      "coverage": 0.654,
-      "mean_width": 15.3,
-      "bias": 0.24
-    },
-    {
-      "experiment": "model_base_cal",
-      "label": "SANKET, no network features (tuned window)",
-      "role": "model",
-      "mae": 6.05,
-      "coverage": 0.789,
-      "mean_width": 19.2,
-      "bias": 0.24
-    },
-    {
-      "experiment": "model_network",
-      "label": "SANKET, with network features",
-      "role": "model",
-      "mae": 6.11,
-      "coverage": 0.652,
-      "mean_width": 15.1,
-      "bias": 0.53
-    },
-    {
-      "experiment": "model_network_cal",
-      "label": "SANKET, with network features (tuned window)",
-      "role": "model",
-      "mae": 6.11,
-      "coverage": 0.774,
-      "mean_width": 18.5,
-      "bias": 0.53
-    },
-    {
-      "experiment": "model_network_sched",
-      "label": "SANKET, network + timetable",
-      "role": "model",
-      "mae": 6.12,
-      "coverage": 0.66,
-      "mean_width": 15.3,
-      "bias": 0.59
-    },
-    {
-      "experiment": "model_network_sched_cal",
-      "label": "SANKET, network + timetable (tuned window)",
-      "role": "model",
-      "mae": 6.12,
-      "coverage": 0.779,
-      "mean_width": 18.9,
-      "bias": 0.59
-    },
     {
       "experiment": "model_base_hist",
       "label": "SANKET, plus section history",
       "role": "model",
-      "mae": 6.13,
-      "coverage": 0.646,
-      "mean_width": 14.9,
-      "bias": 0.96
+      "mae": 5.15,
+      "coverage": 0.595,
+      "mean_width": 13.4,
+      "bias": 1.99
     },
     {
       "experiment": "model_base_hist_cal",
       "label": "SANKET, plus section history (tuned window)",
       "role": "model",
-      "mae": 6.13,
-      "coverage": 0.806,
+      "mae": 5.15,
+      "coverage": 0.854,
+      "mean_width": 20.3,
+      "bias": 1.99
+    },
+    {
+      "experiment": "model_base",
+      "label": "SANKET, no network features",
+      "role": "model",
+      "mae": 5.52,
+      "coverage": 0.558,
+      "mean_width": 13.9,
+      "bias": 1.93
+    },
+    {
+      "experiment": "model_base_cal",
+      "label": "SANKET, no network features (tuned window)",
+      "role": "model",
+      "mae": 5.52,
+      "coverage": 0.814,
       "mean_width": 19.7,
-      "bias": 0.96
+      "bias": 1.93
+    },
+    {
+      "experiment": "model_network",
+      "label": "SANKET, with network features",
+      "role": "model",
+      "mae": 5.53,
+      "coverage": 0.562,
+      "mean_width": 13.7,
+      "bias": 2.0
+    },
+    {
+      "experiment": "model_network_cal",
+      "label": "SANKET, with network features (tuned window)",
+      "role": "model",
+      "mae": 5.53,
+      "coverage": 0.814,
+      "mean_width": 19.5,
+      "bias": 2.0
+    },
+    {
+      "experiment": "model_network_sched",
+      "label": "SANKET, network + timetable",
+      "role": "model",
+      "mae": 5.54,
+      "coverage": 0.536,
+      "mean_width": 13.7,
+      "bias": 1.94
+    },
+    {
+      "experiment": "model_network_sched_cal",
+      "label": "SANKET, network + timetable (tuned window)",
+      "role": "model",
+      "mae": 5.54,
+      "coverage": 0.788,
+      "mean_width": 19.2,
+      "bias": 1.94
     },
     {
       "experiment": "baseline_section",
       "label": "Baseline: section average",
       "role": "baseline",
-      "mae": 7.12,
-      "coverage": 0.694,
-      "mean_width": 15.2,
-      "bias": 1.52
+      "mae": 5.79,
+      "coverage": 0.734,
+      "mean_width": 14.1,
+      "bias": 2.94
     },
     {
       "experiment": "baseline_zero",
       "label": "Baseline: keeps current delay",
       "role": "baseline",
-      "mae": 8.37,
-      "coverage": 0.828,
-      "mean_width": 27.0,
-      "bias": 3.44
+      "mae": 7.92,
+      "coverage": 0.858,
+      "mean_width": 26.0,
+      "bias": 4.97
     }
   ],
   "comparisons": [
@@ -105,10 +105,10 @@
       "b": "model_base_cal",
       "a_label": "SANKET, with network features (tuned window)",
       "b_label": "SANKET, no network features (tuned window)",
-      "gain": -0.05,
-      "lo": -0.14,
-      "hi": 0.03,
-      "share_a_better": 0.122,
+      "gain": -0.02,
+      "lo": -0.12,
+      "hi": 0.09,
+      "share_a_better": 0.358,
       "verdict": "not distinguishable from"
     },
     {
@@ -119,8 +119,8 @@
       "b_label": "SANKET, with network features (tuned window)",
       "gain": -0.01,
       "lo": -0.11,
-      "hi": 0.07,
-      "share_a_better": 0.372,
+      "hi": 0.1,
+      "share_a_better": 0.465,
       "verdict": "not distinguishable from"
     },
     {
@@ -129,10 +129,10 @@
       "b": "model_base_cal",
       "a_label": "SANKET, plus section history (tuned window)",
       "b_label": "SANKET, no network features (tuned window)",
-      "gain": -0.08,
-      "lo": -0.27,
-      "hi": 0.12,
-      "share_a_better": 0.208,
+      "gain": 0.36,
+      "lo": -0.02,
+      "hi": 0.73,
+      "share_a_better": 0.97,
       "verdict": "not distinguishable from"
     },
     {
@@ -141,11 +141,11 @@
       "b": "baseline_section",
       "a_label": "SANKET, with network features (tuned window)",
       "b_label": "Baseline: section average",
-      "gain": 1.01,
-      "lo": 0.55,
-      "hi": 1.47,
-      "share_a_better": 1.0,
-      "verdict": "clearly better than"
+      "gain": 0.25,
+      "lo": -0.35,
+      "hi": 1.03,
+      "share_a_better": 0.764,
+      "verdict": "not distinguishable from"
     },
     {
       "question": "model_base_cal vs the best baseline",
@@ -153,11 +153,11 @@
       "b": "baseline_section",
       "a_label": "SANKET, no network features (tuned window)",
       "b_label": "Baseline: section average",
-      "gain": 1.07,
-      "lo": 0.6,
-      "hi": 1.53,
-      "share_a_better": 1.0,
-      "verdict": "clearly better than"
+      "gain": 0.27,
+      "lo": -0.3,
+      "hi": 1.03,
+      "share_a_better": 0.791,
+      "verdict": "not distinguishable from"
     }
   ]
 }

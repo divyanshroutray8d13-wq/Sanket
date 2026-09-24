@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-09-24T20:06:09+00:00",
+  "is_sample": false,
+  "test_date": "2026-09-24",
+  "feature_set": "base+network+hist",
+  "baseline": "carry the current delay forward",
+  "n_test_runs": 25,
+  "n_test_rows": 2592,
+  "n_train_days": 7,
+  "overall": {
+    "n": 2592.0,
+    "mae_model": 13.531,
+    "mae_carry": 18.218,
+    "coverage": 0.756,
+    "width": 42.323,
+    "gain_pct": 25.726,
+    "gain_lo": -0.375,
+    "gain_hi": 48.171,
+    "n_runs": 25.0
+  },
+  "buckets": [
+    {
+      "bucket": "next stop",
+      "n": 274,
+      "mae_model": 5.817,
+      "mae_carry": 7.923,
+      "coverage": 0.847,
+      "width": 21.708,
+      "gain_pct": 26.589
+    },
+    {
+      "bucket": "2-3 stops",
+      "n": 474,
+      "mae_model": 8.595,
+      "mae_carry": 11.892,
+      "coverage": 0.778,
+      "width": 29.993,
+      "gain_pct": 27.727
+    },
+    {
+      "bucket": "4-6 stops",
+      "n": 554,
+      "mae_model": 11.95,
+      "mae_carry": 15.98,
+      "coverage": 0.78,
+      "width": 42.051,
+      "gain_pct": 25.217
+    },
+    {
+      "bucket": "7-10 stops",
+      "n": 548,
+      "mae_model": 14.691,
+      "mae_carry": 19.018,
+      "coverage": 0.741,
+      "width": 49.832,
+      "gain_pct": 22.754
+    },
+    {
+      "bucket": "11-20 stops",
+      "n": 742,
+      "mae_model": 19.857,
+      "mae_carry": 27.14,
+      "coverage": 0.702,
+      "width": 52.47,
+      "gain_pct": 26.835
+    }
+  ],
+  "feature_sets": [
+    {
+      "name": "base",
+      "mae_model": 16.583,
+      "mae_carry": 18.218,
+      "gain_pct": 8.976,
+      "gain_lo": 3.44,
+      "gain_hi": 21.475,
+      "coverage": 0.753,
+      "width": 45.428
+    },
+    {
+      "name": "base+hist",
+      "mae_model": 13.698,
+      "mae_carry": 18.218,
+      "gain_pct": 24.812,
+      "gain_lo": -0.655,
+      "gain_hi": 46.533,
+      "coverage": 0.757,
+      "width": 43.78
+    },
+    {
+      "name": "base+network",
+      "mae_model": 15.929,
+      "mae_carry": 18.218,
+      "gain_pct": 12.562,
+      "gain_lo": 7.574,
+      "gain_hi": 23.034,
+      "coverage": 0.809,
+      "width": 47.524
+    },
+    {
+      "name": "base+network+hist",
+      "mae_model": 13.531,
+      "mae_carry": 18.218,
+      "gain_pct": 25.726,
+      "gain_lo": -0.375,
+      "gain_hi": 48.171,
+      "coverage": 0.756,
+      "width": 42.323
+    },
+    {
+      "name": "base+network+sched",
+      "mae_model": 16.23,
+      "mae_carry": 18.218,
+      "gain_pct": 10.91,
+      "gain_lo": 5.939,
+      "gain_hi": 22.174,
+      "coverage": 0.796,
+      "width": 47.623
+    },
+    {
+      "name": "base+network+sched+hist",
+      "mae_model": 13.701,
+      "mae_carry": 18.218,
+      "gain_pct": 24.794,
+      "gain_lo": -1.252,
+      "gain_hi": 46.878,
+      "coverage": 0.761,
+      "width": 42.895
+    }
+  ]
+}

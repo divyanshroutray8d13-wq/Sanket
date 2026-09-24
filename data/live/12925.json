@@ -1,0 +1,232 @@
+{
+  "train_no": "12925",
+  "train_name": "Paschim SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 20,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Godhra Jn at 19:09. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "GDA",
+    "station_name": "Godhra Jn",
+    "delay_min": 5
+  },
+  "stations": [
+    {
+      "code": "DHD",
+      "name": "Dahod",
+      "sequence": 1,
+      "scheduled": "19:55",
+      "baseline_eta": "20:00",
+      "eta_median": "20:01",
+      "eta_low": "19:54",
+      "eta_high": "20:10",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "19:56",
+      "actual_delay_min": 2
+    },
+    {
+      "code": "MGN",
+      "name": "Meghnagar",
+      "sequence": 2,
+      "scheduled": "20:22",
+      "baseline_eta": "20:27",
+      "eta_median": "20:31",
+      "eta_low": "20:22",
+      "eta_high": "20:39",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "20:25",
+      "actual_delay_min": 4
+    },
+    {
+      "code": "RTM",
+      "name": "Ratlam Jn",
+      "sequence": 3,
+      "scheduled": "21:47",
+      "baseline_eta": "21:52",
+      "eta_median": "21:53",
+      "eta_low": "21:42",
+      "eta_high": "22:04",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "21:35",
+      "actual_delay_min": -4
+    },
+    {
+      "code": "KUH",
+      "name": "Khachrod",
+      "sequence": 4,
+      "scheduled": "22:14",
+      "baseline_eta": "22:19",
+      "eta_median": "22:20",
+      "eta_low": "22:08",
+      "eta_high": "22:33",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "22:08",
+      "actual_delay_min": -6
+    },
+    {
+      "code": "NAD",
+      "name": "Nagda Jn",
+      "sequence": 5,
+      "scheduled": "22:55",
+      "baseline_eta": "23:00",
+      "eta_median": "23:00",
+      "eta_low": "22:43",
+      "eta_high": "23:15",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 7
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "22:43",
+      "actual_delay_min": -11
+    },
+    {
+      "code": "SGZ",
+      "name": "Shamgarh",
+      "sequence": 6,
+      "scheduled": "23:53",
+      "baseline_eta": "23:58",
+      "eta_median": "00:00",
+      "eta_low": "23:47",
+      "eta_high": "00:21",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "00:11",
+      "actual_delay_min": 18
+    },
+    {
+      "code": "RMA",
+      "name": "Ramganj Mandi Jn",
+      "sequence": 7,
+      "scheduled": "00:33",
+      "baseline_eta": "00:38",
+      "eta_median": "00:41",
+      "eta_low": "00:26",
+      "eta_high": "01:02",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 6
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "00:47",
+      "actual_delay_min": 14
+    }
+  ]
+}

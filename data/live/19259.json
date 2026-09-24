@@ -1,0 +1,220 @@
+{
+  "train_no": "19259",
+  "train_name": "Bhavnagar Terminus Express",
+  "corridor": "delhi-mumbai-partial",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 4,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Kottayam at 19:25. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "KTYM",
+    "station_name": "Kottayam",
+    "delay_min": 51
+  },
+  "stations": [
+    {
+      "code": "ERN",
+      "name": "Ernakulam Town",
+      "sequence": 1,
+      "scheduled": "20:15",
+      "baseline_eta": "21:06",
+      "eta_median": "20:52",
+      "eta_low": "20:16",
+      "eta_high": "21:20",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -20
+        }
+      ],
+      "actual": "20:20",
+      "actual_delay_min": 6
+    },
+    {
+      "code": "AWY",
+      "name": "Aluva",
+      "sequence": 2,
+      "scheduled": "20:45",
+      "baseline_eta": "21:36",
+      "eta_median": "21:22",
+      "eta_low": "20:47",
+      "eta_high": "21:54",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -20
+        }
+      ],
+      "actual": "20:44",
+      "actual_delay_min": 0
+    },
+    {
+      "code": "TCR",
+      "name": "Thrisur",
+      "sequence": 3,
+      "scheduled": "21:45",
+      "baseline_eta": "22:36",
+      "eta_median": "22:20",
+      "eta_low": "21:49",
+      "eta_high": "22:49",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -20
+        }
+      ],
+      "actual": "21:49",
+      "actual_delay_min": 5
+    },
+    {
+      "code": "SRR",
+      "name": "Shoranur Jn",
+      "sequence": 4,
+      "scheduled": "22:42",
+      "baseline_eta": "23:33",
+      "eta_median": "23:02",
+      "eta_low": "22:44",
+      "eta_high": "23:55",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -33
+        }
+      ],
+      "actual": "22:29",
+      "actual_delay_min": -6
+    },
+    {
+      "code": "TIR",
+      "name": "Tirur",
+      "sequence": 5,
+      "scheduled": "23:24",
+      "baseline_eta": "00:15",
+      "eta_median": "23:49",
+      "eta_low": "23:25",
+      "eta_high": "00:53",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -28
+        }
+      ],
+      "actual": "23:35",
+      "actual_delay_min": 12
+    },
+    {
+      "code": "CLT",
+      "name": "Kozhikkode",
+      "sequence": 6,
+      "scheduled": "00:07",
+      "baseline_eta": "00:58",
+      "eta_median": "00:33",
+      "eta_low": "00:10",
+      "eta_high": "01:32",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -27
+        }
+      ],
+      "actual": "00:16",
+      "actual_delay_min": 9
+    },
+    {
+      "code": "BDJ",
+      "name": "Vadakara",
+      "sequence": 7,
+      "scheduled": "00:49",
+      "baseline_eta": "01:40",
+      "eta_median": "01:14",
+      "eta_low": "00:53",
+      "eta_high": "02:17",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 51
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -28
+        }
+      ],
+      "actual": "00:57",
+      "actual_delay_min": 7
+    }
+  ]
+}

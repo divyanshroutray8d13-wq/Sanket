@@ -1,0 +1,81 @@
+{
+  "train_no": "12909",
+  "train_name": "Bandra Terminus - Hazrat Nizamuddin Garib Rath Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 79,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Borivali at 18:10. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "BVI",
+    "station_name": "Borivali",
+    "delay_min": 12
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 1,
+      "scheduled": "20:50",
+      "baseline_eta": "21:02",
+      "eta_median": "20:57",
+      "eta_low": "20:48",
+      "eta_high": "21:08",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 12
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "20:48",
+      "actual_delay_min": -1
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Jn",
+      "sequence": 2,
+      "scheduled": "22:19",
+      "baseline_eta": "22:31",
+      "eta_median": "22:27",
+      "eta_low": "22:17",
+      "eta_high": "22:40",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 12
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "22:16",
+      "actual_delay_min": -3
+    }
+  ]
+}

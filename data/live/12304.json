@@ -1,0 +1,96 @@
+{
+  "train_no": "12304",
+  "train_name": "Poorva Express",
+  "corridor": "delhi-howrah",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 1,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Aligarh Jn at 19:28. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "ALJN",
+    "station_name": "Aligarh Jn",
+    "delay_min": 14
+  },
+  "stations": [
+    {
+      "code": "TDL",
+      "name": "Tundla Jn",
+      "sequence": 1,
+      "scheduled": "20:13",
+      "baseline_eta": "20:27",
+      "eta_median": "20:17",
+      "eta_low": "20:06",
+      "eta_high": "20:33",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "20:13",
+      "actual_delay_min": 0
+    },
+    {
+      "code": "ETW",
+      "name": "Etawah Jn",
+      "sequence": 2,
+      "scheduled": "21:08",
+      "baseline_eta": "21:22",
+      "eta_median": "21:20",
+      "eta_low": "21:10",
+      "eta_high": "21:37",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "21:25",
+      "actual_delay_min": 18
+    },
+    {
+      "code": "CNB",
+      "name": "Kanpur Central",
+      "sequence": 3,
+      "scheduled": "22:55",
+      "baseline_eta": "23:09",
+      "eta_median": "23:03",
+      "eta_low": "22:51",
+      "eta_high": "23:22",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "22:58",
+      "actual_delay_min": 4
+    }
+  ]
+}

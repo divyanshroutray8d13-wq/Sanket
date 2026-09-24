@@ -12,3 +12,4 @@ python-dateutil
 httpx2
 python-dotenv
 joblib
+joblib

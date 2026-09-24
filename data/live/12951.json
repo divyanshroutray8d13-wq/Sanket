@@ -1,76 +1,100 @@
 {
   "train_no": "12951",
-  "train_name": "Mumbai Rajdhani",
+  "train_name": "Mumbai Central - New Delhi Tejas Rajdhani Express",
   "corridor": "delhi-mumbai",
-  "run_date": "2026-09-17",
-  "as_of": "2026-09-17T17:40:00+05:30",
-  "data_freshness_min": 12,
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 114,
   "is_live": false,
-  "is_mock": true,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Borivali at 17:35. What really happened is shown for comparison.",
   "current": {
     "station_code": "BVI",
     "station_name": "Borivali",
-    "delay_min": 13
+    "delay_min": 14
   },
   "stations": [
     {
-      "code": "ST", "name": "Surat", "sequence": 3,
-      "scheduled": "19:55", "baseline_eta": "20:06",
-      "eta_median": "20:01", "eta_low": "19:58", "eta_high": "20:07",
-      "confidence": 0.8,
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 1,
+      "scheduled": "19:43",
+      "baseline_eta": "19:57",
+      "eta_median": "19:51",
+      "eta_low": "19:41",
+      "eta_high": "20:03",
+      "confidence": 0.85,
       "attribution": [
-        { "cause": "recovery allowance used", "minutes": -8 },
-        { "cause": "inherited from train ahead", "minutes": 2 }
-      ]
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "19:48",
+      "actual_delay_min": 6
     },
     {
-      "code": "BRC", "name": "Vadodara Junction", "sequence": 4,
-      "scheduled": "21:45", "baseline_eta": "21:56",
-      "eta_median": "21:52", "eta_low": "21:46", "eta_high": "22:01",
-      "confidence": 0.8,
+      "code": "BRC",
+      "name": "Vadodara Jn",
+      "sequence": 2,
+      "scheduled": "21:06",
+      "baseline_eta": "21:20",
+      "eta_median": "21:15",
+      "eta_low": "21:05",
+      "eta_high": "21:29",
+      "confidence": 0.78,
       "attribution": [
-        { "cause": "held for precedence", "minutes": 3 },
-        { "cause": "recovery allowance used", "minutes": -2 }
-      ]
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "21:12",
+      "actual_delay_min": 6
     },
     {
-      "code": "RTM", "name": "Ratlam Junction", "sequence": 5,
-      "scheduled": "00:40", "baseline_eta": "00:51",
-      "eta_median": "00:45", "eta_low": "00:37", "eta_high": "00:58",
-      "confidence": 0.8,
+      "code": "RTM",
+      "name": "Ratlam Jn",
+      "sequence": 3,
+      "scheduled": "00:30",
+      "baseline_eta": "00:44",
+      "eta_median": "00:38",
+      "eta_low": "00:27",
+      "eta_high": "00:59",
+      "confidence": 0.78,
       "attribution": [
-        { "cause": "recovery allowance used", "minutes": -4 },
-        { "cause": "night-time section speed", "minutes": -2 }
-      ]
-    },
-    {
-      "code": "NAD", "name": "Nagda Junction", "sequence": 6,
-      "scheduled": "01:40", "baseline_eta": "01:51",
-      "eta_median": "01:41", "eta_low": "01:32", "eta_high": "01:55",
-      "confidence": 0.8,
-      "attribution": [
-        { "cause": "recovery allowance used", "minutes": -4 }
-      ]
-    },
-    {
-      "code": "KOTA", "name": "Kota Junction", "sequence": 7,
-      "scheduled": "04:50", "baseline_eta": "05:01",
-      "eta_median": "05:04", "eta_low": "04:51", "eta_high": "05:22",
-      "confidence": 0.8,
-      "attribution": [
-        { "cause": "inherited from train ahead", "minutes": 9 },
-        { "cause": "held for precedence", "minutes": 5 }
-      ]
-    },
-    {
-      "code": "NDLS", "name": "New Delhi", "sequence": 8,
-      "scheduled": "08:35", "baseline_eta": "08:46",
-      "eta_median": "08:44", "eta_low": "08:28", "eta_high": "09:06",
-      "confidence": 0.8,
-      "attribution": [
-        { "cause": "approach congestion", "minutes": 6 },
-        { "cause": "recovery allowance used", "minutes": -5 }
-      ]
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "00:19",
+      "actual_delay_min": -6
     }
   ]
 }

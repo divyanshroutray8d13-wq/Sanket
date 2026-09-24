@@ -1,0 +1,170 @@
+{
+  "train_no": "12904",
+  "train_name": "Golden Temple Mail",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 19,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Amritsar at 19:10. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "ASR",
+    "station_name": "Amritsar",
+    "delay_min": 16
+  },
+  "stations": [
+    {
+      "code": "BEAS",
+      "name": "Beas",
+      "sequence": 1,
+      "scheduled": "19:23",
+      "baseline_eta": "19:39",
+      "eta_median": "19:45",
+      "eta_low": "19:34",
+      "eta_high": "19:52",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 16
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 12
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "19:42",
+      "actual_delay_min": 20
+    },
+    {
+      "code": "JUC",
+      "name": "Jalandhar City",
+      "sequence": 2,
+      "scheduled": "20:00",
+      "baseline_eta": "20:16",
+      "eta_median": "20:16",
+      "eta_low": "20:05",
+      "eta_high": "20:29",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 16
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 6
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:11",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "LDH",
+      "name": "Ludhiana Jn",
+      "sequence": 3,
+      "scheduled": "21:00",
+      "baseline_eta": "21:16",
+      "eta_median": "21:14",
+      "eta_low": "21:03",
+      "eta_high": "21:36",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 16
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "21:22",
+      "actual_delay_min": 22
+    },
+    {
+      "code": "UMB",
+      "name": "Ambala Cantt Jn",
+      "sequence": 4,
+      "scheduled": "22:50",
+      "baseline_eta": "23:06",
+      "eta_median": "23:00",
+      "eta_low": "22:46",
+      "eta_high": "23:27",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 16
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "22:57",
+      "actual_delay_min": 8
+    },
+    {
+      "code": "YJUD",
+      "name": "Yamunanagar Jagadhri",
+      "sequence": 5,
+      "scheduled": "23:33",
+      "baseline_eta": "23:49",
+      "eta_median": "23:44",
+      "eta_low": "23:30",
+      "eta_high": "00:18",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 16
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "23:42",
+      "actual_delay_min": 9
+    }
+  ]
+}

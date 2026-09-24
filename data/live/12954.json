@@ -1,0 +1,81 @@
+{
+  "train_no": "12954",
+  "train_name": "Hazrat Nizamuddin - Mumbai Central Tejas Rajdhani Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 36,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Mathura Jn at 18:54. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "MTJ",
+    "station_name": "Mathura Jn",
+    "delay_min": 9
+  },
+  "stations": [
+    {
+      "code": "SWM",
+      "name": "Sawai Madhopur Jn",
+      "sequence": 1,
+      "scheduled": "20:48",
+      "baseline_eta": "20:57",
+      "eta_median": "21:05",
+      "eta_low": "20:50",
+      "eta_high": "21:14",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 12
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:57",
+      "actual_delay_min": 9
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Jn",
+      "sequence": 2,
+      "scheduled": "22:00",
+      "baseline_eta": "22:09",
+      "eta_median": "22:09",
+      "eta_low": "22:00",
+      "eta_high": "22:22",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "22:02",
+      "actual_delay_min": 2
+    }
+  ]
+}
