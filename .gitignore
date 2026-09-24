@@ -15,3 +15,4 @@ data/raw/railradar/*
 !data/processed/corridor_*_trains.txt
 !data/processed/predictions/
 !data/processed/predictions/*.csv
+!data/processed/corridor_km.json
