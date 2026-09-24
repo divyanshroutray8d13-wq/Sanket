@@ -16,12 +16,18 @@ app.add_middleware(
 )
 
 VALID_PROFILES = {"control", "app", "board"}
-TRAIN_NO = re.compile(r"^\d{5}$")
-STATION_CODE = re.compile(r"^[A-Z]{1,5}$")
+TRAIN_NO = re.compile(r"[0-9]{5}")
+STATION_CODE = re.compile(r"[A-Z0-9]{1,8}")
 
 
 def get_live_dir() -> Path:
     return Path(os.environ.get("SANKET_LIVE_DIR", "data/live"))
+
+
+def get_corridors_path() -> Path:
+    # corridors.json lives OUTSIDE data/live, as a sibling folder —
+    # so /station's scan of data/live never has to skip it.
+    return get_live_dir().parent / "corridors.json"
 
 
 def confidence_label(confidence: float) -> str:
@@ -65,8 +71,6 @@ def to_board_profile(data: dict) -> dict:
 
 
 def load_train_file(file_path: Path) -> dict:
-    """Load one train JSON file. Raises HTTPException(500) on malformed JSON,
-    instead of letting a raw stack trace reach the client."""
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -78,14 +82,6 @@ def load_train_file(file_path: Path) -> dict:
 
 
 def time_to_sort_key(time_str: str) -> int:
-    """Convert HH:MM to minutes-since-midnight for sorting.
-
-    Decision: times before 04:00 are treated as "after midnight, later in
-    the journey" and pushed past 24:00 (e.g. 00:45 -> 1485), so a 23:50
-    arrival still sorts before a 00:45 one. This is a heuristic, not exact —
-    it assumes a train doesn't pass the same station twice within one
-    journey in the 00:00-03:59 window.
-    """
     hours, minutes = map(int, time_str.split(":"))
     total = hours * 60 + minutes
     if hours < 4:
@@ -100,7 +96,7 @@ def health():
 
 @app.get("/eta/{train_no}")
 def get_eta(train_no: str, profile: str = "control"):
-    if not TRAIN_NO.match(train_no):
+    if not TRAIN_NO.fullmatch(train_no):
         raise HTTPException(status_code=400, detail="train_no must be exactly 5 digits")
 
     if profile not in VALID_PROFILES:
@@ -124,25 +120,24 @@ def get_eta(train_no: str, profile: str = "control"):
 
 @app.get("/station/{code}")
 def get_station(code: str):
-    if not STATION_CODE.match(code):
-        raise HTTPException(status_code=400, detail="station code must be 1-5 uppercase letters")
+    code = code.upper()
+
+    if not STATION_CODE.fullmatch(code):
+        raise HTTPException(status_code=400, detail="station code must be 1-8 letters/digits")
 
     live_dir = get_live_dir()
     results = []
 
-    for file_path in live_dir.glob("*.json"):
-        if file_path.name == "corridors.json":
-            continue
-
+    # Only scan files that look like a 5-digit train number — this alone
+    # keeps corridors.json (or anything else) out, even if it ever ends up
+    # back in this folder by mistake.
+    for file_path in live_dir.glob("[0-9][0-9][0-9][0-9][0-9].json"):
         try:
             data = load_train_file(file_path)
         except HTTPException:
-            # A broken file here shouldn't take down the whole search —
-            # skip it and keep looking at the other trains.
             continue
 
         if "stations" not in data:
-            # Not a train file in the shape we expect; skip rather than crash.
             continue
 
         for station in data["stations"]:
@@ -161,8 +156,7 @@ def get_station(code: str):
 
 @app.get("/corridors")
 def get_corridors():
-    live_dir = get_live_dir()
-    file_path = live_dir / "corridors.json"
+    file_path = get_corridors_path()
 
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="corridors.json not found")

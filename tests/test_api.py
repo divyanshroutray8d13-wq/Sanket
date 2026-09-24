@@ -1,6 +1,6 @@
 import json
-from pathlib import Path
 import shutil
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -11,7 +11,7 @@ from src.api.main import app
 def client(tmp_path, monkeypatch):
     live_dir = tmp_path / "live"
     live_dir.mkdir()
-    shutil.copy("data/live/12951.json", live_dir / "12951.json")
+    shutil.copy("tests/fixtures/mock_12951.json", live_dir / "12951.json")
 
     corridors_data = [
         {
@@ -20,7 +20,8 @@ def client(tmp_path, monkeypatch):
             "sections": ["NDLS-KOTA", "KOTA-RTM", "RTM-BRC", "BRC-ST"],
         }
     ]
-    (live_dir / "corridors.json").write_text(json.dumps(corridors_data))
+    # corridors.json now lives OUTSIDE live_dir, matching the real layout
+    (tmp_path / "corridors.json").write_text(json.dumps(corridors_data))
 
     monkeypatch.setenv("SANKET_LIVE_DIR", str(live_dir))
     return TestClient(app)
@@ -74,7 +75,7 @@ def test_unknown_train_returns_404(client):
 def test_confidence_label_boundaries(confidence, expected_label, tmp_path, monkeypatch):
     live_dir = tmp_path / "live"
     live_dir.mkdir()
-    data = json.loads(Path("data/live/12951.json").read_text())
+    data = json.loads(open("tests/fixtures/mock_12951.json").read())
     data["stations"][0]["confidence"] = confidence
     (live_dir / "12951.json").write_text(json.dumps(data))
     monkeypatch.setenv("SANKET_LIVE_DIR", str(live_dir))
@@ -82,8 +83,16 @@ def test_confidence_label_boundaries(confidence, expected_label, tmp_path, monke
     client = TestClient(app)
     response = client.get("/eta/12951?profile=app")
     assert response.json()["stations"][0]["confidence_label"] == expected_label
+
+
 @pytest.mark.parametrize("bad_train_no", [
-    "abc", "1234", "123456", "12a51", "..%5Csecret"
+    "abc",
+    "1234",
+    "123456",
+    "12a51",
+    "..%5Csecret",
+    "12951%0A",
+    "١٢٩٥١",  # Arabic-Indic digits — visually similar, not ASCII 0-9
 ])
 def test_invalid_train_no_returns_400(bad_train_no, client):
     response = client.get(f"/eta/{bad_train_no}")
@@ -104,8 +113,17 @@ def test_cors_blocks_other_origin(client):
         headers={"Origin": "http://evil.com"},
     )
     assert "access-control-allow-origin" not in response.headers
+
+
 def test_station_finds_train_at_known_station(client):
     response = client.get("/station/ST")
+    assert response.status_code == 200
+    data = response.json()
+    assert any(t["train_no"] == "12951" for t in data)
+
+
+def test_station_lowercase_code_is_normalized(client):
+    response = client.get("/station/st")
     assert response.status_code == 200
     data = response.json()
     assert any(t["train_no"] == "12951" for t in data)
@@ -118,14 +136,10 @@ def test_station_empty_for_unknown_station(client):
 
 
 def test_station_invalid_code_returns_400(client):
-    response = client.get("/station/abc123")
+    response = client.get("/station/!!!!!!!!!")
     assert response.status_code == 400
 
 
-def test_corridors_file_ignored_by_station_search(client, tmp_path):
-    # corridors.json sitting in the same folder shouldn't break /station
-    response = client.get("/station/ST")
-    assert response.status_code == 200
 def test_corridors_returns_file_contents(client):
     response = client.get("/corridors")
     assert response.status_code == 200
@@ -138,7 +152,7 @@ def test_corridors_returns_file_contents(client):
 def test_corridors_missing_file_returns_404(tmp_path, monkeypatch):
     live_dir = tmp_path / "live"
     live_dir.mkdir()
-    # no corridors.json created here on purpose
+    # no corridors.json created at tmp_path level — on purpose
     monkeypatch.setenv("SANKET_LIVE_DIR", str(live_dir))
     client = TestClient(app)
 
