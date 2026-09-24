@@ -1,0 +1,326 @@
+{
+  "train_no": "12415",
+  "train_name": "New Delhi Intercity SF Express",
+  "corridor": "delhi-mumbai-partial",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 50,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Ujjain Jn at 18:40. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "UJN",
+    "station_name": "Ujjain Jn",
+    "delay_min": 10
+  },
+  "stations": [
+    {
+      "code": "MEP",
+      "name": "Mahidpur Road",
+      "sequence": 1,
+      "scheduled": "20:08",
+      "baseline_eta": "20:18",
+      "eta_median": "20:09",
+      "eta_low": "19:56",
+      "eta_high": "20:32",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -13
+        }
+      ],
+      "actual": "20:09",
+      "actual_delay_min": 2
+    },
+    {
+      "code": "VMA",
+      "name": "Vikramgarh Alot",
+      "sequence": 2,
+      "scheduled": "20:25",
+      "baseline_eta": "20:35",
+      "eta_median": "20:30",
+      "eta_low": "20:20",
+      "eta_high": "20:53",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "20:35",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "CMU",
+      "name": "Chau Mahla",
+      "sequence": 3,
+      "scheduled": "20:43",
+      "baseline_eta": "20:53",
+      "eta_median": "20:50",
+      "eta_low": "20:37",
+      "eta_high": "21:15",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:50",
+      "actual_delay_min": 8
+    },
+    {
+      "code": "SVA",
+      "name": "Suwasra",
+      "sequence": 4,
+      "scheduled": "20:58",
+      "baseline_eta": "21:08",
+      "eta_median": "21:07",
+      "eta_low": "20:55",
+      "eta_high": "21:33",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 1
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "21:09",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "SGZ",
+      "name": "Shamgarh",
+      "sequence": 5,
+      "scheduled": "21:10",
+      "baseline_eta": "21:20",
+      "eta_median": "21:20",
+      "eta_low": "21:07",
+      "eta_high": "21:49",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 2
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "21:21",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "GOH",
+      "name": "Garot",
+      "sequence": 6,
+      "scheduled": "21:21",
+      "baseline_eta": "21:31",
+      "eta_median": "21:32",
+      "eta_low": "21:19",
+      "eta_high": "22:01",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 2
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "21:32",
+      "actual_delay_min": 12
+    },
+    {
+      "code": "BWM",
+      "name": "Bhawani Mandi",
+      "sequence": 7,
+      "scheduled": "21:38",
+      "baseline_eta": "21:48",
+      "eta_median": "21:50",
+      "eta_low": "21:36",
+      "eta_high": "22:19",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 2
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 1
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -2
+        }
+      ],
+      "actual": "21:51",
+      "actual_delay_min": 14
+    },
+    {
+      "code": "RMA",
+      "name": "Ramganj Mandi Jn",
+      "sequence": 8,
+      "scheduled": "21:58",
+      "baseline_eta": "22:08",
+      "eta_median": "22:12",
+      "eta_low": "21:57",
+      "eta_high": "22:43",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 2
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 2
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 1
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -2
+        }
+      ],
+      "actual": "22:11",
+      "actual_delay_min": 14
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Jn",
+      "sequence": 9,
+      "scheduled": "22:50",
+      "baseline_eta": "23:00",
+      "eta_median": "23:02",
+      "eta_low": "22:47",
+      "eta_high": "23:40",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 10
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 2
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "22:55",
+      "actual_delay_min": 5
+    }
+  ]
+}

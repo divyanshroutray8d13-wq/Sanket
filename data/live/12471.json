@@ -1,0 +1,221 @@
+{
+  "train_no": "12471",
+  "train_name": "Swaraj Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 23,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Bamnia at 19:07. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "BMI",
+    "station_name": "Bamnia",
+    "delay_min": 5
+  },
+  "stations": [
+    {
+      "code": "RTM",
+      "name": "Ratlam Jn",
+      "sequence": 1,
+      "scheduled": "19:58",
+      "baseline_eta": "20:03",
+      "eta_median": "20:01",
+      "eta_low": "19:54",
+      "eta_high": "20:12",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "19:43",
+      "actual_delay_min": -2
+    },
+    {
+      "code": "NAD",
+      "name": "Nagda Jn",
+      "sequence": 2,
+      "scheduled": "20:43",
+      "baseline_eta": "20:48",
+      "eta_median": "20:45",
+      "eta_low": "20:33",
+      "eta_high": "21:00",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -9
+        }
+      ],
+      "actual": "20:33",
+      "actual_delay_min": -10
+    },
+    {
+      "code": "VMA",
+      "name": "Vikramgarh Alot",
+      "sequence": 3,
+      "scheduled": "21:13",
+      "baseline_eta": "21:18",
+      "eta_median": "21:20",
+      "eta_low": "21:11",
+      "eta_high": "21:34",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "21:25",
+      "actual_delay_min": 12
+    },
+    {
+      "code": "BWM",
+      "name": "Bhawani Mandi",
+      "sequence": 4,
+      "scheduled": "22:03",
+      "baseline_eta": "22:08",
+      "eta_median": "22:12",
+      "eta_low": "22:00",
+      "eta_high": "22:28",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "22:22",
+      "actual_delay_min": 20
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Jn",
+      "sequence": 5,
+      "scheduled": "23:15",
+      "baseline_eta": "23:20",
+      "eta_median": "23:24",
+      "eta_low": "23:13",
+      "eta_high": "23:44",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "23:15",
+      "actual_delay_min": 1
+    },
+    {
+      "code": "SWM",
+      "name": "Sawai Madhopur Jn",
+      "sequence": 6,
+      "scheduled": "00:33",
+      "baseline_eta": "00:38",
+      "eta_median": "00:42",
+      "eta_low": "00:30",
+      "eta_high": "01:08",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "00:36",
+      "actual_delay_min": 3
+    }
+  ]
+}

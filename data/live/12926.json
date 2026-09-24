@@ -1,0 +1,264 @@
+{
+  "train_no": "12926",
+  "train_name": "Paschim SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 10,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Mathura Jn at 19:19. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "MTJ",
+    "station_name": "Mathura Jn",
+    "delay_min": 5
+  },
+  "stations": [
+    {
+      "code": "BTE",
+      "name": "Bharatpur Jn",
+      "sequence": 1,
+      "scheduled": "19:38",
+      "baseline_eta": "19:43",
+      "eta_median": "19:44",
+      "eta_low": "19:38",
+      "eta_high": "19:51",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "19:47",
+      "actual_delay_min": 10
+    },
+    {
+      "code": "BXN",
+      "name": "Bayana Jn",
+      "sequence": 2,
+      "scheduled": "20:13",
+      "baseline_eta": "20:18",
+      "eta_median": "20:21",
+      "eta_low": "20:14",
+      "eta_high": "20:30",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "20:17",
+      "actual_delay_min": 5
+    },
+    {
+      "code": "HAN",
+      "name": "Hindaun City",
+      "sequence": 3,
+      "scheduled": "20:38",
+      "baseline_eta": "20:43",
+      "eta_median": "20:47",
+      "eta_low": "20:40",
+      "eta_high": "20:58",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "20:39",
+      "actual_delay_min": 1
+    },
+    {
+      "code": "GGC",
+      "name": "Gangapur City Jn",
+      "sequence": 4,
+      "scheduled": "21:10",
+      "baseline_eta": "21:15",
+      "eta_median": "21:26",
+      "eta_low": "21:13",
+      "eta_high": "21:38",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 10
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "21:14",
+      "actual_delay_min": 5
+    },
+    {
+      "code": "SWM",
+      "name": "Sawai Madhopur Jn",
+      "sequence": 5,
+      "scheduled": "21:58",
+      "baseline_eta": "22:03",
+      "eta_median": "22:14",
+      "eta_low": "21:59",
+      "eta_high": "22:31",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 10
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "22:13",
+      "actual_delay_min": 15
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Jn",
+      "sequence": 6,
+      "scheduled": "23:30",
+      "baseline_eta": "23:35",
+      "eta_median": "23:40",
+      "eta_low": "23:28",
+      "eta_high": "23:56",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "23:30",
+      "actual_delay_min": 1
+    },
+    {
+      "code": "RMA",
+      "name": "Ramganj Mandi Jn",
+      "sequence": 7,
+      "scheduled": "00:33",
+      "baseline_eta": "00:38",
+      "eta_median": "00:44",
+      "eta_low": "00:32",
+      "eta_high": "01:06",
+      "confidence": 0.74,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 5
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "00:37",
+      "actual_delay_min": 5
+    }
+  ]
+}

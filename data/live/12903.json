@@ -1,0 +1,120 @@
+{
+  "train_no": "12903",
+  "train_name": "Golden Temple Mail",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 43,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Bandra Terminus at 18:47. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "BDTS",
+    "station_name": "Bandra Terminus",
+    "delay_min": 2
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 1,
+      "scheduled": "21:59",
+      "baseline_eta": "22:01",
+      "eta_median": "22:05",
+      "eta_low": "21:55",
+      "eta_high": "22:18",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 7
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "22:03",
+      "actual_delay_min": 5
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Jn",
+      "sequence": 2,
+      "scheduled": "23:34",
+      "baseline_eta": "23:36",
+      "eta_median": "23:43",
+      "eta_low": "23:31",
+      "eta_high": "00:00",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 7
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "23:29",
+      "actual_delay_min": -4
+    },
+    {
+      "code": "GDA",
+      "name": "Godhra Jn",
+      "sequence": 3,
+      "scheduled": "00:49",
+      "baseline_eta": "00:51",
+      "eta_median": "00:55",
+      "eta_low": "00:43",
+      "eta_high": "01:22",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 9
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 2
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "00:36",
+      "actual_delay_min": -12
+    }
+  ]
+}

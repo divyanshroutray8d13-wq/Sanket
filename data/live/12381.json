@@ -1,0 +1,112 @@
+{
+  "train_no": "12381",
+  "train_name": "Poorva Express",
+  "corridor": "delhi-howrah",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 7,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Varanasi at 19:23. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "BSB",
+    "station_name": "Varanasi",
+    "delay_min": 28
+  },
+  "stations": [
+    {
+      "code": "JNH",
+      "name": "Janghai Jn",
+      "sequence": 1,
+      "scheduled": "19:58",
+      "baseline_eta": "20:26",
+      "eta_median": "20:21",
+      "eta_low": "20:01",
+      "eta_high": "20:37",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 28
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -11
+        }
+      ],
+      "actual": "20:20",
+      "actual_delay_min": 22
+    },
+    {
+      "code": "PRYJ",
+      "name": "Prayagraj Jn",
+      "sequence": 2,
+      "scheduled": "21:30",
+      "baseline_eta": "21:58",
+      "eta_median": "21:54",
+      "eta_low": "21:27",
+      "eta_high": "22:14",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 28
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "21:52",
+      "actual_delay_min": 23
+    },
+    {
+      "code": "CNB",
+      "name": "Kanpur Central",
+      "sequence": 3,
+      "scheduled": "00:02",
+      "baseline_eta": "00:30",
+      "eta_median": "00:26",
+      "eta_low": "23:57",
+      "eta_high": "00:56",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 28
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -11
+        }
+      ],
+      "actual": "00:15",
+      "actual_delay_min": 13
+    }
+  ]
+}

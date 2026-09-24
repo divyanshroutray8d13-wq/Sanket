@@ -1,0 +1,89 @@
+{
+  "train_no": "12474",
+  "train_name": "Sarvodaya SF Express",
+  "corridor": "delhi-mumbai-partial",
+  "run_date": "2026-09-24",
+  "as_of": "2026-09-24T19:30:00+05:30",
+  "data_freshness_min": 49,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Ambala Cantt Jn at 18:41. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "UMB",
+    "station_name": "Ambala Cantt Jn",
+    "delay_min": 6
+  },
+  "stations": [
+    {
+      "code": "PNP",
+      "name": "Panipat Jn",
+      "sequence": 1,
+      "scheduled": "19:40",
+      "baseline_eta": "19:46",
+      "eta_median": "19:55",
+      "eta_low": "19:43",
+      "eta_high": "20:09",
+      "confidence": 0.85,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 12
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 6
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "19:48",
+      "actual_delay_min": 8
+    },
+    {
+      "code": "SZM",
+      "name": "Subzi Mandi",
+      "sequence": 2,
+      "scheduled": "20:40",
+      "baseline_eta": "20:46",
+      "eta_median": "20:56",
+      "eta_low": "20:43",
+      "eta_high": "21:22",
+      "confidence": 0.78,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 14
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 6
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 1
+        },
+        {
+          "cause": "train ahead running late",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "20:53",
+      "actual_delay_min": 13
+    }
+  ]
+}
