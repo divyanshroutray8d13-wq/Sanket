@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from src.features.build_features import corridor_km
+from src.forecast.data import load_km
 from src.features.schedule import board_departures, load_boards
 from src.eval.baselines import baseline_section, baseline_zero
 from src.model.train import run_experiment, write_predictions
@@ -18,11 +18,13 @@ ROOT = Path(__file__).resolve().parents[1]
 P = ROOT / "data" / "processed"
 PRED_DIR = P / "predictions"
 BOARD_DIR = ROOT / "data" / "raw" / "railradar" / "boards"
-REFERENCE_TRAIN = "19019"
 
 obs = pd.read_csv(P / "observations.csv", dtype={"train_no": str})
-routes = pd.read_csv(P / "routes.csv", dtype={"train_no": str})
-km = corridor_km(routes, REFERENCE_TRAIN)
+# One corridor map per corridor (Delhi-Mumbai first), so Howrah and overlap trains get a
+# direction too. With a single map, every section off Delhi-Mumbai had no direction and
+# therefore no network features.
+km = load_km()
+main_km = next(iter(km.values()))
 
 dates = sorted(obs["run_date"].unique())
 test_dates = sys.argv[1:] or [dates[-1]]
@@ -44,7 +46,7 @@ experiments = {
 
 boards = load_boards(BOARD_DIR) if BOARD_DIR.exists() else {}
 if boards:
-    departures = board_departures(boards, km)
+    departures = board_departures(boards, main_km)
     print(f"station boards: {len(boards)} stations, {len(departures)} scheduled departures "
           f"from {departures['train_no'].nunique()} trains")
     experiments["model_network_sched"] = dict(include_network=True, departures=departures)
@@ -98,3 +100,17 @@ print(pd.DataFrame(summary).to_string(index=False))
 print()
 print("coverage_10_90 should be near 0.80. Lower = bands too narrow, higher = too wide.")
 print("_cal rows: windows widened by 'margin' minutes, learned on the last training day.")
+
+# Rows from trains the model never saw in training are a harder test than rows from trains it
+# did. Report both, so a mixed test day is not read as one number.
+seen = set(obs.loc[train, "train_no"])
+rows = []
+for f in sorted(PRED_DIR.glob("*.csv")):
+    out = pd.read_csv(f, dtype={"train_no": str})
+    err = (out["p50"] - out["y_true"]).abs()
+    s_mask = out["train_no"].isin(seen)
+    rows.append(dict(experiment=f.stem, mae_seen=round(err[s_mask].mean(), 2), n_seen=int(s_mask.sum()),
+                     mae_unseen=round(err[~s_mask].mean(), 2), n_unseen=int((~s_mask).sum())))
+print()
+print("Error on trains seen in training vs never seen:")
+print(pd.DataFrame(rows).to_string(index=False))

@@ -30,9 +30,52 @@ def add_time_features(obs):
     return o
 
 
+def pick_references(routes, trains, max_maps=3, min_gain=0.05):
+    """Reference trains whose corridor maps together cover most sections of `trains`.
+
+    Greedy: take the continuous-route train covering the most still-uncovered
+    sections, repeat while it adds at least `min_gain` of the total.
+    """
+    trains = [t for t in trains if t in set(routes.train_no)]
+    pool = routes[routes.train_no.isin(trains)]
+    kms = {}
+    for t in trains:
+        try:
+            kms[t] = corridor_km(routes, t)
+        except ValueError:
+            continue
+    uncovered = pd.Series(True, index=pool.index)
+    chosen = []
+    while len(chosen) < max_maps and kms and len(pool):
+        gains = {t: (uncovered & pool.from_station.isin(m) & pool.to_station.isin(m)).sum()
+                 for t, m in kms.items() if t not in chosen}
+        if not gains:
+            break
+        t = max(gains, key=lambda x: (gains[x], len(kms[x])))
+        if gains[t] / len(pool) < min_gain:
+            break
+        chosen.append(t)
+        uncovered &= ~(pool.from_station.isin(kms[t]) & pool.to_station.isin(kms[t]))
+    return chosen
+
+
 def add_direction(obs, km):
+    """Direction of each section: +1 / -1 along a corridor, NaN off the corridor.
+
+    `km` is one {station: km} map, or several as {corridor: {station: km}}.
+    With several, corridor i encodes its direction as (+/-1) + 10*i, so a
+    Howrah train and a Mumbai train leaving the same hub are never treated as
+    running the same way. The first map that knows both stations wins.
+    """
     o = obs.copy()
-    o["direction"] = np.sign(o["to_station"].map(km) - o["from_station"].map(km))
+    if km and all(isinstance(v, dict) for v in km.values()):
+        direction = pd.Series(np.nan, index=o.index)
+        for i, m in enumerate(km.values()):
+            step = np.sign(o["to_station"].map(m) - o["from_station"].map(m))
+            direction = direction.fillna(step.where(step != 0) + 10 * i)
+        o["direction"] = direction
+    else:
+        o["direction"] = np.sign(o["to_station"].map(km) - o["from_station"].map(km))
     return o
 
 
