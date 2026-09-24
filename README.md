@@ -247,3 +247,77 @@ We would rather state these plainly than have them discovered:
 
 **Data:** Indian Railways time table, [data.gov.in](https://data.gov.in) ·
 Running data, [RailRadar](https://railradar.in)
+
+## API
+
+The API sits between the model's predictions and the dashboard/station
+displays. It only reads JSON files from `data/live/` and `data/corridors.json`
+— it never calls RailRadar directly.
+
+Run locally:
+```powershell
+uvicorn src.api.main:app --reload
+```
+
+Interactive docs (Swagger UI): `http://localhost:8000/docs`
+
+### Endpoints
+
+| Endpoint | Description |
+|---|---|
+| `GET /health` | Liveness check |
+| `GET /eta/{train_no}` | ETA data for one train. `train_no` must be 5 digits. |
+| `GET /station/{code}` | Every train stopping at this station, sorted by arrival time |
+| `GET /corridors` | Contents of `data/corridors.json` |
+
+### Profiles
+
+`/eta/{train_no}` accepts an optional `?profile=` query param, since the
+same data serves three different consumers (mobile app, station board,
+control room).
+
+**`control`** (default) — the full JSON for that train, unchanged.
+
+**`app`** — top level: `train_no`, `train_name`, `as_of`, `is_live`.
+Per station: `code`, `name`, `eta_low`, `eta_high`, `confidence_label`
+(`"high"` if confidence ≥ 0.8, `"medium"` if ≥ 0.6, else `"low"`).
+
+**`board`** — top level: `train_no`, `train_name`, `as_of`.
+Per station: `code`, `name`, `eta` (the `eta_median` value).
+
+### Errors
+
+| Case | Status |
+|---|---|
+| Unknown train (no matching file) | 404 |
+| Unknown `profile` value | 400 |
+| Invalid `train_no` (not exactly 5 digits) | 400 |
+| Invalid station `code` | 400 |
+| Corrupted data file on disk | 500, with a clear message |
+
+### curl examples
+
+```bash
+# Full data for train 12951
+curl http://localhost:8000/eta/12951
+
+# App-shaped response
+curl "http://localhost:8000/eta/12951?profile=app"
+
+# Board-shaped response
+curl "http://localhost:8000/eta/12951?profile=board"
+
+# Every train currently at Surat
+curl http://localhost:8000/station/ST
+
+# All corridors
+curl http://localhost:8000/corridors
+
+# Health check
+curl http://localhost:8000/health
+```
+
+### CORS
+
+The dashboard's dev server (`http://localhost:5173`) is allowed. No other
+origins can call this API from a browser in local development.
