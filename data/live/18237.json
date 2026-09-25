@@ -2,41 +2,41 @@
   "train_no": "18237",
   "train_name": "Chhattisgarh Express",
   "corridor": "delhi-mumbai-partial",
-  "run_date": "2026-09-24",
-  "as_of": "2026-09-24T19:30:00+05:30",
-  "data_freshness_min": 40,
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 44,
   "is_live": false,
   "is_mock": false,
   "is_replay": true,
-  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Rajnandgaon at 18:49. What really happened is shown for comparison.",
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Raipur Jn at 17:15. What really happened is shown for comparison.",
   "current": {
-    "station_code": "RJN",
-    "station_name": "Rajnandgaon",
-    "delay_min": 68
+    "station_code": "R",
+    "station_name": "Raipur Jn",
+    "delay_min": 61
   },
   "stations": [
     {
-      "code": "DGG",
-      "name": "Dongargarh",
+      "code": "BPHB",
+      "name": "Bhilai Power House",
       "sequence": 1,
-      "scheduled": "18:08",
-      "baseline_eta": "19:16",
-      "eta_median": "19:19",
-      "eta_low": "19:11",
-      "eta_high": "19:38",
-      "confidence": 0.85,
+      "scheduled": "16:50",
+      "baseline_eta": "17:51",
+      "eta_median": "17:51",
+      "eta_low": "17:33",
+      "eta_high": "18:01",
+      "confidence": 0.69,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
+          "minutes": 61
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 9
+          "minutes": 6
         },
         {
           "cause": "run length and timetable",
-          "minutes": 1
+          "minutes": 2
         },
         {
           "cause": "time of day and train type",
@@ -44,30 +44,139 @@
         },
         {
           "cause": "time made up",
-          "minutes": -8
+          "minutes": -9
         }
       ],
-      "actual": "19:37",
-      "actual_delay_min": 89
+      "actual": "18:00",
+      "actual_delay_min": 71
+    },
+    {
+      "code": "DURG",
+      "name": "Durg",
+      "sequence": 2,
+      "scheduled": "17:15",
+      "baseline_eta": "18:16",
+      "eta_median": "18:17",
+      "eta_low": "17:51",
+      "eta_high": "18:32",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 61
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 6
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "18:10",
+      "actual_delay_min": 55
+    },
+    {
+      "code": "RJN",
+      "name": "Rajnandgaon",
+      "sequence": 3,
+      "scheduled": "17:40",
+      "baseline_eta": "18:41",
+      "eta_median": "18:40",
+      "eta_low": "18:11",
+      "eta_high": "19:02",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 61
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "19:40",
+      "actual_delay_min": 120
+    },
+    {
+      "code": "DGG",
+      "name": "Dongargarh",
+      "sequence": 4,
+      "scheduled": "18:08",
+      "baseline_eta": "19:09",
+      "eta_median": "19:07",
+      "eta_low": "18:34",
+      "eta_high": "19:35",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 61
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -11
+        }
+      ],
+      "actual": "20:24",
+      "actual_delay_min": 136
     },
     {
       "code": "SKS",
       "name": "Salekasa",
-      "sequence": 2,
+      "sequence": 5,
       "scheduled": "18:41",
-      "baseline_eta": "19:49",
-      "eta_median": "20:09",
-      "eta_low": "19:43",
-      "eta_high": "21:00",
-      "confidence": 0.78,
+      "baseline_eta": "19:42",
+      "eta_median": "19:41",
+      "eta_low": "19:04",
+      "eta_high": "20:14",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
+          "minutes": 61
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 23
+          "minutes": 5
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 4
         },
         {
           "cause": "time of day and train type",
@@ -75,34 +184,34 @@
         },
         {
           "cause": "time made up",
-          "minutes": -5
+          "minutes": -11
         }
       ],
-      "actual": "20:27",
-      "actual_delay_min": 106
+      "actual": "21:43",
+      "actual_delay_min": 183
     },
     {
       "code": "AGN",
       "name": "Amgaon",
-      "sequence": 3,
+      "sequence": 6,
       "scheduled": "18:56",
-      "baseline_eta": "20:04",
-      "eta_median": "20:29",
-      "eta_low": "19:59",
-      "eta_high": "21:19",
-      "confidence": 0.78,
+      "baseline_eta": "19:57",
+      "eta_median": "19:56",
+      "eta_low": "19:18",
+      "eta_high": "20:33",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
+          "minutes": 61
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 27
+          "minutes": 5
         },
         {
           "cause": "run length and timetable",
-          "minutes": 2
+          "minutes": 5
         },
         {
           "cause": "time of day and train type",
@@ -110,248 +219,147 @@
         },
         {
           "cause": "time made up",
-          "minutes": -4
+          "minutes": -11
         }
       ],
-      "actual": "20:44",
-      "actual_delay_min": 109
+      "actual": "22:03",
+      "actual_delay_min": 187
     },
     {
       "code": "G",
       "name": "Gondia Jn",
-      "sequence": 4,
+      "sequence": 7,
       "scheduled": "19:20",
-      "baseline_eta": "20:28",
-      "eta_median": "21:00",
-      "eta_low": "20:23",
-      "eta_high": "21:51",
-      "confidence": 0.78,
+      "baseline_eta": "20:21",
+      "eta_median": "20:21",
+      "eta_low": "19:41",
+      "eta_high": "21:01",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
+          "minutes": 61
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 36
+          "minutes": 5
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 5
         },
         {
           "cause": "time of day and train type",
-          "minutes": 2
+          "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -5
+          "minutes": -11
         }
       ],
-      "actual": "21:10",
-      "actual_delay_min": 111
+      "actual": "22:36",
+      "actual_delay_min": 197
     },
     {
       "code": "TRO",
       "name": "Tirora",
-      "sequence": 5,
+      "sequence": 8,
       "scheduled": "19:46",
-      "baseline_eta": "20:54",
-      "eta_median": "21:25",
-      "eta_low": "20:47",
-      "eta_high": "22:18",
-      "confidence": 0.78,
+      "baseline_eta": "20:47",
+      "eta_median": "20:44",
+      "eta_low": "20:08",
+      "eta_high": "21:30",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
+          "minutes": 61
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 4
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 35
+          "minutes": 4
         },
         {
           "cause": "time of day and train type",
-          "minutes": 2
+          "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -6
+          "minutes": -12
         }
       ],
-      "actual": "21:35",
-      "actual_delay_min": 109
+      "actual": "22:59",
+      "actual_delay_min": 193
     },
     {
       "code": "TMR",
       "name": "Tumsar Road",
-      "sequence": 6,
+      "sequence": 9,
       "scheduled": "20:06",
-      "baseline_eta": "21:14",
-      "eta_median": "21:44",
-      "eta_low": "21:05",
-      "eta_high": "22:46",
-      "confidence": 0.78,
+      "baseline_eta": "21:07",
+      "eta_median": "21:06",
+      "eta_low": "20:26",
+      "eta_high": "21:52",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
+          "minutes": 61
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 6
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 33
+          "minutes": 5
         },
         {
           "cause": "time of day and train type",
           "minutes": 1
         },
         {
-          "cause": "run length and timetable",
-          "minutes": 1
-        },
-        {
           "cause": "time made up",
-          "minutes": -6
+          "minutes": -12
         }
       ],
-      "actual": "21:55",
-      "actual_delay_min": 109
+      "actual": "23:14",
+      "actual_delay_min": 188
     },
     {
       "code": "BRD",
       "name": "Bhandara Road",
-      "sequence": 7,
-      "scheduled": "20:23",
-      "baseline_eta": "21:31",
-      "eta_median": "21:53",
-      "eta_low": "21:18",
-      "eta_high": "23:02",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 68
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 26
-        },
-        {
-          "cause": "run length and timetable",
-          "minutes": 1
-        },
-        {
-          "cause": "time of day and train type",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -6
-        }
-      ],
-      "actual": "22:07",
-      "actual_delay_min": 105
-    },
-    {
-      "code": "KP",
-      "name": "Kamptee",
-      "sequence": 8,
-      "scheduled": "21:03",
-      "baseline_eta": "22:11",
-      "eta_median": "22:30",
-      "eta_low": "21:55",
-      "eta_high": "23:57",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 68
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 23
-        },
-        {
-          "cause": "run length and timetable",
-          "minutes": 2
-        },
-        {
-          "cause": "time of day and train type",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -7
-        }
-      ],
-      "actual": "22:42",
-      "actual_delay_min": 99
-    },
-    {
-      "code": "NGP",
-      "name": "Nagpur Jn",
-      "sequence": 9,
-      "scheduled": "22:00",
-      "baseline_eta": "23:08",
-      "eta_median": "23:29",
-      "eta_low": "22:52",
-      "eta_high": "00:47",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 68
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 23
-        },
-        {
-          "cause": "run length and timetable",
-          "minutes": 2
-        },
-        {
-          "cause": "time of day and train type",
-          "minutes": 2
-        },
-        {
-          "cause": "time made up",
-          "minutes": -7
-        }
-      ],
-      "actual": "23:05",
-      "actual_delay_min": 66
-    },
-    {
-      "code": "KATL",
-      "name": "Katol",
       "sequence": 10,
-      "scheduled": "23:07",
-      "baseline_eta": "00:15",
-      "eta_median": "00:34",
-      "eta_low": "23:57",
-      "eta_high": "01:56",
-      "confidence": 0.74,
+      "scheduled": "20:23",
+      "baseline_eta": "21:24",
+      "eta_median": "21:23",
+      "eta_low": "20:43",
+      "eta_high": "22:10",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 68
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 23
+          "minutes": 61
         },
         {
           "cause": "run length and timetable",
-          "minutes": 2
+          "minutes": 6
         },
         {
-          "cause": "time of day and train type",
-          "minutes": 2
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
         },
         {
           "cause": "time made up",
-          "minutes": -8
+          "minutes": -12
         }
       ],
-      "actual": "00:27",
-      "actual_delay_min": 80
+      "actual": "23:34",
+      "actual_delay_min": 192
     }
   ]
 }

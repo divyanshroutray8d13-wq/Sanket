@@ -1,0 +1,89 @@
+{
+  "train_no": "12907",
+  "train_name": "Maharashtra Sampark Kranti Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 23,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Bandra Terminus at 17:37. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "BDTS",
+    "station_name": "Bandra Terminus",
+    "delay_min": 7
+  },
+  "stations": [
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 1,
+      "scheduled": "20:53",
+      "baseline_eta": "21:00",
+      "eta_median": "21:03",
+      "eta_low": "20:51",
+      "eta_high": "21:22",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 7
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "20:57",
+      "actual_delay_min": 4
+    },
+    {
+      "code": "BRC",
+      "name": "Vadodara Jn",
+      "sequence": 2,
+      "scheduled": "22:19",
+      "baseline_eta": "22:26",
+      "eta_median": "22:33",
+      "eta_low": "22:19",
+      "eta_high": "23:04",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 8
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 7
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "22:31",
+      "actual_delay_min": 12
+    }
+  ]
+}

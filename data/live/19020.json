@@ -2,300 +2,285 @@
   "train_no": "19020",
   "train_name": "Bandra Terminus Express",
   "corridor": "delhi-mumbai",
-  "run_date": "2026-09-24",
-  "as_of": "2026-09-24T19:30:00+05:30",
-  "data_freshness_min": 22,
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 44,
   "is_live": false,
   "is_mock": false,
   "is_replay": true,
-  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Hazrat Nizamuddin Jn at 19:07. What really happened is shown for comparison.",
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Meerut City at 17:16. What really happened is shown for comparison.",
   "current": {
-    "station_code": "NZM",
-    "station_name": "Hazrat Nizamuddin Jn",
-    "delay_min": 13
+    "station_code": "MTC",
+    "station_name": "Meerut City",
+    "delay_min": 14
   },
   "stations": [
     {
-      "code": "KSV",
-      "name": "Kosi Kalan",
+      "code": "GZB",
+      "name": "Ghaziabad",
       "sequence": 1,
-      "scheduled": "20:23",
-      "baseline_eta": "20:36",
-      "eta_median": "20:34",
-      "eta_low": "20:24",
-      "eta_high": "20:46",
-      "confidence": 0.85,
+      "scheduled": "18:00",
+      "baseline_eta": "18:14",
+      "eta_median": "18:14",
+      "eta_low": "18:05",
+      "eta_high": "18:28",
+      "confidence": 0.69,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 4
+          "minutes": 6
         },
         {
           "cause": "time made up",
           "minutes": -7
         }
       ],
-      "actual": "20:21",
-      "actual_delay_min": -1
+      "actual": "18:11",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "NZM",
+      "name": "Hazrat Nizamuddin Jn",
+      "sequence": 2,
+      "scheduled": "18:40",
+      "baseline_eta": "18:54",
+      "eta_median": "18:52",
+      "eta_low": "18:38",
+      "eta_high": "19:11",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "19:00",
+      "actual_delay_min": 20
+    },
+    {
+      "code": "KSV",
+      "name": "Kosi Kalan",
+      "sequence": 3,
+      "scheduled": "20:23",
+      "baseline_eta": "20:37",
+      "eta_median": "20:39",
+      "eta_low": "20:26",
+      "eta_high": "21:10",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 7
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "20:33",
+      "actual_delay_min": 11
     },
     {
       "code": "MTJ",
       "name": "Mathura Jn",
-      "sequence": 2,
+      "sequence": 4,
       "scheduled": "21:10",
-      "baseline_eta": "21:23",
-      "eta_median": "21:18",
-      "eta_low": "21:06",
-      "eta_high": "21:31",
-      "confidence": 0.78,
+      "baseline_eta": "21:24",
+      "eta_median": "21:23",
+      "eta_low": "21:07",
+      "eta_high": "21:54",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
           "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -6
+          "minutes": -5
         }
       ],
-      "actual": "21:10",
-      "actual_delay_min": 0
+      "actual": "21:15",
+      "actual_delay_min": 6
     },
     {
       "code": "BTE",
       "name": "Bharatpur Jn",
-      "sequence": 3,
+      "sequence": 5,
       "scheduled": "21:45",
-      "baseline_eta": "21:58",
-      "eta_median": "21:53",
-      "eta_low": "21:41",
-      "eta_high": "22:07",
-      "confidence": 0.78,
+      "baseline_eta": "21:59",
+      "eta_median": "21:58",
+      "eta_low": "21:42",
+      "eta_high": "22:35",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
           "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -6
+          "minutes": -4
         }
       ],
-      "actual": "21:45",
-      "actual_delay_min": 0
+      "actual": "21:51",
+      "actual_delay_min": 6
     },
     {
       "code": "BXN",
       "name": "Bayana Jn",
-      "sequence": 4,
+      "sequence": 6,
       "scheduled": "22:18",
-      "baseline_eta": "22:31",
-      "eta_median": "22:27",
-      "eta_low": "22:15",
-      "eta_high": "22:43",
-      "confidence": 0.78,
+      "baseline_eta": "22:32",
+      "eta_median": "22:32",
+      "eta_low": "22:16",
+      "eta_high": "23:13",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 1
+          "minutes": 3
         },
         {
           "cause": "time made up",
-          "minutes": -5
+          "minutes": -4
         }
       ],
-      "actual": "22:20",
-      "actual_delay_min": 2
+      "actual": "22:29",
+      "actual_delay_min": 11
     },
     {
       "code": "FSP",
       "name": "Fateh Singhpura",
-      "sequence": 5,
+      "sequence": 7,
       "scheduled": "22:35",
-      "baseline_eta": "22:48",
-      "eta_median": "22:45",
-      "eta_low": "22:32",
-      "eta_high": "23:01",
-      "confidence": 0.78,
+      "baseline_eta": "22:49",
+      "eta_median": "22:49",
+      "eta_low": "22:34",
+      "eta_high": "23:34",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 1
+          "minutes": 3
         },
         {
           "cause": "time made up",
-          "minutes": -5
+          "minutes": -3
         }
       ],
-      "actual": "22:40",
-      "actual_delay_min": 6
+      "actual": "22:47",
+      "actual_delay_min": 12
     },
     {
       "code": "HAN",
       "name": "Hindaun City",
-      "sequence": 6,
+      "sequence": 8,
       "scheduled": "22:50",
-      "baseline_eta": "23:03",
-      "eta_median": "22:59",
-      "eta_low": "22:47",
-      "eta_high": "23:17",
-      "confidence": 0.78,
+      "baseline_eta": "23:04",
+      "eta_median": "23:04",
+      "eta_low": "22:50",
+      "eta_high": "23:46",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
-          "cause": "other",
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "run length and timetable",
           "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -4
+          "minutes": -3
         }
       ],
-      "actual": "22:55",
-      "actual_delay_min": 7
+      "actual": "22:58",
+      "actual_delay_min": 10
     },
     {
       "code": "SMVJ",
       "name": "Shri Mahaveerji",
-      "sequence": 7,
+      "sequence": 9,
       "scheduled": "23:05",
-      "baseline_eta": "23:18",
-      "eta_median": "23:15",
-      "eta_low": "23:03",
-      "eta_high": "23:35",
-      "confidence": 0.74,
+      "baseline_eta": "23:19",
+      "eta_median": "23:22",
+      "eta_low": "23:05",
+      "eta_high": "00:04",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
-        },
-        {
-          "cause": "other",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -3
-        }
-      ],
-      "actual": "23:08",
-      "actual_delay_min": 5
-    },
-    {
-      "code": "GGC",
-      "name": "Gangapur City Jn",
-      "sequence": 8,
-      "scheduled": "23:35",
-      "baseline_eta": "23:48",
-      "eta_median": "23:46",
-      "eta_low": "23:34",
-      "eta_high": "00:09",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 1
-        },
-        {
-          "cause": "other",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -3
-        }
-      ],
-      "actual": "23:42",
-      "actual_delay_min": 6
-    },
-    {
-      "code": "NNW",
-      "name": "Narayanpur Tatwara",
-      "sequence": 9,
-      "scheduled": "23:55",
-      "baseline_eta": "00:08",
-      "eta_median": "00:08",
-      "eta_low": "23:54",
-      "eta_high": "00:29",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 4
         },
         {
           "cause": "run length and timetable",
           "minutes": 2
         },
         {
-          "cause": "other",
-          "minutes": 1
-        },
-        {
           "cause": "time made up",
           "minutes": -3
         }
       ],
-      "actual": "00:10",
-      "actual_delay_min": 13
-    },
-    {
-      "code": "MLZ",
-      "name": "Malarna",
-      "sequence": 10,
-      "scheduled": "00:13",
-      "baseline_eta": "00:26",
-      "eta_median": "00:25",
-      "eta_low": "00:11",
-      "eta_high": "00:46",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 13
-        },
-        {
-          "cause": "run length and timetable",
-          "minutes": 2
-        },
-        {
-          "cause": "usual drift for a delay this size",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -4
-        }
-      ],
-      "actual": "00:22",
-      "actual_delay_min": 8
+      "actual": "23:22",
+      "actual_delay_min": 15
     }
   ]
 }

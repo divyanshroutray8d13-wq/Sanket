@@ -1,0 +1,46 @@
+{
+  "train_no": "22917",
+  "train_name": "Haridwar SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 90,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Surat at 16:30. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "ST",
+    "station_name": "Surat",
+    "delay_min": 0
+  },
+  "stations": [
+    {
+      "code": "RTM",
+      "name": "Ratlam Jn",
+      "sequence": 1,
+      "scheduled": "22:47",
+      "baseline_eta": "22:47",
+      "eta_median": "22:51",
+      "eta_low": "22:38",
+      "eta_high": "23:14",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 8
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "22:43",
+      "actual_delay_min": 8
+    }
+  ]
+}

@@ -2,207 +2,261 @@
   "train_no": "19015",
   "train_name": "Saurashtra Express",
   "corridor": "delhi-mumbai-partial",
-  "run_date": "2026-09-24",
-  "as_of": "2026-09-24T19:30:00+05:30",
-  "data_freshness_min": 1,
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 3,
   "is_live": false,
   "is_mock": false,
   "is_replay": true,
-  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Nadiad Jn at 19:29. What really happened is shown for comparison.",
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Vishvamitri Jn at 17:57. What really happened is shown for comparison.",
   "current": {
-    "station_code": "ND",
-    "station_name": "Nadiad Jn",
-    "delay_min": 27
+    "station_code": "VS",
+    "station_name": "Vishvamitri Jn",
+    "delay_min": 14
   },
   "stations": [
     {
-      "code": "MHD",
-      "name": "Mahemadavad Kheda Road",
+      "code": "VDA",
+      "name": "Vasad Jn",
       "sequence": 1,
-      "scheduled": "19:16",
-      "baseline_eta": "19:43",
-      "eta_median": "19:40",
-      "eta_low": "19:35",
-      "eta_high": "19:48",
-      "confidence": 0.85,
+      "scheduled": "18:19",
+      "baseline_eta": "18:33",
+      "eta_median": "18:31",
+      "eta_low": "18:23",
+      "eta_high": "18:41",
+      "confidence": 0.79,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 27
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 5
+          "minutes": 3
         },
         {
           "cause": "time made up",
-          "minutes": -8
+          "minutes": -5
         }
       ],
-      "actual": "19:36",
-      "actual_delay_min": 20
+      "actual": "18:27",
+      "actual_delay_min": 8
     },
     {
-      "code": "BJD",
-      "name": "Barejadi",
+      "code": "ANND",
+      "name": "Anand Jn",
       "sequence": 2,
-      "scheduled": "19:39",
-      "baseline_eta": "20:06",
-      "eta_median": "19:55",
-      "eta_low": "19:48",
-      "eta_high": "20:09",
-      "confidence": 0.78,
+      "scheduled": "18:38",
+      "baseline_eta": "18:52",
+      "eta_median": "18:50",
+      "eta_low": "18:39",
+      "eta_high": "19:03",
+      "confidence": 0.79,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 27
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
         },
         {
           "cause": "time made up",
-          "minutes": -11
+          "minutes": -5
         }
       ],
-      "actual": "19:59",
-      "actual_delay_min": 20
+      "actual": "18:46",
+      "actual_delay_min": 9
     },
     {
-      "code": "MAN",
-      "name": "Maninagar",
+      "code": "ND",
+      "name": "Nadiad Jn",
       "sequence": 3,
-      "scheduled": "19:54",
-      "baseline_eta": "20:21",
-      "eta_median": "20:09",
-      "eta_low": "20:02",
-      "eta_high": "20:26",
-      "confidence": 0.78,
+      "scheduled": "19:00",
+      "baseline_eta": "19:14",
+      "eta_median": "19:11",
+      "eta_low": "19:00",
+      "eta_high": "19:29",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 27
-        },
-        {
-          "cause": "time made up",
-          "minutes": -12
-        }
-      ],
-      "actual": "20:16",
-      "actual_delay_min": 22
-    },
-    {
-      "code": "SBT",
-      "name": "Sabarmati Jn",
-      "sequence": 4,
-      "scheduled": "20:33",
-      "baseline_eta": "21:00",
-      "eta_median": "20:50",
-      "eta_low": "20:40",
-      "eta_high": "21:09",
-      "confidence": 0.78,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 27
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
           "minutes": 2
         },
         {
-          "cause": "time of day and train type",
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "19:05",
+      "actual_delay_min": 6
+    },
+    {
+      "code": "MHD",
+      "name": "Mahemadavad Kheda Road",
+      "sequence": 4,
+      "scheduled": "19:16",
+      "baseline_eta": "19:30",
+      "eta_median": "19:26",
+      "eta_low": "19:16",
+      "eta_high": "19:49",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "19:26",
+      "actual_delay_min": 10
+    },
+    {
+      "code": "BJD",
+      "name": "Barejadi",
+      "sequence": 5,
+      "scheduled": "19:39",
+      "baseline_eta": "19:53",
+      "eta_median": "19:49",
+      "eta_low": "19:37",
+      "eta_high": "20:15",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "19:36",
+      "actual_delay_min": -3
+    },
+    {
+      "code": "MAN",
+      "name": "Maninagar",
+      "sequence": 6,
+      "scheduled": "19:54",
+      "baseline_eta": "20:08",
+      "eta_median": "20:04",
+      "eta_low": "19:51",
+      "eta_high": "20:31",
+      "confidence": 0.81,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "19:52",
+      "actual_delay_min": -1
+    },
+    {
+      "code": "SBT",
+      "name": "Sabarmati Jn",
+      "sequence": 7,
+      "scheduled": "20:33",
+      "baseline_eta": "20:47",
+      "eta_median": "20:42",
+      "eta_low": "20:30",
+      "eta_high": "21:11",
+      "confidence": 0.81,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
           "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -13
+          "minutes": -6
         }
       ],
-      "actual": "21:02",
-      "actual_delay_min": 29
+      "actual": "20:46",
+      "actual_delay_min": 14
     },
     {
       "code": "VG",
       "name": "Viramgam Jn",
-      "sequence": 5,
+      "sequence": 8,
       "scheduled": "21:43",
-      "baseline_eta": "22:10",
-      "eta_median": "21:53",
-      "eta_low": "21:41",
-      "eta_high": "22:19",
-      "confidence": 0.78,
+      "baseline_eta": "21:57",
+      "eta_median": "21:52",
+      "eta_low": "21:40",
+      "eta_high": "22:24",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 27
+          "minutes": 14
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 1
         },
         {
           "cause": "time made up",
-          "minutes": -18
+          "minutes": -6
         }
       ],
-      "actual": "22:06",
-      "actual_delay_min": 24
+      "actual": "21:53",
+      "actual_delay_min": 10
     },
     {
       "code": "THAN",
       "name": "Than Jn",
-      "sequence": 6,
+      "sequence": 9,
       "scheduled": "23:21",
-      "baseline_eta": "23:48",
-      "eta_median": "23:37",
-      "eta_low": "23:22",
-      "eta_high": "00:04",
-      "confidence": 0.78,
+      "baseline_eta": "23:35",
+      "eta_median": "23:30",
+      "eta_low": "23:18",
+      "eta_high": "00:03",
+      "confidence": 0.81,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 27
+          "minutes": 14
         },
         {
           "cause": "usual behaviour of these sections",
           "minutes": 1
         },
         {
-          "cause": "time of day and train type",
-          "minutes": 1
-        },
-        {
           "cause": "time made up",
-          "minutes": -13
+          "minutes": -6
         }
       ],
-      "actual": "23:54",
-      "actual_delay_min": 33
-    },
-    {
-      "code": "WKR",
-      "name": "Wankaner Jn",
-      "sequence": 7,
-      "scheduled": "23:47",
-      "baseline_eta": "00:14",
-      "eta_median": "00:03",
-      "eta_low": "23:49",
-      "eta_high": "00:32",
-      "confidence": 0.74,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 27
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 1
-        },
-        {
-          "cause": "time of day and train type",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -12
-        }
-      ],
-      "actual": "00:19",
-      "actual_delay_min": 30
+      "actual": "23:43",
+      "actual_delay_min": 23
     }
   ]
 }

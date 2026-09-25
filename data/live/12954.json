@@ -2,68 +2,68 @@
   "train_no": "12954",
   "train_name": "Hazrat Nizamuddin - Mumbai Central Tejas Rajdhani Express",
   "corridor": "delhi-mumbai",
-  "run_date": "2026-09-24",
-  "as_of": "2026-09-24T19:30:00+05:30",
-  "data_freshness_min": 36,
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 38,
   "is_live": false,
   "is_mock": false,
   "is_replay": true,
-  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Mathura Jn at 18:54. What really happened is shown for comparison.",
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Hazrat Nizamuddin Jn at 17:22. What really happened is shown for comparison.",
   "current": {
-    "station_code": "MTJ",
-    "station_name": "Mathura Jn",
-    "delay_min": 9
+    "station_code": "NZM",
+    "station_name": "Hazrat Nizamuddin Jn",
+    "delay_min": 7
   },
   "stations": [
     {
-      "code": "SWM",
-      "name": "Sawai Madhopur Jn",
+      "code": "MTJ",
+      "name": "Mathura Jn",
       "sequence": 1,
-      "scheduled": "20:48",
-      "baseline_eta": "20:57",
-      "eta_median": "21:05",
-      "eta_low": "20:50",
-      "eta_high": "21:14",
-      "confidence": 0.85,
+      "scheduled": "18:43",
+      "baseline_eta": "18:50",
+      "eta_median": "18:57",
+      "eta_low": "18:49",
+      "eta_high": "19:06",
+      "confidence": 0.69,
       "attribution": [
         {
           "cause": "usual behaviour of these sections",
-          "minutes": 12
+          "minutes": 9
         },
         {
           "cause": "delay carried forward",
-          "minutes": 9
+          "minutes": 7
         },
         {
           "cause": "usual drift for a delay this size",
-          "minutes": 2
+          "minutes": 3
         },
         {
           "cause": "time made up",
-          "minutes": -7
+          "minutes": -6
         }
       ],
-      "actual": "20:57",
-      "actual_delay_min": 9
+      "actual": "18:54",
+      "actual_delay_min": 11
     },
     {
-      "code": "KOTA",
-      "name": "Kota Jn",
+      "code": "SWM",
+      "name": "Sawai Madhopur Jn",
       "sequence": 2,
-      "scheduled": "22:00",
-      "baseline_eta": "22:09",
-      "eta_median": "22:09",
-      "eta_low": "22:00",
-      "eta_high": "22:22",
-      "confidence": 0.78,
+      "scheduled": "20:48",
+      "baseline_eta": "20:55",
+      "eta_median": "21:06",
+      "eta_low": "20:52",
+      "eta_high": "21:38",
+      "confidence": 0.79,
       "attribution": [
         {
-          "cause": "delay carried forward",
-          "minutes": 9
+          "cause": "usual behaviour of these sections",
+          "minutes": 15
         },
         {
-          "cause": "usual behaviour of these sections",
-          "minutes": 4
+          "cause": "delay carried forward",
+          "minutes": 7
         },
         {
           "cause": "usual drift for a delay this size",
@@ -74,8 +74,39 @@
           "minutes": -6
         }
       ],
-      "actual": "22:02",
-      "actual_delay_min": 2
+      "actual": "21:14",
+      "actual_delay_min": 27
+    },
+    {
+      "code": "KOTA",
+      "name": "Kota Jn",
+      "sequence": 3,
+      "scheduled": "22:00",
+      "baseline_eta": "22:07",
+      "eta_median": "22:16",
+      "eta_low": "22:03",
+      "eta_high": "22:44",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 10
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 7
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "22:26",
+      "actual_delay_min": 26
     }
   ]
 }

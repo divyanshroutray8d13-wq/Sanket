@@ -1,0 +1,182 @@
+{
+  "train_no": "22633",
+  "train_name": "Hazrat Nizamuddin SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 61,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Alappuzha at 16:59. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "ALLP",
+    "station_name": "Alappuzha",
+    "delay_min": 4
+  },
+  "stations": [
+    {
+      "code": "ERS",
+      "name": "Ernakulam Jn",
+      "sequence": 1,
+      "scheduled": "18:25",
+      "baseline_eta": "18:29",
+      "eta_median": "18:37",
+      "eta_low": "18:28",
+      "eta_high": "18:50",
+      "confidence": 0.69,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 10
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 5
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "18:03",
+      "actual_delay_min": -22
+    },
+    {
+      "code": "TCR",
+      "name": "Thrisur",
+      "sequence": 2,
+      "scheduled": "20:04",
+      "baseline_eta": "20:08",
+      "eta_median": "20:18",
+      "eta_low": "20:03",
+      "eta_high": "20:37",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 10
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 6
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "20:09",
+      "actual_delay_min": 6
+    },
+    {
+      "code": "SRR",
+      "name": "Shoranur Jn",
+      "sequence": 3,
+      "scheduled": "21:02",
+      "baseline_eta": "21:06",
+      "eta_median": "21:05",
+      "eta_low": "20:49",
+      "eta_high": "21:32",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 8
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 4
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "20:51",
+      "actual_delay_min": -4
+    },
+    {
+      "code": "CLT",
+      "name": "Kozhikkode",
+      "sequence": 4,
+      "scheduled": "22:17",
+      "baseline_eta": "22:21",
+      "eta_median": "22:22",
+      "eta_low": "22:07",
+      "eta_high": "22:55",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 8
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 4
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "22:27",
+      "actual_delay_min": 10
+    },
+    {
+      "code": "CAN",
+      "name": "Kannur",
+      "sequence": 5,
+      "scheduled": "23:37",
+      "baseline_eta": "23:41",
+      "eta_median": "23:45",
+      "eta_low": "23:27",
+      "eta_high": "00:16",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 10
+        },
+        {
+          "cause": "delay carried forward",
+          "minutes": 4
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "23:37",
+      "actual_delay_min": 0
+    }
+  ]
+}
