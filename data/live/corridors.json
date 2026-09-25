@@ -1,7 +1,0 @@
-[
-  {
-    "name": "delhi-mumbai",
-    "trains": ["12951", "12952"],
-    "sections": ["NDLS-KOTA", "KOTA-RTM", "RTM-BRC", "BRC-ST"]
-  }
-]
