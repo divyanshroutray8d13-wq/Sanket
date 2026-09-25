@@ -2,17 +2,17 @@
   "train_no": "12381",
   "train_name": "Poorva Express",
   "corridor": "delhi-howrah",
-  "run_date": "2026-09-24",
-  "as_of": "2026-09-24T19:30:00+05:30",
-  "data_freshness_min": 7,
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 40,
   "is_live": false,
   "is_mock": false,
   "is_replay": true,
-  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Varanasi at 19:23. What really happened is shown for comparison.",
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Bhabua Road at 17:19. What really happened is shown for comparison.",
   "current": {
-    "station_code": "BSB",
-    "station_name": "Varanasi",
-    "delay_min": 28
+    "station_code": "BBU",
+    "station_name": "Bhabua Road",
+    "delay_min": 42
   },
   "stations": [
     {
@@ -20,93 +20,81 @@
       "name": "Janghai Jn",
       "sequence": 1,
       "scheduled": "19:58",
-      "baseline_eta": "20:26",
-      "eta_median": "20:21",
-      "eta_low": "20:01",
-      "eta_high": "20:37",
-      "confidence": 0.85,
+      "baseline_eta": "20:40",
+      "eta_median": "20:30",
+      "eta_low": "19:54",
+      "eta_high": "21:08",
+      "confidence": 0.79,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 28
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 5
-        },
-        {
-          "cause": "time of day and train type",
-          "minutes": 1
-        },
-        {
-          "cause": "time made up",
-          "minutes": -11
-        }
-      ],
-      "actual": "20:20",
-      "actual_delay_min": 22
-    },
-    {
-      "code": "PRYJ",
-      "name": "Prayagraj Jn",
-      "sequence": 2,
-      "scheduled": "21:30",
-      "baseline_eta": "21:58",
-      "eta_median": "21:54",
-      "eta_low": "21:27",
-      "eta_high": "22:14",
-      "confidence": 0.78,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 28
-        },
-        {
-          "cause": "usual behaviour of these sections",
-          "minutes": 5
-        },
-        {
-          "cause": "time of day and train type",
-          "minutes": 2
-        },
-        {
-          "cause": "time made up",
-          "minutes": -10
-        }
-      ],
-      "actual": "21:52",
-      "actual_delay_min": 23
-    },
-    {
-      "code": "CNB",
-      "name": "Kanpur Central",
-      "sequence": 3,
-      "scheduled": "00:02",
-      "baseline_eta": "00:30",
-      "eta_median": "00:26",
-      "eta_low": "23:57",
-      "eta_high": "00:56",
-      "confidence": 0.78,
-      "attribution": [
-        {
-          "cause": "delay carried forward",
-          "minutes": 28
+          "minutes": 42
         },
         {
           "cause": "usual behaviour of these sections",
           "minutes": 4
         },
         {
-          "cause": "time of day and train type",
-          "minutes": 2
+          "cause": "time made up",
+          "minutes": -14
+        }
+      ],
+      "actual": "20:02",
+      "actual_delay_min": 5
+    },
+    {
+      "code": "PRYJ",
+      "name": "Prayagraj Jn",
+      "sequence": 2,
+      "scheduled": "21:30",
+      "baseline_eta": "22:12",
+      "eta_median": "22:00",
+      "eta_low": "21:25",
+      "eta_high": "22:56",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 42
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
         },
         {
           "cause": "time made up",
-          "minutes": -11
+          "minutes": -15
         }
       ],
-      "actual": "00:15",
-      "actual_delay_min": 13
+      "actual": "21:37",
+      "actual_delay_min": 7
+    },
+    {
+      "code": "CNB",
+      "name": "Kanpur Central",
+      "sequence": 3,
+      "scheduled": "00:02",
+      "baseline_eta": "00:44",
+      "eta_median": "00:31",
+      "eta_low": "23:51",
+      "eta_high": "01:42",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 42
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -16
+        }
+      ],
+      "actual": "00:05",
+      "actual_delay_min": 4
     }
   ]
 }

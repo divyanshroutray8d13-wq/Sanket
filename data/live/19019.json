@@ -1,0 +1,298 @@
+{
+  "train_no": "19019",
+  "train_name": "Haridwar Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 40,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left New Kota (dakaniya Talav) at 17:20. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "NKOT",
+    "station_name": "New Kota (dakaniya Talav)",
+    "delay_min": 0
+  },
+  "stations": [
+    {
+      "code": "KPTN",
+      "name": "Keshorai Patan",
+      "sequence": 1,
+      "scheduled": "18:08",
+      "baseline_eta": "18:08",
+      "eta_median": "18:19",
+      "eta_low": "18:08",
+      "eta_high": "18:32",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 11
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 6
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "18:19",
+      "actual_delay_min": 12
+    },
+    {
+      "code": "KPZ",
+      "name": "Kapren",
+      "sequence": 2,
+      "scheduled": "18:28",
+      "baseline_eta": "18:28",
+      "eta_median": "18:40",
+      "eta_low": "18:29",
+      "eta_high": "18:54",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 6
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "18:44",
+      "actual_delay_min": 16
+    },
+    {
+      "code": "LKE",
+      "name": "Lakheri",
+      "sequence": 3,
+      "scheduled": "18:53",
+      "baseline_eta": "18:53",
+      "eta_median": "19:07",
+      "eta_low": "18:53",
+      "eta_high": "19:25",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 7
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "19:09",
+      "actual_delay_min": 17
+    },
+    {
+      "code": "IDG",
+      "name": "Indargarh",
+      "sequence": 4,
+      "scheduled": "19:08",
+      "baseline_eta": "19:08",
+      "eta_median": "19:22",
+      "eta_low": "19:09",
+      "eta_high": "19:45",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 8
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "19:34",
+      "actual_delay_min": 27
+    },
+    {
+      "code": "SWM",
+      "name": "Sawai Madhopur Jn",
+      "sequence": 5,
+      "scheduled": "19:50",
+      "baseline_eta": "19:50",
+      "eta_median": "20:01",
+      "eta_low": "19:48",
+      "eta_high": "20:25",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 10
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -4
+        }
+      ],
+      "actual": "20:05",
+      "actual_delay_min": 15
+    },
+    {
+      "code": "MLZ",
+      "name": "Malarna",
+      "sequence": 6,
+      "scheduled": "20:16",
+      "baseline_eta": "20:16",
+      "eta_median": "20:28",
+      "eta_low": "20:15",
+      "eta_high": "20:54",
+      "confidence": 0.81,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 9
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 6
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "20:26",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "NNW",
+      "name": "Narayanpur Tatwara",
+      "sequence": 7,
+      "scheduled": "20:33",
+      "baseline_eta": "20:33",
+      "eta_median": "20:46",
+      "eta_low": "20:32",
+      "eta_high": "21:12",
+      "confidence": 0.81,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 8
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 7
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "20:43",
+      "actual_delay_min": 10
+    },
+    {
+      "code": "GGC",
+      "name": "Gangapur City Jn",
+      "sequence": 8,
+      "scheduled": "20:55",
+      "baseline_eta": "20:55",
+      "eta_median": "21:08",
+      "eta_low": "20:53",
+      "eta_high": "21:33",
+      "confidence": 0.81,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 10
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "other",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "20:57",
+      "actual_delay_min": 3
+    },
+    {
+      "code": "SMVJ",
+      "name": "Shri Mahaveerji",
+      "sequence": 9,
+      "scheduled": "21:30",
+      "baseline_eta": "21:30",
+      "eta_median": "21:44",
+      "eta_low": "21:28",
+      "eta_high": "22:09",
+      "confidence": 0.81,
+      "attribution": [
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 10
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 5
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -3
+        }
+      ],
+      "actual": "21:29",
+      "actual_delay_min": -1
+    }
+  ]
+}

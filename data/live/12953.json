@@ -2,56 +2,99 @@
   "train_no": "12953",
   "train_name": "Mumbai Central - Hazrat Nizamuddin Tejas Rajdhani Express",
   "corridor": "delhi-mumbai",
-  "run_date": "2026-09-24",
-  "as_of": "2026-09-24T19:30:00+05:30",
-  "data_freshness_min": 2,
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 11,
   "is_live": false,
   "is_mock": false,
   "is_replay": true,
-  "replay_note": "Replay of 2026-09-24. It is 19:30; the forecast uses only what was known when the train left Valsad at 19:27. What really happened is shown for comparison.",
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Borivali at 17:48. What really happened is shown for comparison.",
   "current": {
-    "station_code": "BL",
-    "station_name": "Valsad",
-    "delay_min": 13
+    "station_code": "BVI",
+    "station_name": "Borivali",
+    "delay_min": 9
   },
   "stations": [
     {
-      "code": "ST",
-      "name": "Surat",
+      "code": "VAPI",
+      "name": "Vapi",
       "sequence": 1,
-      "scheduled": "20:10",
-      "baseline_eta": "20:23",
-      "eta_median": "20:14",
-      "eta_low": "20:06",
-      "eta_high": "20:28",
-      "confidence": 0.85,
+      "scheduled": "18:53",
+      "baseline_eta": "19:02",
+      "eta_median": "19:07",
+      "eta_low": "18:59",
+      "eta_high": "19:15",
+      "confidence": 0.69,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 9
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
         },
         {
           "cause": "time made up",
-          "minutes": -9
+          "minutes": -6
         }
       ],
-      "actual": "20:10",
-      "actual_delay_min": 0
+      "actual": "19:08",
+      "actual_delay_min": 16
     },
     {
-      "code": "BH",
-      "name": "Bharuch Jn",
+      "code": "BL",
+      "name": "Valsad",
       "sequence": 2,
-      "scheduled": "20:53",
-      "baseline_eta": "21:06",
-      "eta_median": "21:00",
-      "eta_low": "20:52",
-      "eta_high": "21:14",
-      "confidence": 0.78,
+      "scheduled": "19:13",
+      "baseline_eta": "19:22",
+      "eta_median": "19:27",
+      "eta_low": "19:18",
+      "eta_high": "19:37",
+      "confidence": 0.79,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 9
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 7
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "19:35",
+      "actual_delay_min": 23
+    },
+    {
+      "code": "ST",
+      "name": "Surat",
+      "sequence": 3,
+      "scheduled": "20:10",
+      "baseline_eta": "20:19",
+      "eta_median": "20:16",
+      "eta_low": "20:07",
+      "eta_high": "20:28",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
         },
         {
           "cause": "usual behaviour of these sections",
@@ -59,38 +102,73 @@
         },
         {
           "cause": "time made up",
-          "minutes": -7
+          "minutes": -6
         }
       ],
-      "actual": "20:57",
-      "actual_delay_min": 4
+      "actual": "20:20",
+      "actual_delay_min": 11
     },
     {
-      "code": "DHD",
-      "name": "Dahod",
-      "sequence": 3,
-      "scheduled": "23:38",
-      "baseline_eta": "23:51",
-      "eta_median": "23:48",
-      "eta_low": "23:37",
-      "eta_high": "00:06",
-      "confidence": 0.78,
+      "code": "BH",
+      "name": "Bharuch Jn",
+      "sequence": 4,
+      "scheduled": "20:53",
+      "baseline_eta": "21:02",
+      "eta_median": "21:02",
+      "eta_low": "20:49",
+      "eta_high": "21:18",
+      "confidence": 0.8,
       "attribution": [
         {
           "cause": "delay carried forward",
-          "minutes": 13
+          "minutes": 9
         },
         {
           "cause": "usual behaviour of these sections",
           "minutes": 3
         },
         {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
           "cause": "time made up",
           "minutes": -6
         }
       ],
-      "actual": "23:35",
-      "actual_delay_min": -2
+      "actual": "21:03",
+      "actual_delay_min": 11
+    },
+    {
+      "code": "DHD",
+      "name": "Dahod",
+      "sequence": 5,
+      "scheduled": "23:38",
+      "baseline_eta": "23:47",
+      "eta_median": "23:50",
+      "eta_low": "23:39",
+      "eta_high": "00:23",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 6
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 2
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "23:42",
+      "actual_delay_min": 5
     }
   ]
 }

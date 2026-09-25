@@ -1,0 +1,85 @@
+{
+  "train_no": "22655",
+  "train_name": "Hazrat Nizamuddin SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 40,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Karmali at 17:19. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "KRMI",
+    "station_name": "Karmali",
+    "delay_min": 60
+  },
+  "stations": [
+    {
+      "code": "SNDD",
+      "name": "Sindhudurg",
+      "sequence": 1,
+      "scheduled": "17:50",
+      "baseline_eta": "18:50",
+      "eta_median": "18:45",
+      "eta_low": "18:09",
+      "eta_high": "19:09",
+      "confidence": 0.69,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 60
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 4
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -10
+        }
+      ],
+      "actual": "18:24",
+      "actual_delay_min": 35
+    },
+    {
+      "code": "RN",
+      "name": "Ratnagiri",
+      "sequence": 2,
+      "scheduled": "20:20",
+      "baseline_eta": "21:20",
+      "eta_median": "21:14",
+      "eta_low": "20:32",
+      "eta_high": "21:55",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 60
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "time of day and train type",
+          "minutes": 1
+        },
+        {
+          "cause": "run length and timetable",
+          "minutes": 1
+        },
+        {
+          "cause": "time made up",
+          "minutes": -11
+        }
+      ],
+      "actual": "21:30",
+      "actual_delay_min": 70
+    }
+  ]
+}

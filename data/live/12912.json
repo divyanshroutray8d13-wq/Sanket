@@ -1,0 +1,158 @@
+{
+  "train_no": "12912",
+  "train_name": "Valsad SF Express",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-23",
+  "as_of": "2026-09-23T18:00:00+05:30",
+  "data_freshness_min": 31,
+  "is_live": false,
+  "is_mock": false,
+  "is_replay": true,
+  "replay_note": "Replay of 2026-09-23. It is 18:00; the forecast uses only what was known when the train left Haridwar Jn at 17:28. What really happened is shown for comparison.",
+  "current": {
+    "station_code": "HW",
+    "station_name": "Haridwar Jn",
+    "delay_min": 9
+  },
+  "stations": [
+    {
+      "code": "RK",
+      "name": "Roorkee",
+      "sequence": 1,
+      "scheduled": "17:58",
+      "baseline_eta": "18:07",
+      "eta_median": "18:08",
+      "eta_low": "17:58",
+      "eta_high": "18:17",
+      "confidence": 0.69,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual behaviour of these sections",
+          "minutes": 3
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -5
+        }
+      ],
+      "actual": "18:03",
+      "actual_delay_min": 6
+    },
+    {
+      "code": "TPZ",
+      "name": "Tapri",
+      "sequence": 2,
+      "scheduled": "18:58",
+      "baseline_eta": "19:07",
+      "eta_median": "19:02",
+      "eta_low": "18:50",
+      "eta_high": "19:21",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "18:50",
+      "actual_delay_min": -8
+    },
+    {
+      "code": "MTC",
+      "name": "Meerut City",
+      "sequence": 3,
+      "scheduled": "20:15",
+      "baseline_eta": "20:24",
+      "eta_median": "20:20",
+      "eta_low": "20:07",
+      "eta_high": "20:41",
+      "confidence": 0.79,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -7
+        }
+      ],
+      "actual": "20:19",
+      "actual_delay_min": 4
+    },
+    {
+      "code": "GZB",
+      "name": "Ghaziabad",
+      "sequence": 4,
+      "scheduled": "21:18",
+      "baseline_eta": "21:27",
+      "eta_median": "21:24",
+      "eta_low": "21:11",
+      "eta_high": "21:53",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 3
+        },
+        {
+          "cause": "time made up",
+          "minutes": -6
+        }
+      ],
+      "actual": "21:08",
+      "actual_delay_min": -9
+    },
+    {
+      "code": "NZM",
+      "name": "Hazrat Nizamuddin Jn",
+      "sequence": 5,
+      "scheduled": "22:00",
+      "baseline_eta": "22:09",
+      "eta_median": "22:05",
+      "eta_low": "21:52",
+      "eta_high": "22:45",
+      "confidence": 0.8,
+      "attribution": [
+        {
+          "cause": "delay carried forward",
+          "minutes": 9
+        },
+        {
+          "cause": "usual drift for a delay this size",
+          "minutes": 4
+        },
+        {
+          "cause": "time made up",
+          "minutes": -8
+        }
+      ],
+      "actual": "22:03",
+      "actual_delay_min": 3
+    }
+  ]
+}
