@@ -1,24 +1,32 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { BOARD_STATIONS, CORRIDOR_TRAINS } from '../lib/corridor'
+import { BOARD_STATIONS, CORRIDOR_TRAINS, HOWRAH_TRAINS, OVERLAP_TRAINS } from '../lib/corridor'
 
 const CORRIDORS = [
   {
     name: 'Delhi to Mumbai',
     status: 'Live',
-    summary: 'The first corridor SANKET forecasts. Trains run through Surat, Vadodara, Ratlam and Kota.',
+    summary:
+      '38 trains, the corridor SANKET was built on. Runs through Surat, Vadodara, Ratlam and Kota. ' +
+      'Most of the evaluation on the Results page is drawn from here.',
     trains: CORRIDOR_TRAINS,
     stations: BOARD_STATIONS,
   },
   {
     name: 'Delhi to Howrah',
-    status: 'Next',
-    summary: 'A second long-distance corridor, used to test whether the model holds on a route it has never seen.',
+    status: 'Live',
+    summary:
+      '14 trains, added to test whether the model holds on a route it wasn\u2019t built around. ' +
+      'Forecasts are live; accuracy on this corridor specifically hasn\u2019t been checked on its own yet.',
+    trains: HOWRAH_TRAINS,
   },
   {
-    name: 'Mumbai suburban',
-    status: 'Next',
-    summary: 'The densest section in the data: the busiest block section here carries 199 trains a day.',
+    name: 'Mumbai corridor overlap',
+    status: 'Live',
+    summary:
+      '18 trains that share block sections with the Delhi\u2013Mumbai corridor without running its full length. ' +
+      'Forecasts are live; like Howrah, not yet checked as its own group.',
+    trains: OVERLAP_TRAINS,
   },
 ]
 
@@ -27,8 +35,8 @@ export default function CorridorsPage() {
     <main className="mx-auto max-w-6xl px-6 pt-12">
       <h1 className="tighter text-[40px] font-medium leading-tight">Corridors</h1>
       <p className="mt-2 max-w-xl text-[15px] text-ink-2">
-        SANKET learns one corridor at a time. Each one adds different track conditions, so a model that holds across
-        corridors is one that can move to other zones.
+        SANKET now forecasts three corridors, all from the same model. Whether accuracy actually holds corridor by
+        corridor, rather than just on average across all three, is still an open question &mdash; see the Results page.
       </p>
 
       <div className="mt-10 grid items-start gap-5 lg:grid-cols-3">
