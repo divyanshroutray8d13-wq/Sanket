@@ -84,7 +84,12 @@ export default function StationPage() {
       <Shell>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
-            <p className="text-[14px] text-ink-3">Arrivals at</p>
+            <div className="mb-2 flex flex-wrap items-center gap-2">
+              <p className="text-[14px] text-ink-3">Arrivals at</p>
+              <span className="rounded-full bg-accent-soft px-2.5 py-1 text-[11px] font-medium text-ink-2">
+                {data.isMock ? 'REPLAY' : data.isLive ? 'LIVE BOARD' : 'CACHED BOARD'}
+              </span>
+            </div>
             <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }} className="mt-2">
               <span className="tighter block text-[34px] font-medium leading-tight">{known.name}</span>
             </motion.div>
@@ -97,7 +102,10 @@ export default function StationPage() {
             <h1 id="board-title" className="tight text-[19px] font-medium">
               {rows.length} {rows.length === 1 ? 'train' : 'trains'} due
             </h1>
-            <p className="tnum text-[13px] text-ink-3">Forecast made {clockOf(data.asOf)}, ordered by likely arrival</p>
+            <p className="tnum text-[13px] text-ink-3">
+              {data.isLive ? 'Live forecast' : data.isMock ? 'Replay forecast' : 'Cached forecast'}
+              {' · '}made {clockOf(data.asOf)}, ordered by likely arrival
+            </p>
           </div>
 
           <div className="hidden grid-cols-[13rem_5rem_minmax(0,1fr)_9.5rem] gap-x-8 px-3 pt-3 text-[11.5px] text-ink-3 md:grid" aria-hidden="true">
@@ -159,3 +167,5 @@ export default function StationPage() {
 function Shell({ children }) {
   return <main className="mx-auto max-w-6xl px-6 pt-12">{children}</main>
 }
+
+

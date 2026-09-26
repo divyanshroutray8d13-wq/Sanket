@@ -1,6 +1,8 @@
 import json
 import os
 import re
+import threading
+import time
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -16,6 +18,39 @@ app.add_middleware(
 )
 
 VALID_PROFILES = {"control", "app", "board"}
+
+# RailRadar is a quota-limited live source. Cache each live response briefly so
+# browser refreshes and multiple UI components do not create duplicate provider calls.
+LIVE_CACHE_TTL_SEC = 90
+_LIVE_CACHE: dict[tuple[str, str], tuple[float, dict]] = {}
+_LIVE_CACHE_LOCK = threading.Lock()
+
+
+def _get_cached_live(train_no: str, profile: str):
+    key = (train_no, profile)
+    now = time.monotonic()
+
+    with _LIVE_CACHE_LOCK:
+        cached = _LIVE_CACHE.get(key)
+        if cached is not None:
+            stored_at, data = cached
+            age = now - stored_at
+            if age < LIVE_CACHE_TTL_SEC:
+                result = dict(data)
+                result["data_freshness_min"] = round(age / 60, 2)
+                return result
+
+            _LIVE_CACHE.pop(key, None)
+
+        # Hold the lock while the provider/model call happens. This prevents
+        # simultaneous browser requests from all missing the cache at once.
+        from src.forecast.live import build_live_payload
+
+        data = build_live_payload(train_no, profile=profile)
+        _LIVE_CACHE[key] = (now, data)
+        result = dict(data)
+        result["data_freshness_min"] = 0
+        return result
 TRAIN_NO = re.compile(r"[0-9]{5}")
 STATION_CODE = re.compile(r"[A-Z0-9]{1,8}")
 
@@ -95,12 +130,20 @@ def health():
 
 
 @app.get("/eta/{train_no}")
-def get_eta(train_no: str, profile: str = "control"):
+def get_eta(train_no: str, profile: str = "control", live: bool = False):
     if not TRAIN_NO.fullmatch(train_no):
         raise HTTPException(status_code=400, detail="train_no must be exactly 5 digits")
 
     if profile not in VALID_PROFILES:
         raise HTTPException(status_code=400, detail=f"Unknown profile '{profile}'")
+
+    if live:
+        try:
+            return _get_cached_live(train_no, profile)
+        except Exception as exc:
+            # The caller explicitly requested live data; do not silently switch
+            # to replay data because that would make the UI look live when it is not.
+            raise HTTPException(status_code=502, detail=f"Live forecast failed: {exc}") from exc
 
     live_dir = get_live_dir()
     file_path = live_dir / f"{train_no}.json"

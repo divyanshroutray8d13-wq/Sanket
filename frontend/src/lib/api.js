@@ -1,6 +1,7 @@
 // One place that knows where forecasts come from.
 // Today: the mock file. On 26 Sept: set VITE_API_URL and it calls the real API.
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+const LIVE_MODE = String(import.meta.env.VITE_LIVE_MODE ?? 'false').toLowerCase() === 'true'
 
 export async function fetchTrain(trainNo) {
   // Preview build only: mock JSON is embedded in the page.
@@ -10,7 +11,8 @@ export async function fetchTrain(trainNo) {
     return asSample(data)
   }
 
-  const url = API_URL ? `${API_URL}/eta/${trainNo}` : `/mock/${trainNo}.json`
+  let url = API_URL ? `${API_URL}/eta/${trainNo}` : `/mock/${trainNo}.json`
+  if (API_URL && LIVE_MODE) url += '?live=true'
   const res = await fetch(url)
   if (res.status === 404) throw new NotFoundError(trainNo)
   if (!res.ok) throw new Error(`Forecast request failed (${res.status})`)
