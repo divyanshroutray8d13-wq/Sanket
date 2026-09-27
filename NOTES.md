@@ -61,3 +61,5 @@ Also figured out why "section history" looks bad in one report and great in anot
 2026-09-26 - Aryu - the overlap corridor never showed up on the map because nobody had generated its route file - wrote a script for that, now it does. Also found these route files were never actually saved to git (silently ignored), so this was invisible to the whole team, not just missing on one machine - fixed that. corridors.json and the Corridors page were also out of date (still said Howrah/overlap were "coming soon" when they're already live) - updated both.
 
 2026-09-26 - Aryu - small frontend polish: the nav bar's active tab now slides smoothly instead of snapping, the LIVE badge now pulses, and added visible keyboard focus (was missing entirely before - an actual accessibility bug, not just style).
+
+2026-09-27 - Rivy - Zone-holdout: trained on Delhi-Mumbai + overlap only, tested on Delhi-Howrah (never seen in training). base MAE 11.64 vs carry-forward 13.57, gain +14.2% (range +10.7 to +16.9). base+network+hist MAE 11.33, gain +16.5% (range +11.6 to +20.5). Both windows hold 84-87%.
