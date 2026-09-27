@@ -105,3 +105,11 @@ body { font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
 }
 @keyframes train-pulse { from { transform: scale(1); opacity: 0.6; } to { transform: scale(1.9); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .train-pin span::after { animation: none; } }
+
+/* Same pulse language as the map marker, scaled down for the LIVE badge dot */
+.live-dot { position: relative; }
+.live-dot::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: var(--accent); animation: train-pulse 2.2s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) { .live-dot::after { animation: none; } }

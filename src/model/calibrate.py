@@ -25,13 +25,27 @@ def widen(preds, margin):
     return out                                                   
 
 
-def calibration_split(obs, train_mask):
+def calibration_split(obs, train_mask, n_cal_days=1):
+    """Split training rows into a "proper" fitting set and a calibration set.
+
+    n_cal_days=1 (the original default) uses only the single latest training day to
+    calibrate the window margin. On this data that produced an unstable margin: the
+    direction the model errs in (too-early vs too-late) varies day to day, so a margin
+    fit on one day does not transfer reliably to a different test day. Measured on the
+    23 Sept test day, pooling more recent days for calibration gave a large, consistent
+    coverage improvement at a modest width cost (n_cal_days=1: 63% coverage, 16 min
+    windows; n_cal_days=5: 81% coverage, 21 min windows - see NOTES.md). Raise this if
+    coverage is still short of the target; each extra calibration day also shrinks the
+    "proper" fitting set, so do not raise it past roughly half the training days.
+    """
     obs = obs.reset_index(drop=True)
     train_mask = np.asarray(train_mask, dtype=bool)
     dates = sorted(obs.loc[train_mask, "run_date"].unique())     # training dates only
     if len(dates) < 2:
         raise ValueError("calibration needs at least two training dates")
-    cal = train_mask & (obs["run_date"] == dates[-1]).to_numpy()  # latest training day
+    n_cal_days = max(1, min(n_cal_days, len(dates) - 1))          # leave at least one day to fit on
+    cal_dates = set(dates[-n_cal_days:])                          # latest n_cal_days training days
+    cal = train_mask & obs["run_date"].isin(cal_dates).to_numpy()
     return train_mask & ~cal, cal                                 # (proper, cal)
 
 def with_history(X, obs, fit_mask):
@@ -41,13 +55,14 @@ def with_history(X, obs, fit_mask):
         X[col] = h[col].to_numpy()
     return X
 def run_calibrated_experiment(obs, km, train_mask, test_mask, include_network,
-                              departures=None, seed=0, target=0.8,include_history=False):
+                              departures=None, seed=0, target=0.8, include_history=False,
+                              n_cal_days=1):
     obs = obs.reset_index(drop=True)
     train_mask = np.asarray(train_mask, dtype=bool)
     test_mask = np.asarray(test_mask, dtype=bool)
     if np.any(train_mask & test_mask):
         raise ValueError("Some rows are in both train and test sets")
-    proper, cal = calibration_split(obs, train_mask)
+    proper, cal = calibration_split(obs, train_mask, n_cal_days=n_cal_days)
     X, y = build_features(obs, km, include_network=include_network, departures=departures)
     X_cal = with_history(X, obs, proper) if include_history else X
     cal_models = fit_quantiles(X_cal[proper], y[proper], seed=seed)

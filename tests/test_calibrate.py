@@ -157,6 +157,34 @@ def test_split_needs_two_training_dates():
         calibration_split(o, np.array([True, True, False]))
 
 
+def test_split_n_cal_days_pools_multiple_latest_days():
+    o = dated(["2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21"])
+    train = np.array([True, True, True, True, False])
+    proper, cal = calibration_split(o, train, n_cal_days=3)
+    # latest 3 training days (18, 19, 20) become calibration; only 17 stays in "proper"
+    assert proper.tolist() == [True, False, False, False, False]
+    assert cal.tolist() == [False, True, True, True, False]
+
+
+def test_split_n_cal_days_defaults_to_one_day_unchanged():
+    o = dated(["2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20"])
+    train = np.array([True, True, True, False])
+    proper_default, cal_default = calibration_split(o, train)
+    proper_explicit, cal_explicit = calibration_split(o, train, n_cal_days=1)
+    assert proper_default.tolist() == proper_explicit.tolist()
+    assert cal_default.tolist() == cal_explicit.tolist()
+
+
+def test_split_n_cal_days_leaves_at_least_one_proper_day():
+    # asking for more calibration days than can leave a "proper" day should
+    # clamp rather than error or empty out the fitting set entirely
+    o = dated(["2026-09-17", "2026-09-18", "2026-09-19"])
+    train = np.array([True, True, False])
+    proper, cal = calibration_split(o, train, n_cal_days=99)
+    assert proper.sum() >= 1
+    assert (proper & cal).sum() == 0
+
+
 # ---------------------------------------------------------------- end to end
 
 def overconfident_obs(n_per_day=250, seed=3):

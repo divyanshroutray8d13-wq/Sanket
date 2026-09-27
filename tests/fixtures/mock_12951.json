@@ -1,0 +1,76 @@
+{
+  "train_no": "12951",
+  "train_name": "Mumbai Rajdhani",
+  "corridor": "delhi-mumbai",
+  "run_date": "2026-09-17",
+  "as_of": "2026-09-17T17:40:00+05:30",
+  "data_freshness_min": 12,
+  "is_live": false,
+  "is_mock": true,
+  "current": {
+    "station_code": "BVI",
+    "station_name": "Borivali",
+    "delay_min": 13
+  },
+  "stations": [
+    {
+      "code": "ST", "name": "Surat", "sequence": 3,
+      "scheduled": "19:55", "baseline_eta": "20:06",
+      "eta_median": "20:01", "eta_low": "19:58", "eta_high": "20:07",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "recovery allowance used", "minutes": -8 },
+        { "cause": "inherited from train ahead", "minutes": 2 }
+      ]
+    },
+    {
+      "code": "BRC", "name": "Vadodara Junction", "sequence": 4,
+      "scheduled": "21:45", "baseline_eta": "21:56",
+      "eta_median": "21:52", "eta_low": "21:46", "eta_high": "22:01",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "held for precedence", "minutes": 3 },
+        { "cause": "recovery allowance used", "minutes": -2 }
+      ]
+    },
+    {
+      "code": "RTM", "name": "Ratlam Junction", "sequence": 5,
+      "scheduled": "00:40", "baseline_eta": "00:51",
+      "eta_median": "00:45", "eta_low": "00:37", "eta_high": "00:58",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "recovery allowance used", "minutes": -4 },
+        { "cause": "night-time section speed", "minutes": -2 }
+      ]
+    },
+    {
+      "code": "NAD", "name": "Nagda Junction", "sequence": 6,
+      "scheduled": "01:40", "baseline_eta": "01:51",
+      "eta_median": "01:41", "eta_low": "01:32", "eta_high": "01:55",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "recovery allowance used", "minutes": -4 }
+      ]
+    },
+    {
+      "code": "KOTA", "name": "Kota Junction", "sequence": 7,
+      "scheduled": "04:50", "baseline_eta": "05:01",
+      "eta_median": "05:04", "eta_low": "04:51", "eta_high": "05:22",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "inherited from train ahead", "minutes": 9 },
+        { "cause": "held for precedence", "minutes": 5 }
+      ]
+    },
+    {
+      "code": "NDLS", "name": "New Delhi", "sequence": 8,
+      "scheduled": "08:35", "baseline_eta": "08:46",
+      "eta_median": "08:44", "eta_low": "08:28", "eta_high": "09:06",
+      "confidence": 0.8,
+      "attribution": [
+        { "cause": "approach congestion", "minutes": 6 },
+        { "cause": "recovery allowance used", "minutes": -5 }
+      ]
+    }
+  ]
+}
