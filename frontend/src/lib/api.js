@@ -13,7 +13,16 @@ export async function fetchTrain(trainNo) {
 
   let url = API_URL ? `${API_URL}/eta/${trainNo}` : `/mock/${trainNo}.json`
   if (API_URL && LIVE_MODE) url += '?live=true'
-  const res = await fetch(url)
+  let res = await fetch(url)
+
+  // Live mode can fail when RailRadar has nothing usable for this train yet
+  // (hasn't departed, or a live-source error). Fall back to the replay
+  // forecast rather than showing a dead end — is_live in the response
+  // still tells the UI honestly which one this is.
+  if (LIVE_MODE && res.status === 502) {
+    res = await fetch(`${API_URL}/eta/${trainNo}`)
+  }
+
   if (res.status === 404) throw new NotFoundError(trainNo)
   if (!res.ok) throw new Error(`Forecast request failed (${res.status})`)
   const type = res.headers.get('content-type') ?? ''
@@ -49,6 +58,19 @@ export async function fetchStationBoard(code, trainNos) {
   const isMock = trains.some((t) => t.is_mock)
   const isLive = trains.every((t) => t.is_live !== false)
   return { code, asOf, isMock, isLive, arrivals }
+}
+
+// Corridors: name, live train list, and sections file, from the real API.
+// No local mock fallback — if API_URL isn't set, the page just shows nothing yet.
+export async function fetchCorridors() {
+  if (import.meta.env.VITE_INLINE_MOCK) {
+    return window.__SANKET_CORRIDORS__ ?? []
+  }
+  if (!API_URL) return []
+  const res = await fetch(`${API_URL}/corridors`)
+  if (!res.ok) throw new Error(`Corridors request failed (${res.status})`)
+  const data = await res.json()
+  return data.value ?? data
 }
 
 // Results page: the real ablation result if it exists, otherwise the labelled sample.
