@@ -1,36 +1,51 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { BOARD_STATIONS, CORRIDOR_TRAINS, HOWRAH_TRAINS, OVERLAP_TRAINS } from '../lib/corridor'
+import { useEffect, useState } from 'react'
+import { fetchCorridors } from '../lib/api'
+import { LoadingState } from '../components/States'
+import { BOARD_STATIONS } from '../lib/corridor'
 
-const CORRIDORS = [
+const CORRIDOR_META = [
   {
+    id: 'delhi-mumbai',
     name: 'Delhi to Mumbai',
     status: 'Live',
     summary:
       '38 trains, the corridor SANKET was built on. Runs through Surat, Vadodara, Ratlam and Kota. ' +
       'Most of the evaluation on the Results page is drawn from here.',
-    trains: CORRIDOR_TRAINS,
     stations: BOARD_STATIONS,
   },
   {
+    id: 'delhi-howrah',
     name: 'Delhi to Howrah',
     status: 'Live',
     summary:
       '14 trains, added to test whether the model holds on a route it wasn\u2019t built around. ' +
       'Forecasts are live; accuracy on this corridor specifically hasn\u2019t been checked on its own yet.',
-    trains: HOWRAH_TRAINS,
   },
   {
+    id: 'mumbai-overlap',
     name: 'Mumbai corridor overlap',
     status: 'Live',
     summary:
       '18 trains that share block sections with the Delhi\u2013Mumbai corridor without running its full length. ' +
       'Forecasts are live; like Howrah, not yet checked as its own group.',
-    trains: OVERLAP_TRAINS,
   },
 ]
 
 export default function CorridorsPage() {
+ const [live, setLive] = useState(null)
+
+useEffect(() => {
+  fetchCorridors().then(setLive).catch(() => setLive([]))
+}, [])
+
+if (!live) return <LoadingState />
+
+const corridors = CORRIDOR_META.map((c) => ({
+  ...c,
+  trains: live.find((l) => l.name === c.id)?.trains ?? [],
+}))
   return (
     <main className="mx-auto max-w-6xl px-6 pt-12">
       <h1 className="tighter text-[40px] font-medium leading-tight">Corridors</h1>
@@ -40,7 +55,7 @@ export default function CorridorsPage() {
       </p>
 
       <div className="mt-10 grid items-start gap-5 lg:grid-cols-3">
-        {CORRIDORS.map((c, i) => (
+        {corridors.map((c, i) => (
           <motion.section
             key={c.name}
             initial={{ opacity: 0, y: 8 }}
