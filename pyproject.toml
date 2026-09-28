@@ -1,0 +1,12 @@
+[project]
+name = "sanket-api"
+version = "0.1.0"
+description = "SANKET FastAPI backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn",
+]
+
+[tool.vercel]
+entrypoint = "src.api.main:app"
