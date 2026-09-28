@@ -1,3 +1,8 @@
-   fastapi
-   uvicorn
-   
+fastapi
+uvicorn[standard]
+numpy
+pandas
+lightgbm
+requests
+python-dotenv
+joblib
