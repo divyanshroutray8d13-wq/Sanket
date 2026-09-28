@@ -12,11 +12,14 @@ app = FastAPI(title="SANKET API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://sanket-j8h6-iota.vercel.app",
+    ],
     allow_methods=["GET"],
     allow_headers=["*"],
 )
-
 VALID_PROFILES = {"control", "app", "board"}
 
 # RailRadar is a quota-limited live source. Cache each live response briefly so
