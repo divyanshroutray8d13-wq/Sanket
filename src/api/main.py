@@ -128,6 +128,7 @@ def time_to_sort_key(time_str: str) -> int:
 
 
 @app.get("/health")
+@app.head("/health")
 def health():
     return {"ok": True}
 
